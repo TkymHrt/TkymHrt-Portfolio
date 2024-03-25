@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { delay, motion } from "framer-motion";
 import { Element } from "react-scroll";
 
 export default function App() {
@@ -23,24 +23,72 @@ export default function App() {
 				</motion.div>
 			</div>
 			<Element name="Home">
-				<div className="h-[60vh] w-[70vw] flex justify-center items-center bg-gradient-to-r from-red-400/20 to-blue-600/60; rounded-xl bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-10 border border-gray-100">
+				<motion.div
+					className="h-[60vh] w-[70vw] flex justify-center items-center bg-gradient-to-r from-red-400/20 to-blue-600/60; rounded-xl bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-10 border border-gray-100"
+					drag
+					dragSnapToOrigin={true}
+					dragConstraints={{
+						top: -2,
+						left: -2,
+						right: 2,
+						bottom: 2,
+					}}
+					whileHover={{ scale: 1.025 }}
+					transition={{ duration: 0.3 }}
+				>
 					<p className="text-7xl text-slate-300">Home</p>
-				</div>
+				</motion.div>
 			</Element>
 			<Element name="Career">
-				<div className="h-[60vh] w-[70vw] flex justify-center items-center bg-gradient-to-r from-red-400/20 to-blue-600/60; rounded-xl bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-10 border border-gray-100">
+				<motion.div
+					className="h-[60vh] w-[70vw] flex justify-center items-center bg-gradient-to-r from-red-400/20 to-blue-600/60; rounded-xl bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-10 border border-gray-100"
+					drag
+					dragSnapToOrigin={true}
+					dragConstraints={{
+						top: -2,
+						left: -2,
+						right: 2,
+						bottom: 2,
+					}}
+					whileHover={{ scale: 1.025 }}
+					transition={{ duration: 0.3 }}
+				>
 					<p className="text-7xl text-slate-300">Career</p>
-				</div>
+				</motion.div>
 			</Element>
 			<Element name="Activity">
-				<div className="h-[60vh] w-[70vw] flex justify-center items-center bg-gradient-to-r from-red-400/20 to-blue-600/60; rounded-xl bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-10 border border-gray-100">
+				<motion.div
+					className="h-[60vh] w-[70vw] flex justify-center items-center bg-gradient-to-r from-red-400/20 to-blue-600/60; rounded-xl bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-10 border border-gray-100"
+					drag
+					dragSnapToOrigin={true}
+					dragConstraints={{
+						top: -2,
+						left: -2,
+						right: 2,
+						bottom: 2,
+					}}
+					whileHover={{ scale: 1.025 }}
+					transition={{ duration: 0.3 }}
+				>
 					<p className="text-7xl text-slate-300">Activity</p>
-				</div>
+				</motion.div>
 			</Element>
 			<Element name="Contacts">
-				<div className="h-[60vh] w-[70vw] flex justify-center items-center bg-gradient-to-r from-red-400/20 to-blue-600/60; rounded-xl bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-10 border border-gray-100">
+				<motion.div
+					className="h-[60vh] w-[70vw] flex justify-center items-center bg-gradient-to-r from-red-400/20 to-blue-600/60; rounded-xl bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-10 border border-gray-100"
+					drag
+					dragSnapToOrigin={true}
+					dragConstraints={{
+						top: -2,
+						left: -2,
+						right: 2,
+						bottom: 2,
+					}}
+					whileHover={{ scale: 1.025 }}
+					transition={{ duration: 0.3 }}
+				>
 					<p className="text-7xl text-slate-300">Contacts</p>
-				</div>
+				</motion.div>
 			</Element>
 		</div>
 	);
