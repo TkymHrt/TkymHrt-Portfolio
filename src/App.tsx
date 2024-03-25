@@ -2,29 +2,33 @@ export default function App() {
 	return (
 		<div className="flex justify-center items-center flex-col space-y-7">
 			<div className="h-[100vh] w-[100vw] flex justify-center items-center">
-				<h1 className="text-9xl">I'm Takayama Haruto.</h1>
+				<h1 className="text-[9vw]">I'm Takayama Haruto.</h1>
 			</div>
-			<div className="h-[60vh] w-[70vw] bg-gray-200/30 backdrop-blur-lg rounded-md border border-gray-200/30 shadow-lg flex justify-center items-center">
-				<p>hello</p>
+			<div className="h-[60vh] w-[70vw] flex justify-center items-center bg-gradient-to-r from-red-400/20 to-blue-600/60; rounded-xl bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-10 border border-gray-100">
+				<p className="text-7xl text-slate-300">hello</p>
 			</div>
-			<div className="h-[60vh] w-[70vw] bg-gray-200/30 backdrop-blur-lg rounded-md border border-gray-200/30 shadow-lg flex justify-center items-center">
-				<p>hello</p>
+			<div className="h-[60vh] w-[70vw] flex justify-center items-center bg-gradient-to-r from-red-400/20 to-blue-600/60; rounded-xl bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-10 border border-gray-100">
+				<p className="text-7xl text-slate-300">hello</p>
 			</div>
-			<div className="h-[60vh] w-[70vw] bg-gray-200/30 backdrop-blur-lg rounded-md border border-gray-200/30 shadow-lg flex justify-center items-center">
-				<p>hello</p>
+			<div className="h-[60vh] w-[70vw] flex justify-center items-center bg-gradient-to-r from-red-400/20 to-blue-600/60; rounded-xl bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-10 border border-gray-100">
+				<p className="text-7xl text-slate-300">hello</p>
 			</div>
-			<div className="h-[60vh] w-[70vw] bg-gray-200/30 backdrop-blur-lg rounded-md border border-gray-200/30 shadow-lg flex justify-center items-center">
-				<p>hello</p>
+			<div className="h-[60vh] w-[70vw] flex justify-center items-center bg-gradient-to-r from-red-400/20 to-blue-600/60; rounded-xl bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-10 border border-gray-100">
+				<p className="text-7xl text-slate-300">hello</p>
 			</div>
-			<div className="h-[60vh] w-[70vw] bg-gray-200/30 backdrop-blur-lg rounded-md border border-gray-200/30 shadow-lg flex justify-center items-center">
-				<p>hello</p>
+			<div className="h-[60vh] w-[70vw] flex justify-center items-center bg-gradient-to-r from-red-400/20 to-blue-600/60; rounded-xl bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-10 border border-gray-100">
+				<p className="text-7xl text-slate-300">hello</p>
 			</div>
-			<div className="h-[60vh] w-[70vw] bg-gray-200/30 backdrop-blur-lg rounded-md border border-gray-200/30 shadow-lg flex justify-center items-center">
-				<p>hello</p>
+			<div className="h-[60vh] w-[70vw] flex justify-center items-center bg-gradient-to-r from-red-400/20 to-blue-600/60; rounded-xl bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-10 border border-gray-100">
+				<p className="text-7xl text-slate-300">hello</p>
 			</div>
-			<div className="h-[60vh] w-[70vw] bg-gray-200/30 backdrop-blur-lg rounded-md border border-gray-200/30 shadow-lg flex justify-center items-center">
-				<p>hello</p>
+			<div className="h-[60vh] w-[70vw] flex justify-center items-center bg-gradient-to-r from-red-400/20 to-blue-600/60; rounded-xl bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-10 border border-gray-100">
+				<p className="text-7xl text-slate-300">hello</p>
 			</div>
+			<div className="h-[60vh] w-[70vw] flex justify-center items-center bg-gradient-to-r from-red-400/20 to-blue-600/60; rounded-xl bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-10 border border-gray-100">
+				<p className="text-7xl text-slate-300">hello</p>
+			</div>
+
 			{/* <motion.div
 				transition={{
 					duration: 2,
