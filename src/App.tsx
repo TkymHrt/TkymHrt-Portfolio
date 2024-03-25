@@ -16,7 +16,7 @@ export default function App() {
 				>
 					<img
 						className="pointer-events-none"
-						src="/public/I'm Takayama haruto.svg"
+						src="/I'm Takayama haruto.svg"
 						alt="I'm Takayama Haruto"
 					/>
 				</motion.div>
