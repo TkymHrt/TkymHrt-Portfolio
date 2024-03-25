@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Element } from "react-scroll";
 
 export default function App() {
 	return (
@@ -21,70 +22,74 @@ export default function App() {
 					/>
 				</motion.div>
 			</div>
-			<motion.div
-				id="Home"
-				className="h-[60vh] w-[70vw] flex justify-center items-center bg-gradient-to-r from-red-400/20 to-blue-600/60; rounded-xl bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-10 border border-gray-100"
-				drag
-				dragSnapToOrigin={true}
-				dragConstraints={{
-					top: -2,
-					left: -2,
-					right: 2,
-					bottom: 2,
-				}}
-				whileHover={{ scale: 1.025 }}
-				transition={{ duration: 0.3 }}
-			>
-				<p className="text-7xl text-slate-300">Home</p>
-			</motion.div>
-			<motion.div
-				id="Career"
-				className="h-[60vh] w-[70vw] flex justify-center items-center bg-gradient-to-r from-red-400/20 to-blue-600/60; rounded-xl bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-10 border border-gray-100"
-				drag
-				dragSnapToOrigin={true}
-				dragConstraints={{
-					top: -2,
-					left: -2,
-					right: 2,
-					bottom: 2,
-				}}
-				whileHover={{ scale: 1.025 }}
-				transition={{ duration: 0.3 }}
-			>
-				<p className="text-7xl text-slate-300">Career</p>
-			</motion.div>
-			<motion.div
-				id="Activity"
-				className="h-[60vh] w-[70vw] flex justify-center items-center bg-gradient-to-r from-red-400/20 to-blue-600/60; rounded-xl bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-10 border border-gray-100"
-				drag
-				dragSnapToOrigin={true}
-				dragConstraints={{
-					top: -2,
-					left: -2,
-					right: 2,
-					bottom: 2,
-				}}
-				whileHover={{ scale: 1.025 }}
-				transition={{ duration: 0.3 }}
-			>
-				<p className="text-7xl text-slate-300">Activity</p>
-			</motion.div>
-			<motion.div
-				id="Contacts"
-				className="h-[60vh] w-[70vw] flex justify-center items-center bg-gradient-to-r from-red-400/20 to-blue-600/60; rounded-xl bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-10 border border-gray-100"
-				drag
-				dragSnapToOrigin={true}
-				dragConstraints={{
-					top: -2,
-					left: -2,
-					right: 2,
-					bottom: 2,
-				}}
-				whileHover={{ scale: 1.025 }}
-				transition={{ duration: 0.3 }}
-			>
-				<p className="text-7xl text-slate-300">Contacts</p>
-			</motion.div>
+			<Element name="Home">
+				<motion.div
+					className="h-[60vh] w-[70vw] flex justify-center items-center bg-gradient-to-r from-red-400/20 to-blue-600/60; rounded-xl bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-10 border border-gray-100"
+					drag
+					dragSnapToOrigin={true}
+					dragConstraints={{
+						top: -2,
+						left: -2,
+						right: 2,
+						bottom: 2,
+					}}
+					whileHover={{ scale: 1.025 }}
+					transition={{ duration: 0.3 }}
+				>
+					<p className="text-7xl text-slate-300">Home</p>
+				</motion.div>
+			</Element>
+			<Element name="Career">
+				<motion.div
+					className="h-[60vh] w-[70vw] flex justify-center items-center bg-gradient-to-r from-red-400/20 to-blue-600/60; rounded-xl bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-10 border border-gray-100"
+					drag
+					dragSnapToOrigin={true}
+					dragConstraints={{
+						top: -2,
+						left: -2,
+						right: 2,
+						bottom: 2,
+					}}
+					whileHover={{ scale: 1.025 }}
+					transition={{ duration: 0.3 }}
+				>
+					<p className="text-7xl text-slate-300">Career</p>
+				</motion.div>
+			</Element>
+			<Element name="Activity">
+				<motion.div
+					className="h-[60vh] w-[70vw] flex justify-center items-center bg-gradient-to-r from-red-400/20 to-blue-600/60; rounded-xl bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-10 border border-gray-100"
+					drag
+					dragSnapToOrigin={true}
+					dragConstraints={{
+						top: -2,
+						left: -2,
+						right: 2,
+						bottom: 2,
+					}}
+					whileHover={{ scale: 1.025 }}
+					transition={{ duration: 0.3 }}
+				>
+					<p className="text-7xl text-slate-300">Activity</p>
+				</motion.div>
+			</Element>
+			<Element name="Contacts">
+				<motion.div
+					className="h-[60vh] w-[70vw] flex justify-center items-center bg-gradient-to-r from-red-400/20 to-blue-600/60; rounded-xl bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-10 border border-gray-100"
+					drag
+					dragSnapToOrigin={true}
+					dragConstraints={{
+						top: -2,
+						left: -2,
+						right: 2,
+						bottom: 2,
+					}}
+					whileHover={{ scale: 1.025 }}
+					transition={{ duration: 0.3 }}
+				>
+					<p className="text-7xl text-slate-300">Contacts</p>
+				</motion.div>
+			</Element>
 		</div>
 	);
 }

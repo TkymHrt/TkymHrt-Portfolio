@@ -22,7 +22,7 @@ const Header = () => {
 								bottom: 50,
 							}}
 						>
-							<p>Home</p>
+							<a href="Home">Home</a>
 						</motion.button>
 					</Link>
 					<Link to="Career" smooth={true} offset={-70} duration={500}>
@@ -41,7 +41,7 @@ const Header = () => {
 								bottom: 50,
 							}}
 						>
-							<p>Career</p>
+							<a href="Career">Career</a>
 						</motion.button>
 					</Link>
 					<Link to="Activity" smooth={true} offset={-70} duration={500}>
@@ -60,7 +60,7 @@ const Header = () => {
 								bottom: 50,
 							}}
 						>
-							<p>Activity</p>
+							<a href="Activity">Activity</a>
 						</motion.button>
 					</Link>
 				</div>
@@ -80,7 +80,7 @@ const Header = () => {
 							bottom: 50,
 						}}
 					>
-						<p>Contacts</p>
+						<a href="Contacts">Contacts</a>
 					</motion.button>
 				</Link>
 			</header>
