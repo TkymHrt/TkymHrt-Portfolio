@@ -17,7 +17,7 @@ export default function App() {
 				>
 					<img
 						className="pointer-events-none"
-						src="/I'm Takayama haruto.svg"
+						src="/TitleCharacters.svg"
 						alt="I'm Takayama Haruto"
 					/>
 				</motion.div>
@@ -25,14 +25,6 @@ export default function App() {
 			<Element name="Home">
 				<motion.div
 					className="h-[60vh] w-[70vw] flex justify-center items-center bg-gradient-to-r from-red-400/20 to-blue-600/60; rounded-xl bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-10 border border-gray-100"
-					drag
-					dragSnapToOrigin={true}
-					dragConstraints={{
-						top: -2,
-						left: -2,
-						right: 2,
-						bottom: 2,
-					}}
 					whileHover={{ scale: 1.025 }}
 					transition={{ duration: 0.3 }}
 				>
@@ -42,14 +34,6 @@ export default function App() {
 			<Element name="Career">
 				<motion.div
 					className="h-[60vh] w-[70vw] flex justify-center items-center bg-gradient-to-r from-red-400/20 to-blue-600/60; rounded-xl bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-10 border border-gray-100"
-					drag
-					dragSnapToOrigin={true}
-					dragConstraints={{
-						top: -2,
-						left: -2,
-						right: 2,
-						bottom: 2,
-					}}
 					whileHover={{ scale: 1.025 }}
 					transition={{ duration: 0.3 }}
 				>
@@ -59,14 +43,6 @@ export default function App() {
 			<Element name="Activity">
 				<motion.div
 					className="h-[60vh] w-[70vw] flex justify-center items-center bg-gradient-to-r from-red-400/20 to-blue-600/60; rounded-xl bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-10 border border-gray-100"
-					drag
-					dragSnapToOrigin={true}
-					dragConstraints={{
-						top: -2,
-						left: -2,
-						right: 2,
-						bottom: 2,
-					}}
 					whileHover={{ scale: 1.025 }}
 					transition={{ duration: 0.3 }}
 				>
@@ -76,14 +52,6 @@ export default function App() {
 			<Element name="Contacts">
 				<motion.div
 					className="h-[60vh] w-[70vw] flex justify-center items-center bg-gradient-to-r from-red-400/20 to-blue-600/60; rounded-xl bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-10 border border-gray-100"
-					drag
-					dragSnapToOrigin={true}
-					dragConstraints={{
-						top: -2,
-						left: -2,
-						right: 2,
-						bottom: 2,
-					}}
 					whileHover={{ scale: 1.025 }}
 					transition={{ duration: 0.3 }}
 				>
