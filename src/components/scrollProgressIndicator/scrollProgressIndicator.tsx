@@ -10,7 +10,7 @@ const ScrollProgressIndicator = () => {
 
 	return (
 		<motion.div
-			className="fixed bottom-0 left-0 right-0 h-2 bg-white origin-top-left z-50"
+			className="fixed bottom-0 left-0 right-0 h-2 bg-slate-300 origin-top-left z-50"
 			style={{ scaleX }}
 		/>
 	);
