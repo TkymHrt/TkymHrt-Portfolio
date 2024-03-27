@@ -7,6 +7,7 @@ export default function App() {
 			<Element name="Home">
 				<div className="h-[100vh] w-[98vw] flex justify-center items-center flex-col gap-4 mb-[30vh]">
 					<motion.div
+						className="-z-40"
 						drag
 						dragConstraints={{
 							top: -200,

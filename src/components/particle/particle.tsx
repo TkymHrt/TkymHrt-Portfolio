@@ -17,7 +17,7 @@ const ParticleBackground = () => {
 		<Particles
 			id="tsparticles"
 			options={options}
-			className="fixed top-0 left-0"
+			className="fixed top-0 left-0 -z-30"
 		/>
 	) : (
 		<></>
