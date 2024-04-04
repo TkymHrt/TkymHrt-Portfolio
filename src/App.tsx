@@ -43,11 +43,11 @@ export default function App() {
 			</Element>
 			<Element name="About">
 				<motion.div
-					className="h-auto w-[80vw] flex flex-col items-start bg-gradient-to-r from-red-400/20 to-blue-600/60; backdrop-filter backdrop-blur-3xl bg-opacity-10 rounded-xl shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)]"
+					className="h-auto md:w-[80vw] w-[85vw] flex flex-col items-start bg-gradient-to-r from-red-400/20 to-blue-600/60; backdrop-filter backdrop-blur-3xl bg-opacity-10 rounded-xl shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)]"
 					whileHover={{ scale: 1.025 }}
 					transition={{ duration: 0.3 }}
 				>
-					<h2 className="text-7xl font-black text-slate-300 mb-5 mx-10 mt-8">About</h2>
+					<h2 className="md:text-7xl text-6xl font-black text-slate-300 mb-5 mx-10 mt-8">About</h2>
 					<p className="md:flex hidden font-Noto font-bold text-lg text-stone-950 mx-10">
 						長岡技術科学大学 工学部 機械創造工学課程 2年
 					</p>
@@ -71,11 +71,11 @@ export default function App() {
 			</Element>
 			<Element name="Works">
 				<motion.div
-					className="h-auto w-[80vw] flex flex-col items-start bg-gradient-to-r from-red-400/20 to-blue-600/60; backdrop-filter backdrop-blur-3xl bg-opacity-10 rounded-xl shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)]"
+					className="h-auto md:w-[80vw] w-[85vw] flex flex-col items-start bg-gradient-to-r from-red-400/20 to-blue-600/60; backdrop-filter backdrop-blur-3xl bg-opacity-10 rounded-xl shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)]"
 					whileHover={{ scale: 1.025 }}
 					transition={{ duration: 0.3 }}
 				>
-					<h2 className="text-7xl font-black text-slate-300 mb-5 mx-10 mt-8">Works</h2>
+					<h2 className="md:text-7xl text-6xl font-black text-slate-300 mb-5 mx-10 mt-8">Works</h2>
 					<div className="md:mx-16 mx-10 mb-5">
 						<ol className="relative border-s border-[#252525] ">
 							<li className="mb-10 ms-4">
@@ -108,11 +108,11 @@ export default function App() {
 			</Element>
 			<Element name="Contact">
 				<motion.div
-					className="h-auto w-[80vw] flex flex-col items-start bg-gradient-to-r from-red-400/20 to-blue-600/60; backdrop-filter backdrop-blur-3xl bg-opacity-10 rounded-xl shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)]"
+					className="h-auto md:w-[80vw] w-[85vw] flex flex-col items-start bg-gradient-to-r from-red-400/20 to-blue-600/60; backdrop-filter backdrop-blur-3xl bg-opacity-10 rounded-xl shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)]"
 					whileHover={{ scale: 1.025 }}
 					transition={{ duration: 0.3 }}
 				>
-					<h2 className="text-7xl font-black text-slate-300 mb-5 mx-10 mt-8">Contact</h2>
+					<h2 className="md:text-7xl text-6xl font-black text-slate-300 mb-5 mx-10 mt-8">Contact</h2>
 					<div className="flex flex-row gap-4 mx-10 mb-5">
 						<a className="flex flex-col items-center gap-1" href="https://www.instagram.com/mikan_taka.h/">
 							<img width={100} src="Icons//Instagram_icon.svg" alt="Instagram Link" />
