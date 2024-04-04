@@ -11,5 +11,8 @@
         "useSelfClosingElements": "off"
       }
     }
+  },
+  "formatter": {
+    "lineWidth": 120
   }
 }
