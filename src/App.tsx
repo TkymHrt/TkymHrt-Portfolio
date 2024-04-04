@@ -81,25 +81,25 @@ export default function App() {
 							<li className="mb-10 ms-4">
 								<div className="absolute w-3 h-3 bg-[#252525] rounded-full mt-1.5 -start-1.5 border border-[#252525]"></div>
 								<time className="mb-1 text-sm font-Noto leading-none text-stone-950 ">March 2023</time>
-								<p className="text-xl font-bold text-stone-950 ">新潟明訓高等学校 卒業</p>
+								<h3 className="text-xl font-bold text-stone-950 ">新潟明訓高等学校 卒業</h3>
 								<p className="mb-4 text-base font-normal text-slate-800"></p>
 							</li>
 							<li className="mb-10 ms-4">
 								<div className="absolute w-3 h-3 bg-[#252525] rounded-full mt-1.5 -start-1.5 border border-[#252525]"></div>
 								<time className="mb-1 text-sm font-Noto leading-none text-stone-950 ">April 2023</time>
-								<p className="text-xl font-bold text-stone-950 ">長岡技術科学大学 入学</p>
+								<h3 className="text-xl font-bold text-stone-950 ">長岡技術科学大学 入学</h3>
 								<p className="mb-4 text-base font-normal text-slate-800"></p>
 							</li>
 							<li className="mb-10 ms-4">
 								<div className="absolute w-3 h-3 bg-[#252525] rounded-full mt-1.5 -start-1.5 border border-[#252525]"></div>
 								<time className="mb-1 text-sm font-Noto leading-none text-stone-950 ">July 2023</time>
-								<p className="text-xl font-bold text-stone-950 ">技育展2023 中部ブロック予選 参加</p>
+								<h3 className="text-xl font-bold text-stone-950 ">技育展2023 中部ブロック予選 参加</h3>
 								<p className="mb-4 text-base font-normal text-slate-800"></p>
 							</li>
 							<li className="mb-10 ms-4">
 								<div className="absolute w-3 h-3 bg-[#252525] rounded-full mt-1.5 -start-1.5 border border-[#252525]"></div>
 								<time className="mb-1 text-sm font-Noto leading-none text-stone-950 ">February 2024</time>
-								<p className="text-xl font-bold text-stone-950 ">【技育CAMP】マンスリーハッカソン vol.14 参加</p>
+								<h3 className="text-xl font-bold text-stone-950 ">【技育CAMP】マンスリーハッカソン vol.14 参加</h3>
 								<p className="mb-4 text-base font-normal text-slate-800"></p>
 							</li>
 						</ol>
