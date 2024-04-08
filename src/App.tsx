@@ -17,7 +17,7 @@ export default function App() {
 						}}
 						dragSnapToOrigin={true}
 					>
-						<p className="font-Noto text-[8.5vw] font-black text-[#663556]">I'm Takayama Haruto.</p>
+						<p className="font-Noto text-[8.5vw] font-black text-[#663556] text-nowrap">I'm Takayama Haruto.</p>
 					</motion.div>
 					<div className="font-Noto hidden md:flex justify-center items-center gap-4 break-normal tracking-[0.4em]">
 						<p className="text-2xl">IT</p>
