@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.8.3",
-    "@tsparticles/react": "3.0.0",
+    "@tsparticles/react": "^3.0.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
