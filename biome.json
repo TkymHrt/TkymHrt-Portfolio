@@ -1,18 +1,12 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.6.2/schema.json",
-  "organizeImports": {
-    "enabled": true
-  },
-  "linter": {
-    "enabled": true,
-    "rules": {
-      "recommended": true,
-      "style": {
-        "useSelfClosingElements": "off"
-      }
-    }
-  },
-  "formatter": {
-    "lineWidth": 120
-  }
+	"$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+	"organizeImports": {
+		"enabled": true
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true
+		}
+	}
 }

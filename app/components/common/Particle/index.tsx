@@ -1,9 +1,11 @@
+'use client';
+
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import { useEffect, useState } from "react";
 import options from "./options";
 
-const ParticleBackground = () => {
+const Particle = () => {
 	const [init, setInit] = useState(false);
 	useEffect(() => {
 		initParticlesEngine(async (engine) => {
@@ -24,4 +26,4 @@ const ParticleBackground = () => {
 	);
 };
 
-export default ParticleBackground;
+export default Particle;
