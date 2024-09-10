@@ -30,7 +30,7 @@ const Contact = () => (
 					},
 				].map((link) => (
 					<a key={link.href} className="flex flex-col items-center gap-1" href={link.href}>
-						<img width={50} src={link.src} alt={link.alt} />
+						<img width={50} height={50} src={link.src} alt={link.alt} />
 						<p className="font-Noto md:text-base text-xs">{link.text}</p>
 					</a>
 				))}
