@@ -1,18 +1,21 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.6.2/schema.json",
-  "organizeImports": {
-    "enabled": true
-  },
-  "linter": {
-    "enabled": true,
-    "rules": {
-      "recommended": true,
-      "style": {
-        "useSelfClosingElements": "off"
-      }
+    "$schema": "https://biomejs.dev/schemas/1.6.2/schema.json",
+    "organizeImports": {
+        "enabled": true
+    },
+    "files": {
+        "ignore": ["**/node_modules/**"]
+    },
+    "linter": {
+        "enabled": true,
+        "rules": {
+            "recommended": true,
+            "style": {
+                "useSelfClosingElements": "off"
+            }
+        }
+    },
+    "formatter": {
+        "lineWidth": 120
     }
-  },
-  "formatter": {
-    "lineWidth": 120
-  }
 }

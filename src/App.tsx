@@ -1,8 +1,8 @@
-import Footer from "./components/footer/footer.tsx";
-import Header from "./components/header/header.tsx";
-import ParticleBackground from "./components/particle/particle.tsx";
-import ScrollProgressIndicator from "./components/scrollProgressIndicator/scrollProgressIndicator.tsx";
-import SvgObject from "./components/svgObject/svgObject.tsx";
+import Footer from "./components/layout/Footer/index.tsx";
+import Header from "./components/layout/Header/index.tsx";
+import ParticleBackground from "./components/common/Particle/index.tsx";
+import ScrollProgressIndicator from "./components/common/ScrollProgressIndicator/index.tsx";
+import SvgObject from "./components/common/SvgObject/index.tsx";
 import Home from "./pages/home.tsx";
 
 export default function App() {
