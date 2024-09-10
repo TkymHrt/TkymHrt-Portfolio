@@ -48,7 +48,7 @@ const Header = () => {
 								whileTap={{ scale: 0.9 }}
 								transition={{ type: "spring", stiffness: 400, damping: 17 }}
 							>
-								<p className="font-Noto">{item.name}</p>
+								<p>{item.name}</p>
 								{(selected === item.name || hovered === item.name) && (
 									<motion.div
 										className="h-1 bg-slate-100"

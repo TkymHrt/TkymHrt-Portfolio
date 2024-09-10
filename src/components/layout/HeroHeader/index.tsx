@@ -15,16 +15,16 @@ const HeroHeader = () => (
 				}}
 				dragSnapToOrigin={true}
 			>
-				<p className="font-Noto text-[8.5vw] font-black text-[#663556] text-nowrap">I'm Takayama Haruto.</p>
+				<p className="text-[8.5vw] font-black text-[#663556] text-nowrap">I'm Takayama Haruto.</p>
 			</motion.div>
-			<div className="font-Noto hidden md:flex justify-center items-center gap-4 break-normal tracking-[0.4em]">
+			<div className="hidden md:flex justify-center items-center gap-4 break-normal tracking-[0.4em]">
 				{["IT", "IS", "FRONT-END", "DEVELOPER'S", "PORTFOLIO", "SITE."].map((text) => (
 					<p key={text} className="text-2xl">
 						{text}
 					</p>
 				))}
 			</div>
-			<div className="font-Noto flex md:hidden justify-center items-center flex-col">
+			<div className="flex md:hidden justify-center items-center flex-col">
 				<div className="flex gap-3">
 					{["IT", "IS", "FRONT-END", "DEVELOPER'S"].map((text) => (
 						<p key={text} className="text-1xl">

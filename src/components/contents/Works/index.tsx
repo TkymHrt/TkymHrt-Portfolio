@@ -32,7 +32,7 @@ const Works = () => (
 					].map((item) => (
 						<li key={item.id} className="ms-4 flex flex-col items-start">
 							<div className="absolute w-3 h-3 bg-[#252525] rounded-full mt-1.5 -start-1.5 border border-[#252525]"></div>
-							<time className="mb-1 text-sm font-Noto leading-none text-stone-950">{item.date}</time>
+							<time className="mb-1 text-sm leading-none text-stone-950">{item.date}</time>
 							<h3 className="text-xl font-bold text-stone-950">{item.title}</h3>
 						</li>
 					))}

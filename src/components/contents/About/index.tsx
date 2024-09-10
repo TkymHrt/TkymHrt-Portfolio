@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Element } from "react-scroll";
 
-const commonClasses = "font-Noto text-lg text-stone-950";
+const commonClasses = "text-lg text-stone-950";
 const motionDivClasses =
 	"h-auto md:w-[80vw] w-[85vw] flex flex-col items-start bg-gradient-to-r from-red-400/20 to-blue-600/60; backdrop-filter backdrop-blur-3xl bg-opacity-10 rounded-xl shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)] p-8 md:p-10";
 
