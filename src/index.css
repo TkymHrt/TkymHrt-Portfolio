@@ -2,11 +2,11 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-html::-webkit-scrollbar {
+*::-webkit-scrollbar {
   display: none;
 }
 
-html {
+* {
   scrollbar-width: none;
 }
 
