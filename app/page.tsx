@@ -1,13 +1,17 @@
-'use client';
+"use client";
 
-import { About, Contact, Works } from "./components";
+import { About, Contact, Products, Works } from "@/components/sections";
+import UserLayout from "./layout/UserLayout";
 
 export default function MainPage() {
 	return (
-		<main className="flex flex-col items-center space-y-7 pb-96">
-			<About />
-			<Works />
-			<Contact />
-		</main>
+		<UserLayout>
+			<main className="flex flex-col items-center space-y-7 pb-96">
+				<About />
+				<Works />
+				<Products />
+				<Contact />
+			</main>
+		</UserLayout>
 	);
 }

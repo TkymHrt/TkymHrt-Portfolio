@@ -1,14 +1,11 @@
-import type { Metadata } from "next";
-import "./globals.css";
-import { Noto_Sans_JP } from "next/font/google";
 import {
-	Footer,
-	Header,
-	HeroHeader,
 	Particle,
 	ScrollProgressIndicator,
 	SvgObject,
-} from "./components";
+} from "@/components/common";
+import type { Metadata } from "next";
+import { Noto_Sans_JP } from "next/font/google";
+import "./globals.css";
 
 export const metadata: Metadata = {
 	title: "TkymHrt Portfolio",
@@ -16,8 +13,8 @@ export const metadata: Metadata = {
 		"This is the portfolio of Takayama Haruto, who belongs to the information department of the Nagaoka University of Technology's Cultural Festival Executive Committee.",
 	creator: "TkymHrt",
 	icons: {
-		icon: "/FaMountainSun.svg",
-	}
+		icon: "/icon/FaMountainSun.svg",
+	},
 };
 
 const notoSansJP = Noto_Sans_JP({
@@ -27,16 +24,13 @@ const notoSansJP = Noto_Sans_JP({
 
 export default function RootLayout({
 	children,
-}: Readonly<{
+}: {
 	children: React.ReactNode;
-}>) {
+}) {
 	return (
 		<html lang="ja" className={`${notoSansJP.variable} antialiased`}>
 			<body>
-				<Header />
-				<HeroHeader />
 				{children}
-				<Footer />
 				<SvgObject />
 				<ScrollProgressIndicator />
 				<Particle />
