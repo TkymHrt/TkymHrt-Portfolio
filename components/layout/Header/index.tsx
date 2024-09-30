@@ -1,5 +1,3 @@
-'use client';
-
 import { motion } from "framer-motion";
 import { type SetStateAction, useState } from "react";
 import { Link } from "react-scroll";
@@ -12,6 +10,7 @@ const Header = () => {
 		{ name: "Home", to: "Home" },
 		{ name: "About", to: "About" },
 		{ name: "Works", to: "Works" },
+		{ name: "Products", to: "Products" },
 		{ name: "Contact", to: "Contact" },
 	];
 
@@ -29,9 +28,9 @@ const Header = () => {
 	};
 
 	return (
-		<div className="fixed top-0 right-0 left-0 py-4 px-6 z-10">
+		<div className="fixed top-0 right-0 left-0 py-4 mx-6 z-10 overflow-x-auto">
 			<header className="flex justify-start">
-				<div className="space-x-4 sm:space-x-6">
+				<div className="space-x-4 sm:space-x-6 whitespace-nowrap">
 					{menuItems.map((item) => (
 						<Link
 							key={item.name}
@@ -50,7 +49,7 @@ const Header = () => {
 								whileTap={{ scale: 0.9 }}
 								transition={{ type: "spring", stiffness: 400, damping: 17 }}
 							>
-								<p className="font-Noto">{item.name}</p>
+								<p>{item.name}</p>
 								{(selected === item.name || hovered === item.name) && (
 									<motion.div
 										className="h-1 bg-slate-100"

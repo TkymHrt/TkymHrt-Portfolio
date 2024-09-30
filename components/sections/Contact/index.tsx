@@ -1,11 +1,9 @@
-"use client";
-
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Element } from "react-scroll";
 
 const motionDivClasses =
-	"h-auto md:w-[80vw] w-[85vw] flex flex-col items-start bg-gradient-to-r from-red-400/20 to-blue-600/60; backdrop-filter backdrop-blur-3xl bg-opacity-10 rounded-xl shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)] p-8 md:p-10";
+	"h-auto md:w-[80vw] w-[85vw] flex flex-col items-start bg-gradient-to-r from-purple-400/20 to-pink-600/60 backdrop-filter backdrop-blur-3xl bg-opacity-10 rounded-xl shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)] p-8 md:p-10";
 
 const Contact = () => (
 	<Element name="Contact">
@@ -22,21 +20,21 @@ const Contact = () => (
 					{
 						id: "instagram",
 						href: "https://www.instagram.com/mikan_taka.h/",
-						src: "Icons/Instagram_icon.svg",
+						src: "icon/Instagram_icon.svg",
 						alt: "Instagram Link",
 						text: "Instagram",
 					},
 					{
 						id: "twitter",
 						href: "https://twitter.com/ForHobbiesBY",
-						src: "Icons/X_icon.svg",
+						src: "icon/X_icon.svg",
 						alt: "X Link",
 						text: "X",
 					},
 					{
 						id: "github",
 						href: "https://github.com/TkymHrt",
-						src: "Icons/GitHub_icon.svg",
+						src: "icon/GitHub_icon.svg",
 						alt: "GitHub Link",
 						text: "GitHub",
 					},
