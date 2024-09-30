@@ -1,4 +1,5 @@
-import { HeroHeader, About, Works, Contact, Products } from "../components";
+import { About, Works, Contact, Products } from "../components/contents";
+import { HeroHeader } from "../components/layout";
 
 export default function Home() {
 	return (
