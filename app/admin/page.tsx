@@ -11,13 +11,11 @@ interface PortfolioItem {
 }
 
 const AdminPage: React.FC = () => {
-	// 状態管理
 	const [portfolioItems, setPortfolioItems] = useState<PortfolioItem[]>([
 		{ id: 1, title: "プロジェクト1", description: "プロジェクト1の説明" },
 		{ id: 2, title: "プロジェクト2", description: "プロジェクト2の説明" },
 	]);
 
-	// アイテムの追加
 	const addItem = () => {
 		const newItem: PortfolioItem = {
 			id: portfolioItems.length + 1,
@@ -27,7 +25,6 @@ const AdminPage: React.FC = () => {
 		setPortfolioItems([...portfolioItems, newItem]);
 	};
 
-	// アイテムの削除
 	const deleteItem = (id: number) => {
 		setPortfolioItems(portfolioItems.filter((item) => item.id !== id));
 	};
