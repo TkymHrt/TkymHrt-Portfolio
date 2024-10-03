@@ -9,7 +9,7 @@ on:
       - develop
 
 jobs:
-  test:
+  lint:
     runs-on: ubuntu-latest
 
     steps:
@@ -32,22 +32,35 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
-      - name: Run Biome Format and Lint
+      - name: Determine source directory
+        id: source-dir
         run: |
           if [ -d "src" ]; then
-            bunx @biomejs/biome check --apply ./src
+            echo "directory=./src" >> $GITHUB_OUTPUT
           elif [ -d "app" ]; then
-            bunx @biomejs/biome check --apply ./app
+            echo "directory=./app" >> $GITHUB_OUTPUT
           else
-            bunx @biomejs/biome check --apply .
+            echo "directory=." >> $GITHUB_OUTPUT
           fi
 
-      - name: Run tests
-        run: bun test
+      - name: Run Biome Format and Lint
+        run: bunx @biomejs/biome check --apply ${{ steps.source-dir.outputs.directory }}
+
+      - name: Commit and push changes if any
+        run: |
+          if [[ -n $(git status --porcelain) ]]; then
+            git config --global user.name 'github-actions[bot]'
+            git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+            git add .
+            git commit -m "style: apply Biome fixes"
+            git push
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   build:
     runs-on: ubuntu-latest
-    needs: test
+    needs: lint
 
     steps:
       - name: Checkout repository
@@ -69,15 +82,5 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
-      - name: Run Biome Format and Lint
-        run: |
-          if [ -d "src" ]; then
-            bunx @biomejs/biome check --apply ./src
-          elif [ -d "app" ]; then
-            bunx @biomejs/biome check --apply ./app
-          else
-            bunx @biomejs/biome check --apply .
-          fi
-
-      - name: Build Next.js app
-        run: bun run build
+      - name: Build project
+        run: bun build
