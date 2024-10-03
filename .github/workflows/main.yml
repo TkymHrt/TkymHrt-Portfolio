@@ -57,4 +57,4 @@ jobs:
             ${{ runner.os }}-bun-
 
       - name: Build Next.js app
-        run: bun next build
+        run: bun run build
