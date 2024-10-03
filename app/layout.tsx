@@ -1,8 +1,4 @@
-import {
-	Particle,
-	ScrollProgressIndicator,
-	SvgObject,
-} from "@/components/common";
+import { Particle, ScrollProgressIndicator, SvgObject } from "@/components/common";
 import type { Metadata } from "next";
 import { Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
