@@ -37,15 +37,14 @@ jobs:
       - name: List files for debugging
         run: ls -la
 
-      - name: Run Biome
+      - name: Run Biome Format and Lint
         run: |
           if [ -d "src" ]; then
-            bunx @biomejs/biome check ./src
+            bunx @biomejs/biome check --apply ./src
           elif [ -d "app" ]; then
-            bunx @biomejs/biome check ./app
+            bunx @biomejs/biome check --apply ./app
           else
-            echo "Neither src nor app directory found. Checking current directory."
-            bunx @biomejs/biome check .
+            bunx @biomejs/biome check --apply .
           fi
 
       - name: Run tests
