@@ -13,8 +13,8 @@
 
 <h2>🚀 Demo</h2>
 
-[Vercel](https://tkymhrt-portfolio.vercel.app/)
-[Cloudflare Pages](https://tkymhrt-portfolio.pages.dev/)
+- [Vercel](https://tkymhrt-portfolio.vercel.app/)
+- [Cloudflare Pages](https://tkymhrt-portfolio.pages.dev/)
 
 
 
