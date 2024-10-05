@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<h1 align="center" id="title">TkymHrt Portfolio</h1>
 
-## Getting Started
+<p align="center" style="align: center;">
+  <img src="https://img.shields.io/badge/-Next.js-000000.svg?logo=next.js&style=popout">
+  <img src="https://img.shields.io/badge/-React-000000.svg?logo=react&style=popout">
+  <img src="https://img.shields.io/badge/-TypeScript-000000.svg?logo=typescript&style=popout">
+  <img src="https://img.shields.io/badge/-Figma-000000.svg?logo=figma&style=popout">
+  <img src="https://img.shields.io/badge/-Prisma-000000.svg?logo=prisma&style=popout">
+  <img src="https://img.shields.io/badge/-Postgresql-000000.svg?logo=postgresql&style=popout">
+</p>
 
-First, run the development server:
+<p id="description">TkymHrtのポートフォリオサイトです．ユーザーページに加えて，内容を修正・追加できる管理者ページを追加しています．</p>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+<h2>🚀 Demo</h2>
+
+[Vercel](https://tkymhrt-portfolio.vercel.app/)
+[Cloudflare Pages](https://tkymhrt-portfolio.pages.dev/)
+
+
+
+
+<h2>Project Screenshots:</h2>
+
+<img src="/public/Screenshot.png" alt="project-image">
+
+<h2>🛠️ Installation and Running</h2>
+
+<p>1. ファーストコマンド</p>
+
+```
+make build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<p>2. アプリ立ち上げ</p>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+make run
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+<p>アプリ再起動</p>
 
-## Learn More
+```
+make rebuild
+```
 
-To learn more about Next.js, take a look at the following resources:
+<p>prisma studio 立ち上げ</p>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+make studio
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+<p>DB のリセット</p>
 
-## Deploy on Vercel
+```
+make dbreset
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<p>seedの適用</p>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+make seed
+```
