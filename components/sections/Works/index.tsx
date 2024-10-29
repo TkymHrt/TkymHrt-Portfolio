@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import React from "react";
 import { Element } from "react-scroll";
 
 const motionDivClasses =
@@ -6,14 +7,8 @@ const motionDivClasses =
 
 const Works = () => (
 	<Element name="Works">
-		<motion.div
-			className={motionDivClasses}
-			whileHover={{ scale: 1.025 }}
-			transition={{ duration: 0.3 }}
-		>
-			<h2 className="md:text-7xl text-6xl font-black text-slate-300 mb-5">
-				Works
-			</h2>
+		<motion.div className={motionDivClasses} whileHover={{ scale: 1.025 }} transition={{ duration: 0.3 }}>
+			<h2 className="md:text-7xl text-6xl font-black text-slate-300 mb-5">Works</h2>
 			<div className="w-full">
 				<ol className="relative border-s border-[#252525] space-y-10">
 					{[
@@ -27,21 +22,31 @@ const Works = () => (
 						{
 							id: "4",
 							date: "February 2024",
-							title: "【技育CAMP】マンスリーハッカソン vol.14 参加",
+							title: "技育CAMP マンスリーハッカソン vol.14 参加",
 						},
 						{
 							id: "5",
 							date: "August 2024",
-							title: "【技育CAMP】マンスリーハッカソン vol.12 参加",
+							title: "技育CAMP マンスリーハッカソン vol.12 参加",
 						},
 						{ id: "6", date: "September 2024", title: "技育博 Vol.4 参加" },
+						{
+							id: "7",
+							date: "October 2024",
+							title: "JPHACKS2024 Hack Day 金沢会場 参加<br />Best Hackday Award 受賞",
+						},
 					].map((item) => (
 						<li key={item.id} className="ms-4 flex flex-col items-start">
 							<div className="absolute w-3 h-3 bg-[#252525] rounded-full mt-1.5 -start-1.5 border border-[#252525]" />
-							<time className="mb-1 text-sm font-Noto leading-none text-stone-950">
-								{item.date}
-							</time>
-							<h3 className="text-xl font-bold text-stone-950">{item.title}</h3>
+							<time className="mb-1 text-sm font-Noto leading-none text-stone-950">{item.date}</time>
+							<h3 className="text-xl font-bold text-stone-950">
+								{item.title.split("<br />").map((line, index) => (
+									<React.Fragment key={`${item.id}-${line}`}>
+									<span className={index === 1 ? "text-pink-900" : ""}>{line}</span>
+									<br />
+								</React.Fragment>
+								))}
+							</h3>
 						</li>
 					))}
 				</ol>
