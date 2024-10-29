@@ -39,6 +39,14 @@ const products = [
 		deployUrl: "",
 		githubUrl: "https://github.com/TkymHrt/giving_campaign_autofill_app",
 	},
+	{
+		id: "5",
+        title: "Let's Pics",
+        image: "/products/let's_pics.webp",
+        description: "現実×英語学習×Tech。ランダムな時間にアプリから通知が来て、お題に沿った写真を撮り、高いスコアを目指すゲーム型英語学習アプリです。",
+        deployUrl: "https://jphacks.nosse.net/",
+        githubUrl: "https://github.com/jphacks/kz_2404",
+	}
 ];
 
 const Products = () => (
