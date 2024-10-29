@@ -14,7 +14,7 @@
 <h2>🚀 Demo</h2>
 
 - [Vercel](https://tkymhrt-portfolio.vercel.app/)
-- [Cloudflare Pages](https://tkymhrt-portfolio.pages.dev/)
+- [Netlify](https://tkymhrt-portfolio.netlify.app/)
 
 
 
