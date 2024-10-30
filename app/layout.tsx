@@ -1,4 +1,5 @@
 import { Particle, ScrollProgressIndicator, SvgObject } from "@/components/common";
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
@@ -30,6 +31,7 @@ export default function RootLayout({
 				<SvgObject />
 				<ScrollProgressIndicator />
 				<Particle />
+				<Analytics />
 			</body>
 		</html>
 	);
