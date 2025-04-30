@@ -16,7 +16,7 @@ const About = () => (
 				About
 			</h2>
 			<p className={`md:flex hidden font-bold ${commonClasses}`}>
-				長岡技術科学大学 工学部 機械工学分野 2年
+				長岡技術科学大学 工学部 機械工学分野 3年
 			</p>
 			<p className={`md:flex hidden ${commonClasses} mb-8`}>
 				技大祭実行委員会 情報局 / NUTMEG / フロントエンジニア

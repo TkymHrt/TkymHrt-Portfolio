@@ -46,6 +46,15 @@ const products = [
         description: "現実×英語学習×Tech。ランダムな時間にアプリから通知が来て、お題に沿った写真を撮り、高いスコアを目指すゲーム型英語学習アプリです。",
         deployUrl: "https://jphacks.nosse.net/",
         githubUrl: "https://github.com/jphacks/kz_2404",
+	},
+	{
+		id: "6",
+		title: "Wake on LAN App",
+		image: "/products/wake_on_lan_app.webp",
+		description:
+			"Webブラウザから Wake on LAN (WOL) を実行し、ネットワーク内のデバイスをリモートで起動できるアプリケーションです。(Next.js, Go)",
+		deployUrl: "",
+		githubUrl: "https://github.com/TkymHrt/wake-on-lan-app"
 	}
 ];
 
