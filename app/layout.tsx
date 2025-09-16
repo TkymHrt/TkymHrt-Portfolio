@@ -1,4 +1,5 @@
 import { Particle, ScrollProgressIndicator, SvgObject } from "@/components/common";
+import { Footer, Header, HeroHeader } from "@/components/layout";
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { Noto_Sans_JP } from "next/font/google";
@@ -27,7 +28,10 @@ export default function RootLayout({
 	return (
 		<html lang="ja" className={`${notoSansJP.variable} ${notoSansJP.className} antialiased`}>
 			<body>
+				<Header />
+				<HeroHeader />
 				{children}
+				<Footer />
 				<SvgObject />
 				<ScrollProgressIndicator />
 				<Particle />
