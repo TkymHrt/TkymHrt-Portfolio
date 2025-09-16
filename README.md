@@ -9,7 +9,7 @@
   <img src="https://img.shields.io/badge/-Postgresql-000000.svg?logo=postgresql&style=popout">
 </p>
 
-<p id="description">TkymHrtのポートフォリオサイトです．ユーザーページに加えて，内容を修正・追加できる管理者ページを追加しています．</p>
+<p id="description">TkymHrtのポートフォリオサイトです．</p>
 
 <h2>🚀 Demo</h2>
 
@@ -22,41 +22,3 @@
 <h2>Project Screenshots:</h2>
 
 <img src="/public/Screenshot.png" alt="project-image">
-
-<h2>🛠️ Installation and Running</h2>
-
-<p>1. ファーストコマンド</p>
-
-```
-make build
-```
-
-<p>2. アプリ立ち上げ</p>
-
-```
-make run
-```
-
-<p>アプリ再起動</p>
-
-```
-make rebuild
-```
-
-<p>prisma studio 立ち上げ</p>
-
-```
-make studio
-```
-
-<p>DB のリセット</p>
-
-```
-make dbreset
-```
-
-<p>seedの適用</p>
-
-```
-make seed
-```
