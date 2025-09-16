@@ -1,0 +1,57 @@
+version: "3.9"
+services:
+  db:
+    image: postgres:15
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-strapi}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-strapi}
+      POSTGRES_DB: ${POSTGRES_DB:-strapi}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  strapi:
+    image: strapi/strapi:latest
+    depends_on:
+      - db
+    environment:
+      # Database
+      DATABASE_CLIENT: postgres
+      DATABASE_HOST: db
+      DATABASE_PORT: 5432
+      DATABASE_NAME: ${POSTGRES_DB:-strapi}
+      DATABASE_USERNAME: ${POSTGRES_USER:-strapi}
+      DATABASE_PASSWORD: ${POSTGRES_PASSWORD:-strapi}
+      # Admin
+      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET:-changeme}
+      APP_KEYS: ${APP_KEYS:-changeme,changeme2}
+      API_TOKEN_SALT: ${API_TOKEN_SALT:-changeme}
+      # Cloudflare R2 via S3-compatible endpoint
+      AWS_ACCESS_KEY_ID: ${R2_ACCESS_KEY_ID:-}
+      AWS_SECRET_ACCESS_KEY: ${R2_SECRET_ACCESS_KEY:-}
+      AWS_REGION: auto
+      AWS_S3_ENDPOINT: ${R2_ENDPOINT:-https://<accountid>.r2.cloudflarestorage.com}
+      AWS_S3_BUCKET: ${R2_BUCKET:-portfolio-assets}
+      AWS_S3_FORCE_PATH_STYLE: "true"
+      # Optional: public URL
+      STRAPI_URL: ${STRAPI_URL:-http://localhost:1337}
+    volumes:
+      - ./cms:/srv/app
+    ports:
+      - "1337:1337"
+
+  # Cloudflare Tunnel (cloudflared)
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    restart: unless-stopped
+    depends_on:
+      - strapi
+    environment:
+      # Cloudflare Tunnel token (required)
+      TUNNEL_TOKEN: ${CLOUDFLARE_TUNNEL_TOKEN}
+    command: tunnel run
+
+volumes:
+  db-data:
