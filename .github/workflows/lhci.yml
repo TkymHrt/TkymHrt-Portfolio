@@ -1,0 +1,32 @@
+name: Lighthouse CI
+on: [push]
+jobs:
+  lhci:
+    name: Lighthouse CI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Node.js 24 のセットアップ
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      - name: 依存関係のインストール
+        run: bun ci
+
+      - name: プロジェクトのビルド
+        run: bun run build
+
+      - name: Lighthouse CI の実行
+        run: |
+          bun install -g @lhci/cli
+          lhci autorun
+        env:
+          # セルフホストLHCIサーバーのプロジェクト用トークン
+          LHCI_TOKEN: ${{ secrets.LHCI_TOKEN }}
+          # lighthouserc.jsでserverBaseUrlを設定している場合は不要ですが、
+          # ここで環境変数として上書きすることも可能です。
+          # LHCI_SERVER_BASE_URL: ${{ secrets.LHCI_SERVER_BASE_URL }}
