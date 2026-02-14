@@ -7,8 +7,8 @@ module.exports = {
        */
 
       // オプション1: 静的ビルドディレクトリの監査
-      taticDistDir: '.next/static',
-
+      // staticDistDir: '.next/static',
+      
       // オプション2: 特定のURLの監査 (ローカルサーバーや本番URLなど)
       url: ['http://localhost:3000/'],
       startServerCommand: 'bun run start', // 必要に応じてサーバーを起動するコマンド
