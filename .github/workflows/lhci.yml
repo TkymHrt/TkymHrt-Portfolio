@@ -22,8 +22,7 @@ jobs:
 
       - name: Lighthouse CI の実行
         run: |
-          bun install -g @lhci/cli
-          lhci autorun
+          bun x @lhci/cli autorun
         env:
           # セルフホストLHCIサーバーのプロジェクト用トークン
           LHCI_TOKEN: ${{ secrets.LHCI_TOKEN }}
