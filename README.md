@@ -11,7 +11,7 @@
 
 <p id="description">TkymHrtのポートフォリオサイトです．ユーザーページに加えて，内容を修正・追加できる管理者ページを追加しています．</p>
 
-<h2>🚀 Demo</h2>
+<h2>Demo</h2>
 
 - [Vercel](https://tkymhrt-portfolio.vercel.app/)
 - [Netlify](https://tkymhrt-portfolio.netlify.app/)
