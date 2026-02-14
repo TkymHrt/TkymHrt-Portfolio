@@ -15,7 +15,7 @@ jobs:
           node-version: 24
 
       - name: 依存関係のインストール
-        run: bun ci
+        run: npm i -g bun && bun ci
 
       - name: プロジェクトのビルド
         run: bun run build
