@@ -1,31 +1,44 @@
 import { motion } from "framer-motion";
-import { type SetStateAction, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "react-scroll";
+
+const menuItems = [
+	{ name: "Home", to: "Home" },
+	{ name: "About", to: "About" },
+	{ name: "Works", to: "Works" },
+	{ name: "Products", to: "Products" },
+	{ name: "Contact", to: "Contact" },
+];
+
+const SELECTION_RESET_DELAY = 500;
 
 const Header = () => {
 	const [selected, setSelected] = useState("");
 	const [hovered, setHovered] = useState("");
+	const selectedTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+	const hoveredTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-	const menuItems = [
-		{ name: "Home", to: "Home" },
-		{ name: "About", to: "About" },
-		{ name: "Works", to: "Works" },
-		{ name: "Products", to: "Products" },
-		{ name: "Contact", to: "Contact" },
-	];
+	useEffect(() => {
+		return () => {
+			if (selectedTimerRef.current) clearTimeout(selectedTimerRef.current);
+			if (hoveredTimerRef.current) clearTimeout(hoveredTimerRef.current);
+		};
+	}, []);
 
-	const handleButtonClick = (itemName: SetStateAction<string>) => {
+	const handleButtonClick = useCallback((itemName: string) => {
 		setSelected(itemName);
-		setTimeout(() => setSelected(""), 500);
-	};
+		if (selectedTimerRef.current) clearTimeout(selectedTimerRef.current);
+		selectedTimerRef.current = setTimeout(() => setSelected(""), SELECTION_RESET_DELAY);
+	}, []);
 
-	const handleMouseEnter = (itemName: SetStateAction<string>) => {
+	const handleMouseEnter = useCallback((itemName: string) => {
 		setHovered(itemName);
-	};
+	}, []);
 
-	const handleMouseLeave = () => {
-		setTimeout(() => setHovered(""), 500);
-	};
+	const handleMouseLeave = useCallback(() => {
+		if (hoveredTimerRef.current) clearTimeout(hoveredTimerRef.current);
+		hoveredTimerRef.current = setTimeout(() => setHovered(""), SELECTION_RESET_DELAY);
+	}, []);
 
 	return (
 		<div className="fixed top-0 right-0 left-0 py-4 mx-6 z-10 overflow-x-auto">
