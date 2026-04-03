@@ -1,0 +1,13 @@
+
+> tkymhrt-portfolio@0.1.0 dev
+> next dev
+
+  ▲ Next.js 14.2.8
+  - Local:        http://localhost:3000
+
+ ✓ Starting...
+ ✓ Ready in 1789ms
+ ○ Compiling / ...
+ ✓ Compiled / in 11.9s (1995 modules)
+ GET / 200 in 12782ms
+ ✓ Compiled in 1156ms (1000 modules)
