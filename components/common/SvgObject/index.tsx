@@ -18,14 +18,23 @@ const SvgObject = () => {
 	}, []);
 
 	useEffect(() => {
+		let rafId: number | null = null;
+
 		const handleScroll = () => {
-			const newOpacity = window.scrollY / window.innerHeight;
-			setOpacity(Math.min(newOpacity, 1));
+			if (rafId !== null) return;
+			rafId = requestAnimationFrame(() => {
+				const newOpacity = window.scrollY / window.innerHeight;
+				setOpacity(Math.min(newOpacity, 1));
+				rafId = null;
+			});
 		};
 
-		window.addEventListener("scroll", handleScroll);
+		window.addEventListener("scroll", handleScroll, { passive: true });
 
-		return () => window.removeEventListener("scroll", handleScroll);
+		return () => {
+			window.removeEventListener("scroll", handleScroll);
+			if (rafId !== null) cancelAnimationFrame(rafId);
+		};
 	}, []);
 
 	return (
