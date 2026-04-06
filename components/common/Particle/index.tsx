@@ -8,11 +8,15 @@ import options from "./options";
 const Particle = () => {
 	const [init, setInit] = useState(false);
 	useEffect(() => {
+		let mounted = true;
 		initParticlesEngine(async (engine) => {
 			await loadSlim(engine);
 		}).then(() => {
-			setInit(true);
+			if (mounted) setInit(true);
 		});
+		return () => {
+			mounted = false;
+		};
 	}, []);
 
 	return init ? (
