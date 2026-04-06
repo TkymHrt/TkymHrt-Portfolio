@@ -3,7 +3,7 @@ import type { ISourceOptions } from "@tsparticles/engine";
 const options: ISourceOptions = {
 	particles: {
 		number: {
-			value: 160,
+			value: 80,
 			density: {
 				enable: true,
 			},

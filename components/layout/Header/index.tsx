@@ -1,31 +1,39 @@
 import { motion } from "framer-motion";
-import { type SetStateAction, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { Link } from "react-scroll";
+
+const menuItems = [
+	{ name: "Home", to: "Home" },
+	{ name: "About", to: "About" },
+	{ name: "Works", to: "Works" },
+	{ name: "Products", to: "Products" },
+	{ name: "Contact", to: "Contact" },
+];
 
 const Header = () => {
 	const [selected, setSelected] = useState("");
 	const [hovered, setHovered] = useState("");
+	const hoverTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-	const menuItems = [
-		{ name: "Home", to: "Home" },
-		{ name: "About", to: "About" },
-		{ name: "Works", to: "Works" },
-		{ name: "Products", to: "Products" },
-		{ name: "Contact", to: "Contact" },
-	];
-
-	const handleButtonClick = (itemName: SetStateAction<string>) => {
+	const handleButtonClick = useCallback((itemName: string) => {
 		setSelected(itemName);
 		setTimeout(() => setSelected(""), 500);
-	};
+	}, []);
 
-	const handleMouseEnter = (itemName: SetStateAction<string>) => {
+	const handleMouseEnter = useCallback((itemName: string) => {
+		if (hoverTimeoutRef.current !== null) {
+			clearTimeout(hoverTimeoutRef.current);
+			hoverTimeoutRef.current = null;
+		}
 		setHovered(itemName);
-	};
+	}, []);
 
-	const handleMouseLeave = () => {
-		setTimeout(() => setHovered(""), 500);
-	};
+	const handleMouseLeave = useCallback(() => {
+		hoverTimeoutRef.current = setTimeout(() => {
+			setHovered("");
+			hoverTimeoutRef.current = null;
+		}, 500);
+	}, []);
 
 	return (
 		<div className="fixed top-0 right-0 left-0 py-4 mx-6 z-10 overflow-x-auto">

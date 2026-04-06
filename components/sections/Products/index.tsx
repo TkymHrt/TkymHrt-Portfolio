@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Element } from "react-scroll";
 
 const motionDivClasses =
@@ -41,11 +42,12 @@ const products = [
 	},
 	{
 		id: "5",
-        title: "Let's Pics",
-        image: "/products/let's_pics.webp",
-        description: "現実×英語学習×Tech。ランダムな時間にアプリから通知が来て、お題に沿った写真を撮り、高いスコアを目指すゲーム型英語学習アプリです。",
-        deployUrl: "https://jphacks.nosse.net/",
-        githubUrl: "https://github.com/jphacks/kz_2404",
+		title: "Let's Pics",
+		image: "/products/let's_pics.webp",
+		description:
+			"現実×英語学習×Tech。ランダムな時間にアプリから通知が来て、お題に沿った写真を撮り、高いスコアを目指すゲーム型英語学習アプリです。",
+		deployUrl: "https://jphacks.nosse.net/",
+		githubUrl: "https://github.com/jphacks/kz_2404",
 	},
 	{
 		id: "6",
@@ -54,8 +56,8 @@ const products = [
 		description:
 			"Webブラウザから Wake on LAN (WOL) を実行し、ネットワーク内のデバイスをリモートで起動できるアプリケーションです。(Next.js, Go)",
 		deployUrl: "",
-		githubUrl: "https://github.com/TkymHrt/wake-on-lan-app"
-	}
+		githubUrl: "https://github.com/TkymHrt/wake-on-lan-app",
+	},
 ];
 
 const Products = () => (
@@ -77,8 +79,14 @@ const Products = () => (
 							<h3 className="text-2xl font-bold text-stone-950 mb-2">{product.title}</h3>
 							<p className="text-sm text-stone-950">{product.description}</p>
 						</div>
-						<div className="w-full h-48 flex items-center justify-center overflow-hidden rounded-lg mb-4">
-							<img src={product.image} alt={product.title} className="max-w-full max-h-full object-cover" />
+						<div className="relative w-full h-48 overflow-hidden rounded-lg mb-4">
+							<Image
+								src={product.image}
+								alt={product.title}
+								fill
+								className="object-cover"
+								sizes="(max-width: 768px) 85vw, (max-width: 1024px) 40vw, 27vw"
+							/>
 						</div>
 						<div className="flex gap-3 mb-2">
 							{product.deployUrl && (
