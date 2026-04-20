@@ -1,0 +1,13 @@
+# Dockerfile for Strapi with Cloudflare R2 provider
+
+# Use the official Strapi image as a base
+FROM strapi/strapi:4
+
+# Set the working directory
+WORKDIR /opt/app
+
+# Install the Cloudflare R2 provider plugin
+RUN npm install @strapi-community/strapi-provider-upload-cloudflare-r2@latest
+
+# The default entrypoint for the base image will run `strapi start`
+# So we don't need to specify CMD or ENTRYPOINT unless we want to override it.
