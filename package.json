@@ -2,6 +2,10 @@
   "name": "tkymhrt-portfolio",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@11.5.0",
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
