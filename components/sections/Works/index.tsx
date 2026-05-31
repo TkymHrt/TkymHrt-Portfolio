@@ -3,7 +3,7 @@ import React from "react";
 import { Element } from "react-scroll";
 
 const motionDivClasses =
-	"h-auto md:w-[80vw] w-[85vw] flex flex-col items-start bg-white backdrop-filter backdrop-blur-3xl bg-opacity-10 rounded-xl shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)] p-8 md:p-10";
+	"h-auto md:w-[80vw] w-[85vw] flex flex-col items-start bg-white backdrop-filter backdrop-blur-3xl bg-opacity-10 rounded-xl shadow-[0px_4px_16px_rgba(17,17,26,0.1),0px_8px_24px_rgba(17,17,26,0.1),0px_16px_56px_rgba(17,17,26,0.1)] p-8 md:p-10";
 
 const Works = () => (
 	<Element name="Works">
@@ -37,7 +37,7 @@ const Works = () => (
 						},
 					].map((item) => (
 						<li key={item.id} className="ms-4 flex flex-col items-start">
-							<div className="absolute w-3 h-3 bg-[#252525] rounded-full mt-1.5 -start-1.5 border border-[#252525]" />
+							<div className="absolute w-3 h-3 bg-[#252525] rounded-full mt-1.5 -inset-s-1.5 border border-[#252525]" />
 							<time className="mb-1 text-sm font-Noto leading-none text-stone-950">{item.date}</time>
 							<h3 className="text-xl font-bold text-stone-950">
 								{item.title.split("<br />").map((line, index) => (

@@ -5,7 +5,7 @@ import { Element } from "react-scroll";
 
 const HeroHeader = () => (
     <Element name="Home">
-        <div className="h-[100vh] w-[100vw] flex justify-center items-center flex-col gap-4 mb-[30vh]">
+        <div className="h-screen w-screen flex justify-center items-center flex-col gap-4 mb-[30vh]">
             <motion.div
                 className="-z-40"
                 drag

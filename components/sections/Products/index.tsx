@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Element } from "react-scroll";
 
 const motionDivClasses =
-	"h-auto md:w-[80vw] w-[85vw] flex flex-col items-start bg-white backdrop-filter backdrop-blur-3xl bg-opacity-10 rounded-xl shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)] p-8 md:p-10";
+	"h-auto md:w-[80vw] w-[85vw] flex flex-col items-start bg-white backdrop-filter backdrop-blur-3xl bg-opacity-10 rounded-xl shadow-[0px_4px_16px_rgba(17,17,26,0.1),0px_8px_24px_rgba(17,17,26,0.1),0px_16px_56px_rgba(17,17,26,0.1)] p-8 md:p-10";
 
 const products = [
 	{
@@ -73,7 +73,7 @@ const Products = () => (
 						key={product.id}
 						className="flex flex-col items-stretch p-6 bg-purple-200/70 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 relative"
 					>
-						<div className="flex-grow mb-2">
+						<div className="grow mb-2">
 							<h3 className="text-2xl font-bold text-stone-950 mb-2">{product.title}</h3>
 							<p className="text-sm text-stone-950">{product.description}</p>
 						</div>
