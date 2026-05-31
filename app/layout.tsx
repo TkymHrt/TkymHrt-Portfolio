@@ -1,7 +1,6 @@
 import { Particle, ScrollProgressIndicator, SvgObject } from "@/components/common";
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
-import { Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -14,18 +13,13 @@ export const metadata: Metadata = {
 	},
 };
 
-const notoSansJP = Noto_Sans_JP({
-	subsets: ["latin"],
-	variable: "--font-noto-sans-jp",
-});
-
 export default function RootLayout({
 	children,
 }: {
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="ja" className={`${notoSansJP.variable} ${notoSansJP.className} antialiased`}>
+		<html lang="ja" className="antialiased">
 			<body>
 				{children}
 				<SvgObject />
