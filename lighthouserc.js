@@ -8,18 +8,18 @@ module.exports = {
 
       // オプション1: 静的ビルドディレクトリの監査
       // staticDistDir: '.next/static',
-      
+
       // オプション2: 特定のURLの監査 (ローカルサーバーや本番URLなど)
-      url: ['http://localhost:3000/'],
-      startServerCommand: 'bun run start', // 必要に応じてサーバーを起動するコマンド
+      url: ["http://localhost:3000/"],
+      startServerCommand: "bun run start", // 必要に応じてサーバーを起動するコマンド
     },
     upload: {
-      target: 'lhci',
+      target: "lhci",
       /*
        * セルフホストしているLHCIサーバーのURL
        * Cloudflare Tunnelで公開したパブリックURLと一致させる必要があります。
        */
-      serverBaseUrl: 'https://lhci-server.tkymhrt.dpdns.org',
+      serverBaseUrl: "https://lhci-server.tkymhrt.dpdns.org",
 
       /*
        * プロジェクトのビルドトークン

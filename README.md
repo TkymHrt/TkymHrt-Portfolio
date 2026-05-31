@@ -16,9 +16,6 @@
 - [Vercel](https://tkymhrt-portfolio.vercel.app/)
 - [Netlify](https://tkymhrt-portfolio.netlify.app/)
 
-
-
-
 <h2>Project Screenshots:</h2>
 
 <img src="/public/Screenshot.png" alt="project-image">
