@@ -8,7 +8,7 @@ pre-commit:
         - "*.tsx"
         - "*.js"
         - "*.jsx"
-      run: bun run eslint:fix {staged_files}
+      run: bun run lint:fix {staged_files}
       stage_fixed: true
 
     - name: prettier
