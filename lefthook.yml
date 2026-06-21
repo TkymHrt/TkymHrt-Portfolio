@@ -1,0 +1,32 @@
+pre-commit:
+  parallel: true
+  jobs:
+    - name: eslint
+      glob:
+        - "*.astro"
+        - "*.ts"
+        - "*.tsx"
+        - "*.js"
+        - "*.jsx"
+      run: bun run eslint:fix {staged_files}
+      stage_fixed: true
+
+    - name: prettier
+      glob:
+        - "*.astro"
+        - "*.ts"
+        - "*.tsx"
+        - "*.js"
+        - "*.jsx"
+        - "*.json"
+        - "*.md"
+        - "*.css"
+        - "*.yml"
+        - "*.yaml"
+      run: bun run format {staged_files}
+      stage_fixed: true
+
+pre-push:
+  jobs:
+    - name: quality gate
+      run: bun run ci
