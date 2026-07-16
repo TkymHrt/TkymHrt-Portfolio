@@ -22,7 +22,7 @@ import SocialLinks from "./SocialLinks.astro";
   >
     <div class="min-w-0">
       <div
-        class="flex flex-col items-center gap-3 text-center sm:flex-row sm:gap-6 sm:text-left"
+        class="flex flex-col items-center gap-[clamp(0.875rem,2svh,1rem)] text-center sm:flex-row sm:gap-6 sm:text-left"
       >
         <div class="avatar" aria-hidden="true">
           <span class="avatar-shirt"></span>
@@ -32,12 +32,12 @@ import SocialLinks from "./SocialLinks.astro";
         <div>
           <h1
             id="hero-title"
-            class="m-0 text-[clamp(1.4rem,5vw,2.35rem)] leading-[1.35] font-bold tracking-[-0.025em]"
+            class="m-0 text-[clamp(1.4rem,6.6vw,1.625rem)] leading-[1.35] font-bold tracking-[-0.025em] sm:text-[clamp(1.4rem,5vw,2.35rem)]"
           >
             {profile.name}のポートフォリオ
           </h1>
           <p
-            class="mt-1.5 text-[0.82rem] leading-6 font-semibold sm:mt-2 sm:text-base sm:leading-7"
+            class="mt-2 text-sm leading-6 font-semibold sm:text-base sm:leading-7"
           >
             {profile.role}
           </p>
@@ -46,18 +46,18 @@ import SocialLinks from "./SocialLinks.astro";
 
       <p
         id="about-details"
-        class="mx-auto mt-3 max-w-[42rem] text-center text-[0.86rem] leading-7 font-medium sm:mx-0 sm:mt-7 sm:pl-[7.95rem] sm:text-left sm:text-base sm:leading-8"
+        class="mx-auto mt-[clamp(1rem,2.3svh,1.25rem)] max-w-[42rem] text-center text-[0.925rem] leading-7 font-medium sm:mx-0 sm:mt-7 sm:pl-[7.95rem] sm:text-left sm:text-base sm:leading-8"
       >
         {profile.intro}
       </p>
 
       <ul
-        class="mx-auto mt-3 grid max-w-[38rem] list-none gap-1 p-0 text-left text-[0.75rem] font-semibold sm:mx-0 sm:mt-6 sm:flex sm:max-w-none sm:flex-wrap sm:gap-x-6 sm:gap-y-3 sm:pl-[7.95rem] sm:text-[0.78rem]"
+        class="mx-auto mt-[clamp(1rem,2.25svh,1.25rem)] grid max-w-[38rem] list-none gap-1.5 p-0 text-left text-[0.8125rem] font-semibold sm:mx-0 sm:mt-6 sm:flex sm:max-w-none sm:flex-wrap sm:gap-x-6 sm:gap-y-3 sm:pl-[7.95rem] sm:text-[0.78rem]"
         aria-label="プロフィール概要"
       >
         {
           profile.facts.map((fact) => (
-            <li class="flex min-h-5 items-center gap-2 sm:min-h-6">
+            <li class="flex min-h-6 items-center gap-2.5 sm:gap-2">
               {fact.id === "study" ? (
                 <GraduationCap
                   class="text-primary-strong shrink-0"
@@ -87,20 +87,26 @@ import SocialLinks from "./SocialLinks.astro";
       </ul>
 
       <div
-        class="mt-4 flex flex-col gap-3 sm:mt-7 sm:flex-row sm:pl-[7.95rem]"
+        class="mt-[clamp(1.25rem,2.75svh,1.5rem)] flex flex-col gap-4 sm:mt-7 sm:flex-row sm:gap-3 sm:pl-[7.95rem]"
         aria-label="主要リンク"
       >
-        <a class="primary-button w-full sm:w-auto" href="#works">
+        <a
+          class="primary-button min-h-12 w-full py-3 text-[0.95rem] sm:min-h-11 sm:w-auto sm:py-[0.7rem] sm:text-[0.9rem]"
+          href="#works"
+        >
           Worksを見る
           <ArrowRight size={17} stroke-width={2} aria-hidden="true" />
         </a>
-        <a class="secondary-button w-full sm:w-auto" href="#about-details">
+        <a
+          class="secondary-button min-h-12 w-full py-3 text-[0.95rem] sm:min-h-11 sm:w-auto sm:py-[0.7rem] sm:text-[0.9rem]"
+          href="#about-details"
+        >
           About Me
         </a>
       </div>
 
       <SocialLinks
-        class="mt-3 justify-center sm:mt-5 sm:pl-[7.95rem] lg:hidden"
+        class="mt-[clamp(1rem,2.25svh,1.25rem)] justify-center gap-3 sm:mt-5 sm:gap-2 sm:pl-[7.95rem] lg:hidden [&_.icon-link]:size-12 sm:[&_.icon-link]:size-11"
       />
     </div>
 
@@ -295,8 +301,8 @@ import SocialLinks from "./SocialLinks.astro";
     }
 
     .avatar {
-      width: 5rem;
-      height: 5rem;
+      width: clamp(5.25rem, 11svh, 5.75rem);
+      height: clamp(5.25rem, 11svh, 5.75rem);
     }
   }
 </style>
