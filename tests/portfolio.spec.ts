@@ -23,6 +23,30 @@ test("主要コンテンツが画面幅に応じて表示される", async ({ pa
   });
   if (testInfo.project.name.startsWith("mobile")) {
     await expect(navigation).toBeHidden();
+
+    const initialFold = await page.evaluate(() => {
+      const hero = document.querySelector<HTMLElement>("#about");
+      const skills = document.querySelector<HTMLElement>("#skills");
+      if (!hero || !skills) throw new Error("Required sections are missing.");
+
+      return {
+        heroBottom: hero.getBoundingClientRect().bottom,
+        skillsTop: skills.getBoundingClientRect().top,
+        viewportHeight: window.visualViewport?.height ?? window.innerHeight,
+      };
+    });
+
+    expect(initialFold.heroBottom).toBeGreaterThanOrEqual(
+      initialFold.viewportHeight,
+    );
+    expect(initialFold.skillsTop).toBeGreaterThanOrEqual(
+      initialFold.viewportHeight,
+    );
+
+    await page.locator("#skills").scrollIntoViewIfNeeded();
+    await expect(
+      page.getByRole("heading", { name: "Skills" }),
+    ).toBeInViewport();
   } else {
     await expect(navigation).toBeVisible();
   }

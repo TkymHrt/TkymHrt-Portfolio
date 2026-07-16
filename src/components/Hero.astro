@@ -14,7 +14,7 @@ import SocialLinks from "./SocialLinks.astro";
 
 <section
   id="about"
-  class="bg-surface-soft scroll-mt-20 px-5 py-5 sm:px-8 sm:py-12 lg:px-12 lg:py-14"
+  class="hero-section bg-surface-soft scroll-mt-20 px-5 py-5 sm:px-8 sm:py-12 lg:px-12 lg:py-14"
   aria-labelledby="hero-title"
 >
   <div
@@ -287,6 +287,13 @@ import SocialLinks from "./SocialLinks.astro";
   }
 
   @media (max-width: 39.999rem) {
+    .hero-section {
+      display: flex;
+      min-height: calc(100vh - 4rem);
+      min-height: calc(100svh - 4rem);
+      align-items: center;
+    }
+
     .avatar {
       width: 5rem;
       height: 5rem;
