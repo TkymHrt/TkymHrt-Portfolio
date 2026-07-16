@@ -29,4 +29,4 @@ pre-commit:
 pre-push:
   jobs:
     - name: quality gate
-      run: bun run ci
+      run: bun run verify

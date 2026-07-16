@@ -1,0 +1,95 @@
+---
+import Moon from "@lucide/astro/icons/moon";
+import Sun from "@lucide/astro/icons/sun";
+
+const navigation = [
+  { label: "Skills", href: "#skills" },
+  { label: "Works", href: "#works" },
+  { label: "Notes", href: "#notes" },
+  { label: "About", href: "#about" },
+  { label: "Contact", href: "#contact" },
+] as const;
+---
+
+<header class="border-line bg-surface border-b px-5 sm:px-8 lg:px-12">
+  <div class="content-wrap flex min-h-16 items-center gap-6 sm:min-h-18">
+    <a
+      href="#top"
+      class="font-logo text-primary-strong hover:text-primary text-[1.15rem] font-bold tracking-[-0.025em] no-underline transition-colors duration-150"
+      aria-label="TkymHrt ポートフォリオの先頭へ"
+    >
+      ~tkymhrt
+    </a>
+
+    <nav
+      class="ml-auto hidden items-center gap-7 text-[0.82rem] font-semibold md:flex lg:gap-10"
+      aria-label="メインナビゲーション"
+    >
+      {
+        navigation.map((item) => (
+          <a
+            href={item.href}
+            class="hover:text-primary-strong rounded-sm py-3 no-underline underline-offset-[6px] transition-colors duration-150 hover:underline"
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <button
+      class="icon-link ml-auto cursor-pointer md:ml-2"
+      type="button"
+      aria-pressed="false"
+      data-theme-toggle
+    >
+      <Moon data-icon-moon size={19} stroke-width={1.9} aria-hidden="true" />
+      <Sun data-icon-sun size={19} stroke-width={1.9} aria-hidden="true" />
+      <span class="visually-hidden" data-theme-label
+        >ダークテーマに切り替える</span
+      >
+    </button>
+  </div>
+</header>
+
+<script>
+  const themeButton = document.querySelector<HTMLButtonElement>(
+    "[data-theme-toggle]",
+  );
+
+  const updateThemeButton = (theme: "light" | "dark") => {
+    if (!themeButton) return;
+    const isDark = theme === "dark";
+    themeButton.setAttribute("aria-pressed", String(isDark));
+    const label = themeButton.querySelector<HTMLElement>("[data-theme-label]");
+    if (label) {
+      label.textContent = isDark
+        ? "ライトテーマに切り替える"
+        : "ダークテーマに切り替える";
+    }
+  };
+
+  if (themeButton) {
+    const initialTheme =
+      document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+    updateThemeButton(initialTheme);
+
+    themeButton.addEventListener("click", () => {
+      const root = document.documentElement;
+      const nextTheme = root.dataset.theme === "dark" ? "light" : "dark";
+      root.dataset.themeSwitching = "";
+      root.dataset.theme = nextTheme;
+      try {
+        localStorage.setItem("theme", nextTheme);
+      } catch {
+        // Theme switching still works when storage is unavailable.
+      }
+      updateThemeButton(nextTheme);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          delete root.dataset.themeSwitching;
+        });
+      });
+    });
+  }
+</script>

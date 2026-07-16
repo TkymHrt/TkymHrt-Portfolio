@@ -1,0 +1,44 @@
+---
+import ArrowUp from "@lucide/astro/icons/arrow-up";
+
+const year = new Date().getFullYear();
+const footerLinks = [
+  { label: "Skills", href: "#skills" },
+  { label: "Works", href: "#works" },
+  { label: "Notes", href: "#notes" },
+  { label: "About", href: "#about" },
+  { label: "Contact", href: "#contact" },
+] as const;
+---
+
+<footer class="border-line bg-surface border-t px-5 py-5 sm:px-8 lg:px-12">
+  <div class="content-wrap flex min-h-11 items-center gap-5">
+    <p class="text-muted m-0 text-[0.7rem] font-semibold">
+      © {year} TkymHrt
+    </p>
+
+    <nav
+      class="ml-auto hidden items-center gap-7 text-[0.68rem] font-semibold sm:flex"
+      aria-label="フッターナビゲーション"
+    >
+      {
+        footerLinks.map((link) => (
+          <a
+            href={link.href}
+            class="hover:text-primary-strong rounded-sm py-2 no-underline transition-colors duration-150"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <a
+      class="icon-link ml-auto sm:ml-2"
+      href="#top"
+      aria-label="ページの先頭へ戻る"
+    >
+      <ArrowUp size={18} stroke-width={1.8} aria-hidden="true" />
+    </a>
+  </div>
+</footer>

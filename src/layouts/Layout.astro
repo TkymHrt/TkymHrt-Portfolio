@@ -1,27 +1,83 @@
 ---
 import "../assets/app.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "TkymHrtのポートフォリオ",
+  description = "大学4年生のフロントエンドエンジニア、TkymHrtのスキル・制作実績・技術ノートを紹介します。",
+} = Astro.props;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "TkymHrt",
+  url: "https://github.com/TkymHrt",
+  jobTitle: "フロントエンドエンジニア",
+  sameAs: [
+    "https://github.com/TkymHrt",
+    "https://x.com/ForHobbiesBY",
+    "https://www.instagram.com/tkymhrt",
+  ],
+};
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="theme-color"
+      content="#fffaf2"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#211e1b"
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro Basics</title>
+    <title>{title}</title>
+    <script is:inline>
+      (() => {
+        let savedTheme = null;
+        try {
+          savedTheme = localStorage.getItem("theme");
+        } catch {
+          /* Theme detection falls back to the operating system setting. */
+        }
+        const theme =
+          savedTheme === "light" || savedTheme === "dark"
+            ? savedTheme
+            : matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(structuredData)}
+    />
   </head>
   <body>
+    <a class="skip-link" href="#main-content">本文へ移動</a>
     <slot />
   </body>
 </html>
-
-<style>
-  html,
-  body {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-  }
-</style>

@@ -4,6 +4,12 @@ dist/
 # generated types
 .astro/
 
+# browser and quality reports
+test-results/
+playwright-report/
+lighthouse-reports/
+*tkymhrt-lighthouse-*/
+
 # dependencies
 node_modules/
 
@@ -19,6 +25,9 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+# local design reference
+/design.png
 
 # jetbrains setting folder
 .idea/

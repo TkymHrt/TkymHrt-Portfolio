@@ -1,0 +1,48 @@
+---
+import ArrowRight from "@lucide/astro/icons/arrow-right";
+import PencilLine from "@lucide/astro/icons/pencil-line";
+import { notes } from "../data/portfolio";
+---
+
+<section id="notes" class="section-shell" aria-labelledby="notes-title">
+  <div class="mx-auto max-w-[42rem] lg:mr-0 lg:ml-auto">
+    <div class="flex items-center justify-between gap-5">
+      <h2 id="notes-title" class="section-title">
+        <span class="section-icon" aria-hidden="true">
+          <PencilLine size={16} stroke-width={1.8} />
+        </span>
+        Blog / Notes
+      </h2>
+
+      <a
+        class="rounded-control hover:text-primary-strong inline-flex min-h-11 items-center gap-2 px-2 text-[0.74rem] font-semibold no-underline transition-colors duration-150"
+        href="https://github.com/TkymHrt"
+      >
+        GitHubで読む
+        <ArrowRight size={16} stroke-width={1.8} aria-hidden="true" />
+      </a>
+    </div>
+
+    <ul class="mt-6 grid list-none gap-1 p-0">
+      {
+        notes.map((note) => (
+          <li class="rounded-control hover:bg-surface-soft grid min-h-11 grid-cols-[1fr_auto] items-center gap-4 px-2 py-2 text-[0.78rem] leading-6 transition-colors duration-150 sm:text-[0.82rem]">
+            <span class="flex min-w-0 items-start gap-3 font-medium">
+              <span
+                class="bg-primary mt-[0.65rem] h-1.5 w-1.5 shrink-0 rounded-full"
+                aria-hidden="true"
+              />
+              <span>{note.title}</span>
+            </span>
+            <time
+              class="text-muted text-[0.7rem] font-medium whitespace-nowrap"
+              datetime={note.date}
+            >
+              {note.displayDate}
+            </time>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

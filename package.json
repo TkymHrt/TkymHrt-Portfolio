@@ -2,8 +2,14 @@
   "name": "tkymhrt-portfolio",
   "type": "module",
   "version": "0.0.1",
+  "packageManager": "bun@1.3.14",
   "engines": {
     "node": ">=22.12.0"
+  },
+  "overrides": {
+    "@sentry/node": "^10.65.0",
+    "esbuild": "^0.28.1",
+    "yaml": "^2.9.0"
   },
   "scripts": {
     "dev": "astro dev",
@@ -11,33 +17,42 @@
     "check": "astro check",
     "preview": "astro preview",
     "astro": "astro",
-    "lint": "eslint \"src/**/*.{astro,ts,tsx,js,jsx}\" \"*.{js,ts,mjs,cjs}\"",
+    "lint": "eslint \"src/**/*.{astro,ts,tsx,js,jsx}\" \"tests/**/*.ts\" \"scripts/**/*.mjs\" \"*.{js,ts,mjs,cjs}\"",
     "lint:fix": "bun run lint -- --fix",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "knip": "knip",
-    "ci": "bun run lint && bun run format:check && bun run build"
+    "audit:dependencies": "bun audit",
+    "ci": "bun run lint && bun run format:check && bun run knip && bun run audit:dependencies && bun run build",
+    "test:e2e": "bun run build && playwright test",
+    "audit:lighthouse": "bun run build && node scripts/lighthouse.mjs",
+    "verify": "bun run ci && playwright test && node scripts/lighthouse.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
-    "astro": "^6.4.7",
+    "@lucide/astro": "^1.24.0",
+    "astro": "^6.4.8",
     "typescript": "^6.0.3"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.12.1",
     "@eslint/js": "^10.0.1",
-    "@tailwindcss/vite": "^4.3.1",
+    "@playwright/test": "^1.61.1",
+    "@tailwindcss/vite": "^4.3.2",
     "@types/bun": "^1.3.14",
-    "eslint": "^10.5.0",
+    "chrome-launcher": "^1.2.1",
+    "eslint": "^10.7.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-astro": "^1.7.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
-    "globals": "^17.6.0",
-    "knip": "^6.17.1",
-    "lefthook": "^2.1.9",
+    "globals": "^17.7.0",
+    "knip": "^6.27.0",
+    "lefthook": "^2.1.10",
+    "lighthouse": "^13.4.0",
     "prettier": "3.8.4",
     "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.8.0",
-    "tailwindcss": "^4.3.1",
-    "typescript-eslint": "^8.61.1"
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "tailwindcss": "^4.3.2",
+    "typescript-eslint": "^8.64.0"
   }
 }

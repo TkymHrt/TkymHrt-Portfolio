@@ -2,3 +2,4 @@ dist
 .astro
 coverage
 .agents
+*tkymhrt-lighthouse-*/
