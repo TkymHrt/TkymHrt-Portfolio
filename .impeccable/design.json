@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-16T00:00:00+09:00",
+  "title": "Design System: TkymHrt Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Tangerine Marker",
+        "canonical": "oklch(0.68 0.205 43)",
+        "tonalRamp": [
+          "oklch(0.18 0.05 43)",
+          "oklch(0.28 0.09 43)",
+          "oklch(0.4 0.14 43)",
+          "oklch(0.52 0.18 43)",
+          "oklch(0.68 0.205 43)",
+          "oklch(0.78 0.15 43)",
+          "oklch(0.88 0.08 43)",
+          "oklch(0.96 0.025 43)"
+        ]
+      },
+      "accent": {
+        "role": "secondary",
+        "displayName": "Sunlit Yellow",
+        "canonical": "oklch(0.86 0.15 86)",
+        "tonalRamp": [
+          "oklch(0.18 0.04 86)",
+          "oklch(0.3 0.07 86)",
+          "oklch(0.44 0.1 86)",
+          "oklch(0.58 0.13 86)",
+          "oklch(0.72 0.15 86)",
+          "oklch(0.86 0.15 86)",
+          "oklch(0.91 0.09 86)",
+          "oklch(0.96 0.035 86)"
+        ]
+      },
+      "canvas": {
+        "role": "neutral",
+        "displayName": "Desk Light",
+        "canonical": "oklch(0.985 0.008 75)",
+        "tonalRamp": [
+          "oklch(0.15 0.008 75)",
+          "oklch(0.28 0.008 75)",
+          "oklch(0.42 0.008 75)",
+          "oklch(0.56 0.008 75)",
+          "oklch(0.7 0.008 75)",
+          "oklch(0.82 0.008 75)",
+          "oklch(0.91 0.008 75)",
+          "oklch(0.985 0.008 75)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Graphite Ink",
+        "canonical": "oklch(0.25 0.015 55)",
+        "tonalRamp": [
+          "oklch(0.15 0.015 55)",
+          "oklch(0.25 0.015 55)",
+          "oklch(0.36 0.015 55)",
+          "oklch(0.48 0.015 55)",
+          "oklch(0.6 0.015 55)",
+          "oklch(0.72 0.015 55)",
+          "oklch(0.84 0.012 55)",
+          "oklch(0.95 0.006 55)"
+        ]
+      },
+      "on-bright": {
+        "role": "neutral",
+        "displayName": "Permanent Ink",
+        "canonical": "oklch(0.22 0.025 55)",
+        "tonalRamp": [
+          "oklch(0.15 0.025 55)",
+          "oklch(0.22 0.025 55)",
+          "oklch(0.34 0.022 55)",
+          "oklch(0.46 0.02 55)",
+          "oklch(0.58 0.018 55)",
+          "oklch(0.7 0.015 55)",
+          "oklch(0.84 0.01 55)",
+          "oklch(0.95 0.006 55)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "ヒーロー見出しだけに使う。"
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "主要セクションの見出し。"
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "説明文と読み物。65〜70ch を上限にする。"
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "ナビゲーション、タグ、ボタン。"
+      }
+    },
+    "shadows": [
+      {
+        "name": "page-lift",
+        "value": "0 2px 8px oklch(0.25 0.02 55 / 0.10)",
+        "purpose": "デスクトップのページ外周。"
+      },
+      {
+        "name": "card-nudge",
+        "value": "0 4px 8px oklch(0.25 0.02 55 / 0.10)",
+        "purpose": "ホバー中の作品カード。"
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "ホバーとテーマ切替の短い反応。"
+      },
+      {
+        "name": "duration-fast",
+        "value": "160ms",
+        "purpose": "色と輪郭の状態変化。"
+      },
+      {
+        "name": "duration-base",
+        "value": "260ms",
+        "purpose": "小さな移動と影の変化。"
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "lg", "value": "960px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "作品と連絡への主要 CTA。",
+      "html": "<button class=\"ds-btn-primary\">Worksを見る →</button>",
+      "css": ".ds-btn-primary { min-height: 44px; border: 0; border-radius: var(--radius-sm, 8px); padding: 12px 24px; background: var(--color-primary, oklch(0.68 0.205 43)); color: var(--color-ink, oklch(0.25 0.015 55)); font: 600 14px/1.5 sans-serif; transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-btn-primary:hover { transform: translateY(-2px); } .ds-btn-primary:focus-visible { outline: 3px solid var(--color-ink, #222); outline-offset: 3px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "補助導線用の輪郭ボタン。",
+      "html": "<button class=\"ds-btn-secondary\">About Me</button>",
+      "css": ".ds-btn-secondary { min-height: 44px; border: 1px solid var(--color-muted, #666); border-radius: var(--radius-sm, 8px); padding: 12px 24px; background: var(--color-surface, #fff); color: var(--color-ink, #222); font: 600 14px/1.5 sans-serif; transition: background 160ms ease-out; } .ds-btn-secondary:hover { background: var(--color-surface-soft, #fff7ec); } .ds-btn-secondary:focus-visible { outline: 3px solid var(--color-primary, #ed5b12); outline-offset: 3px; }"
+    },
+    {
+      "name": "Skill Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "技術名を読みやすくまとめる情報チップ。",
+      "html": "<span class=\"ds-chip\">HTML / CSS</span>",
+      "css": ".ds-chip { display: inline-flex; min-height: 36px; align-items: center; border: 1px solid var(--color-line, #e7e1d9); border-radius: var(--radius-sm, 8px); padding: 8px 12px; background: var(--color-surface, #fff); color: var(--color-ink, #222); font: 600 13px/1.5 sans-serif; }"
+    },
+    {
+      "name": "Project Card",
+      "kind": "card",
+      "refersTo": "project-card",
+      "description": "静物風イメージ、説明、技術タグを一つにまとめる作品カード。",
+      "html": "<article class=\"ds-card\"><div class=\"ds-card-art\">Project artwork</div><div class=\"ds-card-body\"><strong>Plant Log</strong><p>観葉植物の記録アプリ</p></div></article>",
+      "css": ".ds-card { overflow: hidden; border: 1px solid var(--color-line, #e7e1d9); border-radius: var(--radius-md, 12px); background: var(--color-surface, #fff); color: var(--color-ink, #222); transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 260ms ease-out; } .ds-card-art { display: grid; min-height: 120px; place-items: center; background: var(--color-surface-soft, #fff7ec); } .ds-card-body { padding: 16px; } .ds-card-body p { margin: 6px 0 0; } .ds-card:hover { transform: translateY(-3px); box-shadow: 0 4px 8px rgb(34 27 22 / 0.1); } .ds-card:focus-within { outline: 3px solid var(--color-primary, #ed5b12); outline-offset: 3px; }"
+    },
+    {
+      "name": "Primary Navigation",
+      "kind": "nav",
+      "description": "ロゴと短い英語ラベルを横一列に置く。",
+      "html": "<nav class=\"ds-nav\" aria-label=\"メインナビゲーション\"><strong>~tkymhrt</strong><a href=\"#skills\">Skills</a><a href=\"#works\">Works</a></nav>",
+      "css": ".ds-nav { display: flex; min-height: 64px; align-items: center; gap: 24px; color: var(--color-ink, #222); font: 600 14px/1.5 sans-serif; } .ds-nav strong { margin-right: auto; color: var(--color-primary, #ed5b12); font-family: monospace; font-size: 19px; } .ds-nav a { color: inherit; text-decoration-thickness: 2px; text-underline-offset: 5px; } .ds-nav a:hover { color: var(--color-primary-strong, #a93b0b); } .ds-nav a:focus-visible { outline: 3px solid var(--color-primary, #ed5b12); outline-offset: 4px; border-radius: 4px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "陽だまりのワークデスク",
+    "overview": "整えられた机の上に、愛用のノート、カメラ、小さな植物が並ぶ情景を基準にする。紙面のように落ち着いた背景、細い輪郭、控えめな影に、鮮やかなオレンジと黄色を差し込み、親しみと前向きな好奇心を伝える。情報は仕事道具のように用途が明快で、装飾は理解や移動を助けるときだけ使う。",
+    "keyCharacteristics": [
+      "明るい紙面と細い区切り線による、読み進めやすい一枚のプロフィール",
+      "オレンジと黄色を要所に置く、節度あるフルパレット",
+      "角丸 8〜16px の道具的で触れやすい部品",
+      "PC では一覧性、モバイルでは一方向の読みやすさを優先する構成",
+      "必要最小限の JavaScript と、設定を尊重する穏やかな動き"
+    ],
+    "rules": [
+      {
+        "name": "The Marker Rule",
+        "body": "primary は一画面の約 10% 以下に留める。希少性が CTA の意味をつくる。",
+        "section": "colors"
+      },
+      {
+        "name": "The Ink Rule",
+        "body": "明るいオレンジの上では白ではなく ink を使い、色の鮮やかさと AA コントラストを両立する。",
+        "section": "colors"
+      },
+      {
+        "name": "The Quiet Type Rule",
+        "body": "表示見出しの字間は -0.02em より詰めず、装飾的な斜体、全大文字の連続、グラデーション文字を使わない。",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-at-Rest Rule",
+        "body": "コンテンツ部品は静止時に平坦で、線と面の差だけで整理する。常時浮遊するカード群は禁止する。",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do surface と line を基礎にし、primary は主要 CTA と少数の目印へ限定する。",
+      "Do PC では横方向の一覧性、モバイルでは自然な一列の読み順を維持する。",
+      "Do 主要操作を 44px 以上にし、フォーカス表示と prefers-reduced-motion を必ず実装する。",
+      "Do 作品、技術ノート、連絡先へ最短で到達できるリンク名を使う。"
+    ],
+    "donts": [
+      "Don't 濃色ネオンの開発者ポートフォリオにする。",
+      "Don't 紫のグラデーションを多用する典型的 SaaS ランディングページ、ガラス表現、端末画面を模した演出を使う。",
+      "Don't 過剰なスクロールアニメーションや、内容より装飾が先に立つ編集誌風レイアウトを採用する。",
+      "Don't グラデーション文字、32px 以上のカード角丸、色付きの太い片側罫線、広い影と輪郭の併用を行う。",
+      "Don't 低コントラストの薄いグレーを本文やプレースホルダーに使う。"
+    ]
+  }
+}
