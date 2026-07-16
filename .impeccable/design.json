@@ -169,7 +169,7 @@
       "name": "Primary Navigation",
       "kind": "nav",
       "description": "ロゴと短い英語ラベルを横一列に置く。",
-      "html": "<nav class=\"ds-nav\" aria-label=\"メインナビゲーション\"><strong>~tkymhrt</strong><a href=\"#skills\">Skills</a><a href=\"#works\">Works</a></nav>",
+      "html": "<nav class=\"ds-nav\" aria-label=\"メインナビゲーション\"><strong>~/tkymhrt</strong><a href=\"#skills\">Skills</a><a href=\"#works\">Works</a></nav>",
       "css": ".ds-nav { display: flex; min-height: 64px; align-items: center; gap: 24px; color: var(--color-ink, #222); font: 600 14px/1.5 sans-serif; } .ds-nav strong { margin-right: auto; color: var(--color-primary, #ed5b12); font-family: monospace; font-size: 19px; } .ds-nav a { color: inherit; text-decoration-thickness: 2px; text-underline-offset: 5px; } .ds-nav a:hover { color: var(--color-primary-strong, #a93b0b); } .ds-nav a:focus-visible { outline: 3px solid var(--color-primary, #ed5b12); outline-offset: 4px; border-radius: 4px; }"
     }
   ],
