@@ -14,28 +14,28 @@ colors:
   line: "oklch(0.9 0.012 70)"
 typography:
   display:
-    fontFamily: "Noto Sans JP, Hiragino Kaku Gothic ProN, Yu Gothic, system-ui, sans-serif"
+    fontFamily: "LINE Seed JP, Hiragino Kaku Gothic ProN, Yu Gothic, system-ui, sans-serif"
     fontSize: "clamp(2rem, 4vw, 2.5rem)"
     fontWeight: 700
     lineHeight: 1.3
     letterSpacing: "-0.02em"
   headline:
-    fontFamily: "Noto Sans JP, Hiragino Kaku Gothic ProN, Yu Gothic, system-ui, sans-serif"
+    fontFamily: "LINE Seed JP, Hiragino Kaku Gothic ProN, Yu Gothic, system-ui, sans-serif"
     fontSize: "clamp(1.25rem, 2.5vw, 1.5rem)"
     fontWeight: 700
     lineHeight: 1.4
   title:
-    fontFamily: "Noto Sans JP, Hiragino Kaku Gothic ProN, Yu Gothic, system-ui, sans-serif"
+    fontFamily: "LINE Seed JP, Hiragino Kaku Gothic ProN, Yu Gothic, system-ui, sans-serif"
     fontSize: "1.125rem"
     fontWeight: 700
     lineHeight: 1.5
   body:
-    fontFamily: "Noto Sans JP, Hiragino Kaku Gothic ProN, Yu Gothic, system-ui, sans-serif"
+    fontFamily: "LINE Seed JP, Hiragino Kaku Gothic ProN, Yu Gothic, system-ui, sans-serif"
     fontSize: "1rem"
     fontWeight: 400
     lineHeight: 1.8
   label:
-    fontFamily: "Noto Sans JP, Hiragino Kaku Gothic ProN, Yu Gothic, system-ui, sans-serif"
+    fontFamily: "LINE Seed JP, Hiragino Kaku Gothic ProN, Yu Gothic, system-ui, sans-serif"
     fontSize: "0.875rem"
     fontWeight: 600
     lineHeight: 1.5
@@ -129,11 +129,11 @@ components:
 
 ## 3. Typography
 
-**Display Font:** Noto Sans JP（Hiragino Kaku Gothic ProN、Yu Gothic、system-ui、sans-serif フォールバック）  
-**Body Font:** Noto Sans JP（同フォールバック）  
-**Label/Mono Font:** ブランドロゴに限り、OS の等幅フォントを使用
+**Display Font:** LINE Seed JP（Hiragino Kaku Gothic ProN、Yu Gothic、system-ui、sans-serif フォールバック）  
+**Body Font:** LINE Seed JP（同フォールバック）  
+**Label/Logo Font:** LINE Seed JP（本文と同一ファミリー）
 
-**Character:** 角の取れた日本語サンセリフを単一ファミリーで運用し、太さと余白で階層を作る。機械的になりすぎず、学生ポートフォリオの素直さを保つ。
+**Character:** 丸みのある幾何学的な日本語サンセリフを単一ファミリーで運用し、太さと余白で階層を作る。日本語と英数字の調和を保ち、親しみやすく素直な印象をつくる。
 
 ### Hierarchy
 

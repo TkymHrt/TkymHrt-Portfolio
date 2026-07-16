@@ -1,4 +1,6 @@
 ---
+import { Font } from "astro:assets";
+
 import "../assets/app.css";
 
 interface Props {
@@ -53,6 +55,7 @@ const structuredData = {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <Font cssVariable="--font-line-seed-jp" preload />
     <script is:inline>
       (() => {
         let savedTheme = null;

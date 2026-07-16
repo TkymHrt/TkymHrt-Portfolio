@@ -1,11 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans:
-    "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", system-ui,
-    sans-serif;
-  --font-logo:
-    ui-monospace, "SFMono-Regular", "Cascadia Code", "Roboto Mono", monospace;
+  --font-sans: var(--font-line-seed-jp);
+  --font-logo: var(--font-line-seed-jp);
 
   --color-primary: oklch(0.68 0.205 43);
   --color-primary-strong: oklch(0.52 0.18 38);
@@ -68,6 +65,7 @@
     min-width: 20rem;
     background: var(--color-canvas);
     font-family: var(--font-sans);
+    font-kerning: normal;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
   }

@@ -6,6 +6,7 @@ TkymHrt のスキル、制作実績、技術ノート、連絡先をまとめた
 
 - Astro 6 / TypeScript
 - Tailwind CSS 4（CSS-first configuration）
+- LINE Seed JP（Astro Fonts によるセルフホスト）
 - Lucide Astro
 - Playwright / axe-core
 - Lighthouse 13
@@ -40,6 +41,10 @@ Lighthouse は Performance、Accessibility、Best Practices、SEO のすべて�
 プロフィール、スキル、作品、ノート、SNSリンクは [`src/data/portfolio.ts`](src/data/portfolio.ts) に集約しています。各セクションは `src/components/` 配下で独立した Astro コンポーネントとして管理しています。
 
 デザイン判断とトークンは [`PRODUCT.md`](PRODUCT.md) と [`DESIGN.md`](DESIGN.md) に記録しています。
+
+## フォントライセンス
+
+LINE Seed JP © LY Corporation は SIL Open Font License 1.1 のもとで利用しています。ビルド時にページ内の文字へサブセット化し、Regular（400）と Bold（700）をセルフホストします。ライセンス全文は [`public/licenses/LINE-Seed-JP-OFL.txt`](public/licenses/LINE-Seed-JP-OFL.txt) を参照してください。
 
 ## デプロイ
 
