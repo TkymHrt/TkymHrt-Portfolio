@@ -1,0 +1,251 @@
+---
+import { Image } from "astro:assets";
+
+import profileIllustration from "../assets/profile-illustration.png";
+import Icon from "../components/Icon.astro";
+import Skills from "../components/Skills.astro";
+import SocialLinks from "../components/SocialLinks.astro";
+import { careerTimeline, profile } from "../data/portfolio";
+import Layout from "../layouts/Layout.astro";
+
+const factDetails = {
+  study: { label: "現在", icon: "tabler:school" },
+  major: { label: "専攻", icon: "tabler:settings" },
+  experience: { label: "活動", icon: "tabler:users" },
+  interest: { label: "興味", icon: "tabler:heart" },
+  hobby: { label: "好きなこと", icon: "tabler:map-pin" },
+} as const;
+---
+
+<Layout
+  title="About Me | TkymHrt"
+  description="TkymHrtのプロフィール、興味のある分野、使用技術を紹介します。"
+>
+  <header class="subpage-hero">
+    <div class="content-wrap">
+      <p class="subpage-context">Who I am</p>
+      <h1>About Me</h1>
+      <p class="subpage-lead">
+        大学で学びながら、フロントエンド開発を中心に制作しています。
+      </p>
+    </div>
+  </header>
+
+  <section class="section-shell" aria-labelledby="profile-title">
+    <div
+      class="content-wrap grid items-start gap-8 lg:grid-cols-[18rem_minmax(0,1fr)] lg:gap-14"
+    >
+      <div class="about-card border-line rounded-card border p-6 text-center">
+        <div class="about-portrait" aria-hidden="true">
+          <Image
+            class="about-portrait__image"
+            src={profileIllustration}
+            alt=""
+            width={176}
+            height={176}
+            densities={[1, 2]}
+          />
+        </div>
+        <p class="mt-5 text-xl font-bold tracking-tight">{profile.name}</p>
+        <p class="text-muted mt-1.5 text-xs leading-6 font-semibold">
+          {profile.role}
+        </p>
+        <SocialLinks class="mt-5 justify-center gap-2 [&_.icon-link]:size-10" />
+      </div>
+
+      <div class="min-w-0">
+        <h2 id="profile-title" class="section-title">
+          <span class="section-icon" aria-hidden="true">
+            <Icon name="tabler:user-circle" size={22} strokeWidth={1.7} />
+          </span>
+          Profile
+        </h2>
+        <p class="text-muted mt-5 max-w-2xl text-sm leading-8 font-medium">
+          {profile.intro}
+          興味のある分野と、普段好きで触れているものをまとめています。
+        </p>
+
+        <dl class="mt-7 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+          {
+            profile.facts.map((fact) => {
+              const detail = factDetails[fact.id];
+              return (
+                <div class="border-line rounded-card border p-4">
+                  <dt class="text-primary-strong flex items-center gap-2 text-xs font-bold">
+                    <Icon
+                      name={detail.icon}
+                      size={17}
+                      strokeWidth={1.8}
+                      aria-hidden="true"
+                    />
+                    {detail.label}
+                  </dt>
+                  <dd class="mt-3 text-sm leading-6 font-semibold">
+                    {fact.label}
+                  </dd>
+                </div>
+              );
+            })
+          }
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell" aria-labelledby="journey-title">
+    <div class="content-wrap max-w-4xl">
+      <h2 id="journey-title" class="section-title">
+        <span class="section-icon" aria-hidden="true">
+          <Icon name="tabler:route" size={22} strokeWidth={1.7} />
+        </span>
+        Journey
+      </h2>
+      <p class="text-muted mt-3 max-w-2xl text-sm leading-7 font-medium">
+        大学入学後にWeb制作へ触れてから、現在までの流れをまとめました。
+      </p>
+
+      <ol class="career-timeline">
+        {
+          careerTimeline.map((item) => (
+            <li class="career-item">
+              <span class="career-axis" aria-hidden="true">
+                <span class="career-dot" />
+              </span>
+              <div class="career-content">
+                <p class="career-period">{item.period}</p>
+                <h3>{item.title}</h3>
+                <p class="career-description">{item.description}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <Skills />
+</Layout>
+
+<style>
+  .about-card {
+    background: var(--color-surface-soft);
+  }
+
+  .about-portrait {
+    display: grid;
+    width: 11rem;
+    height: 11rem;
+    margin-inline: auto;
+    place-items: center;
+    overflow: hidden;
+    border: 2px solid
+      color-mix(in oklch, var(--color-primary) 42%, var(--color-line));
+    border-radius: 9999px;
+    background: var(--color-surface);
+    box-shadow: 0 0.4rem 1rem
+      color-mix(in oklch, var(--color-ink) 12%, transparent);
+  }
+
+  .about-portrait__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transform: scale(1.16);
+  }
+
+  .career-timeline {
+    margin: 2rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .career-item {
+    display: grid;
+    grid-template-columns: 0.75rem minmax(0, 1fr);
+    column-gap: 1rem;
+    align-items: stretch;
+  }
+
+  .career-item + .career-item {
+    border-top: 1px solid var(--color-line);
+    padding-top: 1.35rem;
+  }
+
+  .career-axis {
+    position: relative;
+    align-self: stretch;
+  }
+
+  .career-axis::after {
+    position: absolute;
+    top: 0.6rem;
+    bottom: -1.95rem;
+    left: 50%;
+    width: 1px;
+    translate: -50% 0;
+    background: color-mix(
+      in oklch,
+      var(--color-primary) 52%,
+      var(--color-line)
+    );
+    content: "";
+  }
+
+  .career-item:last-child .career-axis::after {
+    display: none;
+  }
+
+  .career-dot {
+    position: absolute;
+    z-index: 1;
+    top: 0.3rem;
+    left: 50%;
+    width: 0.6rem;
+    height: 0.6rem;
+    translate: -50% 0;
+    border-radius: 9999px;
+    background: var(--color-primary);
+    box-shadow: 0 0 0 0.2rem var(--color-surface);
+  }
+
+  .career-content {
+    min-width: 0;
+    padding-bottom: 1.35rem;
+  }
+
+  .career-item:last-child .career-content {
+    padding-bottom: 0;
+  }
+
+  .career-period {
+    margin: 0 0 0.4rem;
+    color: var(--color-primary-strong);
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+  }
+
+  .career-content h3 {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .career-description {
+    margin: 0.35rem 0 0;
+    color: var(--color-muted);
+    font-size: 0.8rem;
+    font-weight: 500;
+    line-height: 1.75;
+  }
+
+  @media (max-width: 40rem) {
+    .about-portrait {
+      width: 9rem;
+      height: 9rem;
+    }
+  }
+</style>

@@ -1,0 +1,184 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import Icon from "./Icon.astro";
+
+interface Props {
+  visual: "plant" | "task" | "photo" | "code";
+  cover?: CollectionEntry<"works">["data"]["cover"];
+  eager?: boolean;
+  class?: string;
+}
+
+const { visual, cover, eager = false, class: className = "" } = Astro.props;
+
+const icons = {
+  plant: "tabler:seedling",
+  task: "tabler:clipboard-check",
+  photo: "tabler:camera",
+  code: "tabler:code",
+} as const;
+
+const iconName = icons[visual];
+---
+
+<div class:list={["work-visual", className]} data-visual={visual}>
+  {
+    cover ? (
+      <Image
+        class="work-cover"
+        src={cover}
+        alt=""
+        widths={[480, 760, 1040]}
+        sizes="(max-width: 640px) 100vw, 42rem"
+        loading={eager ? "eager" : "lazy"}
+      />
+    ) : (
+      <>
+        <span class="visual-floor" />
+        <span class="visual-orb visual-orb--one" />
+        <span class="visual-orb visual-orb--two" />
+        <Icon
+          name={iconName}
+          class="visual-icon"
+          size={76}
+          strokeWidth={1.35}
+        />
+        <Icon
+          name="tabler:sparkles"
+          class="visual-spark"
+          size={20}
+          strokeWidth={1.4}
+        />
+      </>
+    )
+  }
+</div>
+
+<style>
+  .work-visual {
+    --visual-color: var(--color-primary-strong);
+    --visual-fill: color-mix(
+      in oklch,
+      var(--color-accent) 45%,
+      var(--color-surface)
+    );
+    position: relative;
+    display: grid;
+    min-height: 10.25rem;
+    place-items: center;
+    overflow: hidden;
+    background: var(--color-surface-soft);
+    color: var(--visual-color);
+  }
+
+  .work-visual[data-visual="plant"] {
+    --visual-color: oklch(0.48 0.1 125);
+    --visual-fill: oklch(0.89 0.08 100);
+  }
+
+  .work-visual[data-visual="task"] {
+    --visual-color: oklch(0.52 0.16 54);
+    --visual-fill: oklch(0.91 0.07 78);
+  }
+
+  .work-visual[data-visual="photo"] {
+    --visual-color: oklch(0.39 0.03 65);
+    --visual-fill: oklch(0.83 0.045 82);
+  }
+
+  .work-visual[data-visual="code"] {
+    --visual-color: oklch(0.47 0.11 230);
+    --visual-fill: oklch(0.9 0.045 220);
+  }
+
+  .work-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .work-visual::before,
+  .work-visual::after {
+    position: absolute;
+    bottom: 1.2rem;
+    width: 3.5rem;
+    height: 4.8rem;
+    border: 1px solid color-mix(in oklch, var(--visual-color) 58%, transparent);
+    border-radius: 9999px 9999px 0.75rem 0.75rem;
+    background: color-mix(
+      in oklch,
+      var(--visual-fill) 72%,
+      var(--color-surface)
+    );
+    content: "";
+  }
+
+  .work-visual:has(.work-cover)::before,
+  .work-visual:has(.work-cover)::after {
+    content: none;
+  }
+
+  .work-visual::before {
+    left: 1.3rem;
+    rotate: -8deg;
+    scale: 0.72;
+  }
+
+  .work-visual::after {
+    right: 1.1rem;
+    rotate: 7deg;
+    scale: 0.58;
+  }
+
+  .visual-floor {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    left: 1rem;
+    height: 1px;
+    background: color-mix(in oklch, var(--visual-color) 35%, var(--color-line));
+  }
+
+  .visual-icon {
+    position: relative;
+    z-index: 1;
+    fill: var(--visual-fill);
+    filter: drop-shadow(
+      0 2px 1px color-mix(in oklch, var(--visual-color) 16%, transparent)
+    );
+  }
+
+  .visual-orb {
+    position: absolute;
+    display: block;
+    border: 1px solid color-mix(in oklch, var(--visual-color) 55%, transparent);
+    border-radius: 9999px;
+    background: color-mix(
+      in oklch,
+      var(--visual-fill) 75%,
+      var(--color-surface)
+    );
+  }
+
+  .visual-orb--one {
+    top: 1.2rem;
+    left: 1.2rem;
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .visual-orb--two {
+    top: 2.1rem;
+    right: 2rem;
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+
+  .visual-spark {
+    position: absolute;
+    top: 1rem;
+    right: 0.9rem;
+    color: var(--color-primary-strong);
+  }
+</style>

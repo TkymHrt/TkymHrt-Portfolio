@@ -1,39 +1,55 @@
 ---
-import Moon from "@lucide/astro/icons/moon";
-import Sun from "@lucide/astro/icons/sun";
+import Icon from "./Icon.astro";
 
 const navigation = [
-  { label: "Skills", href: "#skills" },
-  { label: "Works", href: "#works" },
-  { label: "Notes", href: "#notes" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/", matches: ["/"] },
+  { label: "About", href: "/about/", matches: ["/about"] },
+  { label: "Works", href: "/works/", matches: ["/works"] },
+  {
+    label: "Blog",
+    href: "/blog/",
+    matches: ["/blog", "/articles"],
+  },
+  { label: "Contact", href: "/#contact", matches: [] },
 ] as const;
+
+const pathname = Astro.url.pathname;
+const isCurrent = (matches: readonly string[]) =>
+  matches.some((match) =>
+    match === "/" ? pathname === "/" : pathname.startsWith(match),
+  );
 ---
 
-<header class="border-line bg-surface border-b px-5 sm:px-8 lg:px-12">
-  <div class="content-wrap flex min-h-16 items-center gap-6 sm:min-h-18">
+<header class="site-header px-5 sm:px-8 lg:px-12">
+  <div class="content-wrap flex min-h-16 items-center gap-5 sm:min-h-18">
     <a
-      href="#top"
-      class="font-logo text-primary-strong hover:text-primary text-[1.15rem] font-bold tracking-[-0.025em] no-underline transition-colors duration-150"
-      aria-label="TkymHrt ポートフォリオの先頭へ"
+      href="/"
+      class="font-logo text-primary-strong hover:text-primary text-[1.15rem] font-bold tracking-tight no-underline transition-colors duration-150"
+      aria-label="TkymHrt ポートフォリオのホームへ"
     >
       ~/tkymhrt
     </a>
 
     <nav
-      class="ml-auto hidden items-center gap-7 text-[0.82rem] font-semibold md:flex lg:gap-10"
+      class="ml-auto hidden items-center gap-6 text-[0.8rem] font-semibold md:flex lg:gap-9"
       aria-label="メインナビゲーション"
     >
       {
-        navigation.map((item) => (
-          <a
-            href={item.href}
-            class="hover:text-primary-strong rounded-sm py-3 no-underline underline-offset-[6px] transition-colors duration-150 hover:underline"
-          >
-            {item.label}
-          </a>
-        ))
+        navigation.map((item) => {
+          const current = isCurrent(item.matches);
+          return (
+            <a
+              href={item.href}
+              class:list={[
+                "hover:text-primary-strong rounded-sm py-3 no-underline underline-offset-[6px] transition-colors duration-150 hover:underline",
+                current && "text-primary-strong underline decoration-2",
+              ]}
+              aria-current={current ? "page" : undefined}
+            >
+              {item.label}
+            </a>
+          );
+        })
       }
     </nav>
 
@@ -43,14 +59,83 @@ const navigation = [
       aria-pressed="false"
       data-theme-toggle
     >
-      <Moon data-icon-moon size={19} stroke-width={1.9} aria-hidden="true" />
-      <Sun data-icon-sun size={19} stroke-width={1.9} aria-hidden="true" />
+      <Icon
+        name="tabler:moon"
+        data-icon-moon
+        size={19}
+        strokeWidth={1.9}
+        aria-hidden="true"
+      />
+      <Icon
+        name="tabler:sun"
+        data-icon-sun
+        size={19}
+        strokeWidth={1.9}
+        aria-hidden="true"
+      />
       <span class="visually-hidden" data-theme-label
         >ダークテーマに切り替える</span
       >
     </button>
   </div>
 </header>
+
+<nav
+  class="mobile-navigation border-line sticky top-2 z-40 mx-2 mt-2 flex min-h-12 items-stretch justify-center gap-1 overflow-x-auto rounded-full border px-1 md:hidden"
+  aria-label="モバイルナビゲーション"
+>
+  {
+    navigation.map((item) => {
+      const current = isCurrent(item.matches);
+      return (
+        <a
+          href={item.href}
+          class:list={[
+            "hover:text-primary-strong inline-flex min-h-12 shrink-0 items-center rounded-sm px-2 text-[0.75rem] font-semibold no-underline sm:px-3",
+            current &&
+              "text-primary-strong underline decoration-2 underline-offset-[7px]",
+          ]}
+          aria-current={current ? "page" : undefined}
+        >
+          {item.label}
+        </a>
+      );
+    })
+  }
+</nav>
+
+<style>
+  .site-header {
+    position: relative;
+    z-index: 30;
+    background: color-mix(in oklch, var(--color-surface-soft) 94%, transparent);
+    backdrop-filter: blur(0.75rem);
+  }
+
+  @media (max-width: 47.999rem) {
+    .site-header::after {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      left: 0;
+      height: 3.5rem;
+      background: var(--color-surface-soft);
+      content: "";
+    }
+  }
+
+  .mobile-navigation {
+    background: color-mix(in oklch, var(--color-surface) 90%, transparent);
+    box-shadow: 0 0.5rem 1.25rem -0.75rem
+      color-mix(in oklch, var(--color-ink) 38%, transparent);
+    backdrop-filter: blur(0.75rem);
+    scrollbar-width: none;
+  }
+
+  .mobile-navigation::-webkit-scrollbar {
+    display: none;
+  }
+</style>
 
 <script>
   const themeButton = document.querySelector<HTMLButtonElement>(

@@ -1,8 +1,6 @@
 ---
 import BlogNotes from "../components/BlogNotes.astro";
 import Contact from "../components/Contact.astro";
-import Footer from "../components/Footer.astro";
-import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
 import Skills from "../components/Skills.astro";
 import Works from "../components/Works.astro";
@@ -10,17 +8,29 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-  <div class="site-shell" id="top">
-    <Header />
-    <main id="main-content" tabindex="-1">
-      <Hero />
-      <Skills />
-      <Works />
-      <div class="grid lg:grid-cols-[1.3fr_0.7fr]">
-        <BlogNotes />
-        <Contact />
-      </div>
-    </main>
-    <Footer />
+  <Hero />
+  <Skills />
+  <Works />
+  <div class="home-lower">
+    <BlogNotes />
+    <Contact />
   </div>
 </Layout>
+
+<style>
+  @media (min-width: 64rem) {
+    .home-lower {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(20rem, 0.85fr);
+    }
+
+    .home-lower :global(.section-shell) {
+      min-width: 0;
+      padding-inline: clamp(1.5rem, 3vw, 2.25rem);
+    }
+
+    .home-lower :global(.section-shell + .section-shell) {
+      border-left: 1px solid var(--color-line);
+    }
+  }
+</style>

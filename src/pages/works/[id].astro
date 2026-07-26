@@ -1,0 +1,87 @@
+---
+import Icon from "../../components/Icon.astro";
+import { render, type CollectionEntry } from "astro:content";
+
+import WorkVisual from "../../components/WorkVisual.astro";
+import { getWorks } from "../../lib/content";
+import EntryLayout from "../../layouts/EntryLayout.astro";
+
+export async function getStaticPaths() {
+  const works = await getWorks();
+  return works.map((work) => ({
+    params: { id: work.id },
+    props: { work },
+  }));
+}
+
+interface Props {
+  work: CollectionEntry<"works">;
+}
+
+const { work } = Astro.props;
+const { Content } = await render(work);
+const { data } = work;
+---
+
+<EntryLayout
+  kind="work"
+  title={data.title}
+  description={data.description}
+  publishedAt={data.publishedAt}
+  updatedAt={data.updatedAt}
+  tags={data.tags}
+  draft={data.draft}
+>
+  <WorkVisual
+    slot="hero"
+    class="entry-work-visual"
+    visual={data.visual}
+    cover={data.cover}
+    eager
+  />
+
+  <Content />
+
+  <Fragment slot="aside">
+    <h2>Project details</h2>
+    <dl>
+      <div>
+        <dt>担当</dt>
+        <dd>{data.role}</dd>
+      </div>
+      <div>
+        <dt>制作時期</dt>
+        <dd>{data.period}</dd>
+      </div>
+    </dl>
+
+    {
+      (data.liveUrl || data.repositoryUrl) && (
+        <div class="entry-actions">
+          {data.liveUrl && (
+            <a class="primary-button" href={data.liveUrl}>
+              サイトを見る
+              <Icon
+                name="tabler:external-link"
+                size={16}
+                strokeWidth={1.8}
+                aria-hidden="true"
+              />
+            </a>
+          )}
+          {data.repositoryUrl && (
+            <a class="secondary-button" href={data.repositoryUrl}>
+              <Icon
+                name="tabler:git-branch"
+                size={16}
+                strokeWidth={1.8}
+                aria-hidden="true"
+              />
+              GitHubを見る
+            </a>
+          )}
+        </div>
+      )
+    }
+  </Fragment>
+</EntryLayout>

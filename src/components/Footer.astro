@@ -1,13 +1,12 @@
 ---
-import ArrowUp from "@lucide/astro/icons/arrow-up";
+import Icon from "./Icon.astro";
 
 const year = new Date().getFullYear();
 const footerLinks = [
-  { label: "Skills", href: "#skills" },
-  { label: "Works", href: "#works" },
-  { label: "Notes", href: "#notes" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "Works", href: "/works/" },
+  { label: "Blog", href: "/blog/" },
+  { label: "Contact", href: "/#contact" },
 ] as const;
 ---
 
@@ -18,7 +17,7 @@ const footerLinks = [
     </p>
 
     <nav
-      class="ml-auto hidden items-center gap-7 text-[0.68rem] font-semibold sm:flex"
+      class="ml-auto hidden items-center gap-6 text-[0.68rem] font-semibold sm:flex"
       aria-label="フッターナビゲーション"
     >
       {
@@ -38,7 +37,12 @@ const footerLinks = [
       href="#top"
       aria-label="ページの先頭へ戻る"
     >
-      <ArrowUp size={18} stroke-width={1.8} aria-hidden="true" />
+      <Icon
+        name="tabler:arrow-up"
+        size={18}
+        strokeWidth={1.8}
+        aria-hidden="true"
+      />
     </a>
   </div>
 </footer>

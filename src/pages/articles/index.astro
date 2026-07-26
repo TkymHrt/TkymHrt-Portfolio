@@ -1,0 +1,31 @@
+---
+import WritingIndex from "../../components/WritingIndex.astro";
+import { getArticles } from "../../lib/content";
+import Layout from "../../layouts/Layout.astro";
+
+const articles = await getArticles();
+---
+
+<Layout
+  title="Articles | TkymHrt"
+  description="フロントエンドの実装や設計で学んだことを、再利用できる形でまとめた技術記事です。"
+  structuredData={null}
+>
+  <header class="subpage-hero">
+    <div class="content-wrap">
+      <p class="subpage-context">実装を、あとから使える言葉に</p>
+      <h1>Articles</h1>
+      <p class="subpage-lead">
+        フロントエンドの実装や設計で試したことを、背景と判断理由まで含めて整理します。
+      </p>
+      <p class="subpage-count">{articles.length} articles</p>
+    </div>
+  </header>
+
+  <section class="listing-shell" aria-labelledby="articles-list-title">
+    <div class="content-wrap max-w-[58rem]">
+      <h2 id="articles-list-title" class="visually-hidden">技術記事一覧</h2>
+      <WritingIndex entries={articles} />
+    </div>
+  </section>
+</Layout>

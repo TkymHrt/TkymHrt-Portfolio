@@ -1,0 +1,61 @@
+---
+import Icon from "./Icon.astro";
+import type { CollectionEntry } from "astro:content";
+
+import { entryPath, formatDate, toDateTime } from "../lib/content";
+
+type WritingEntry = CollectionEntry<"articles"> | CollectionEntry<"blog">;
+
+interface Props {
+  entries: WritingEntry[];
+}
+
+const { entries } = Astro.props;
+---
+
+{
+  entries.length > 0 ? (
+    <ol class="writing-index">
+      {entries.map((entry) => {
+        return (
+          <li>
+            <a
+              class="writing-index__link group"
+              href={entryPath(entry.collection, entry.id)}
+            >
+              <div class="writing-index__date">
+                <time datetime={toDateTime(entry.data.publishedAt)}>
+                  {formatDate(entry.data.publishedAt)}
+                </time>
+                {entry.data.draft && <span class="draft-badge">下書き</span>}
+              </div>
+
+              <div class="writing-index__body">
+                {"topic" in entry.data && (
+                  <p class="writing-index__topic">{entry.data.topic}</p>
+                )}
+                <h2>{entry.data.title}</h2>
+                <p>{entry.data.description}</p>
+                <ul class="tag-list" aria-label="タグ">
+                  {entry.data.tags.map((tag) => (
+                    <li>{tag}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <Icon
+                name="tabler:arrow-up-right"
+                class="writing-index__arrow group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                size={20}
+                strokeWidth={1.8}
+                aria-hidden="true"
+              />
+            </a>
+          </li>
+        );
+      })}
+    </ol>
+  ) : (
+    <p class="empty-message">公開中のコンテンツはまだありません。</p>
+  )
+}

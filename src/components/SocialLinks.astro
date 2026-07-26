@@ -1,7 +1,14 @@
 ---
-import Braces from "@lucide/astro/icons/braces";
-import Camera from "@lucide/astro/icons/camera";
+import Icon from "./Icon.astro";
 import { socialLinks } from "../data/portfolio";
+
+const socialIcons = {
+  x: "simple-icons:x",
+  instagram: "simple-icons:instagram",
+  github: "simple-icons:github",
+  zenn: "simple-icons:zenn",
+  email: "tabler:mail",
+} as const;
 
 interface Props {
   class?: string;
@@ -12,23 +19,25 @@ const { class: className = "" } = Astro.props;
 
 <ul class:list={["flex list-none flex-wrap gap-2 p-0", className]}>
   {
-    socialLinks.map((link) => (
-      <li>
-        <a
-          class="icon-link"
-          href={link.href}
-          aria-label={`${link.label}を開く`}
-          rel="me"
-        >
-          {link.id === "github" ? (
-            <Braces size={18} stroke-width={1.8} aria-hidden="true" />
-          ) : link.id === "instagram" ? (
-            <Camera size={18} stroke-width={1.8} aria-hidden="true" />
-          ) : (
-            <span aria-hidden="true">{link.shortLabel}</span>
-          )}
-        </a>
-      </li>
-    ))
+    socialLinks.map((link) => {
+      const iconName = socialIcons[link.id];
+      return (
+        <li>
+          <a
+            class="icon-link"
+            href={link.href}
+            aria-label={`${link.label}を開く`}
+            rel={link.id === "email" ? undefined : "me"}
+          >
+            <Icon
+              name={iconName}
+              size={18}
+              strokeWidth={1.8}
+              aria-hidden="true"
+            />
+          </a>
+        </li>
+      );
+    })
   }
 </ul>

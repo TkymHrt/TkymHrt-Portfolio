@@ -30,7 +30,8 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
-    "@lucide/astro": "^1.24.0",
+    "@iconify-json/simple-icons": "^1.2.90",
+    "@iconify-json/tabler": "^1.2.35",
     "astro": "^6.4.8",
     "typescript": "^6.0.3"
   },

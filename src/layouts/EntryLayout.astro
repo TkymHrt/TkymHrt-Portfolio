@@ -1,0 +1,168 @@
+---
+import Icon from "../components/Icon.astro";
+
+import { formatDate, toDateTime } from "../lib/content";
+import Layout from "./Layout.astro";
+
+interface Props {
+  kind: "work" | "article" | "blog";
+  title: string;
+  description: string;
+  publishedAt: Date;
+  updatedAt?: Date;
+  tags: string[];
+  draft?: boolean;
+}
+
+const {
+  kind,
+  title,
+  description,
+  publishedAt,
+  updatedAt,
+  tags,
+  draft = false,
+} = Astro.props;
+
+const kindConfig = {
+  work: {
+    label: "作品紹介",
+    backHref: "/works/",
+    backLabel: "作品一覧へ戻る",
+    schemaType: "CreativeWork",
+  },
+  article: {
+    label: "技術記事",
+    backHref: "/blog/",
+    backLabel: "Blogへ戻る",
+    schemaType: "TechArticle",
+  },
+  blog: {
+    label: "ブログ",
+    backHref: "/blog/",
+    backLabel: "Blogへ戻る",
+    schemaType: "BlogPosting",
+  },
+} as const;
+
+const config = kindConfig[kind];
+const isArticle = kind !== "work";
+const structuredData = isArticle
+  ? {
+      "@context": "https://schema.org",
+      "@type": config.schemaType,
+      headline: title,
+      description,
+      datePublished: publishedAt.toISOString(),
+      dateModified: (updatedAt ?? publishedAt).toISOString(),
+      keywords: tags,
+      author: {
+        "@type": "Person",
+        name: "TkymHrt",
+        url: "https://github.com/TkymHrt",
+      },
+    }
+  : {
+      "@context": "https://schema.org",
+      "@type": config.schemaType,
+      name: title,
+      description,
+      dateCreated: publishedAt.toISOString(),
+      keywords: tags,
+      creator: {
+        "@type": "Person",
+        name: "TkymHrt",
+        url: "https://github.com/TkymHrt",
+      },
+    };
+---
+
+<Layout
+  title={`${title} | TkymHrt`}
+  {description}
+  type={isArticle ? "article" : "website"}
+  {publishedAt}
+  {updatedAt}
+  {structuredData}
+>
+  <article class="entry-page">
+    <header class="entry-header">
+      <div class="entry-header__inner">
+        <a class="back-link" href={config.backHref}>
+          <Icon
+            name="tabler:arrow-left"
+            size={16}
+            strokeWidth={1.8}
+            aria-hidden="true"
+          />
+          {config.backLabel}
+        </a>
+
+        <p class="entry-kind">
+          {config.label}
+          {draft && <span class="draft-badge">下書き</span>}
+        </p>
+        <h1>{title}</h1>
+        <p class="entry-lead">{description}</p>
+
+        <div class="entry-meta">
+          <time datetime={toDateTime(publishedAt)}>
+            公開 {formatDate(publishedAt)}
+          </time>
+          {
+            updatedAt && (
+              <time datetime={toDateTime(updatedAt)}>
+                更新 {formatDate(updatedAt)}
+              </time>
+            )
+          }
+        </div>
+
+        {
+          tags.length > 0 && (
+            <ul class="tag-list" aria-label="タグ">
+              {tags.map((tag) => (
+                <li>{tag}</li>
+              ))}
+            </ul>
+          )
+        }
+      </div>
+
+      {Astro.slots.has("hero") && <slot name="hero" />}
+    </header>
+
+    <div
+      class:list={[
+        "entry-content",
+        Astro.slots.has("aside") && "entry-content--with-aside",
+      ]}
+    >
+      <div class="entry-prose">
+        <slot />
+      </div>
+
+      {
+        Astro.slots.has("aside") && (
+          <aside class="entry-aside" aria-label="作品情報">
+            <slot name="aside" />
+          </aside>
+        )
+      }
+    </div>
+
+    {Astro.slots.has("after") && <slot name="after" />}
+
+    <footer class="entry-footer">
+      <a class="back-link" href={config.backHref}>
+        <Icon
+          name="tabler:arrow-left"
+          size={16}
+          strokeWidth={1.8}
+          aria-hidden="true"
+        />
+        {config.backLabel}
+      </a>
+    </footer>
+  </article>
+</Layout>

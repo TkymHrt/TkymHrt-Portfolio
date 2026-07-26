@@ -1,14 +1,42 @@
 export const profile = {
   name: "TkymHrt",
   role: "大学4年生 / フロントエンドエンジニア",
-  intro:
-    "フロントエンド開発が好きです。ユーザーにとって使いやすく、心地よい体験を届けるWebサイトやアプリをつくっています。",
+  intro: "フロントエンド開発が好きです！",
   facts: [
     { id: "study", label: "大学4年生" },
+    { id: "major", label: "機械工学分野" },
+    { id: "experience", label: "技大祭実行委員会" },
     { id: "interest", label: "フロントエンド開発が好き" },
     { id: "hobby", label: "カフェ巡り / 音楽 / 写真" },
   ],
 } as const;
+
+export const careerTimeline = [
+  {
+    period: "現在",
+    title: "大学4年生として制作を継続",
+    description:
+      "フロントエンド開発を軸に、作品づくりと技術記事・日々の記録を続けている。",
+  },
+  {
+    period: "大学3年",
+    title: "個人制作を重ねる",
+    description:
+      "学んだ技術を使って作品を制作し、Git / GitHubを使った開発にも取り組む。",
+  },
+  {
+    period: "大学2年",
+    title: "フロントエンドを中心に学ぶ",
+    description:
+      "TypeScript、React / Next.jsへ学習範囲を広げ、UI実装やデータの扱いを学ぶ。",
+  },
+  {
+    period: "大学入学後",
+    title: "Web制作に触れる",
+    description:
+      "HTML / CSSとJavaScriptから学び始め、Webページを形にする楽しさを知る。",
+  },
+] as const;
 
 export const skills = [
   { id: "html", label: "HTML / CSS" },
@@ -21,65 +49,30 @@ export const skills = [
   { id: "editor", label: "VS Code" },
 ] as const;
 
-export const works = [
-  {
-    id: "plant-log",
-    title: "Plant Log",
-    description: "観葉植物の記録アプリ",
-    tags: ["Next.js", "Prisma", "Tailwind CSS"],
-    url: "https://github.com/TkymHrt?tab=repositories",
-  },
-  {
-    id: "task-flow",
-    title: "TaskFlow",
-    description: "シンプルなタスク管理ツール",
-    tags: ["React", "Firebase", "Tailwind CSS"],
-    url: "https://github.com/TkymHrt?tab=repositories",
-  },
-  {
-    id: "photo-note",
-    title: "Photo Note",
-    description: "写真とメモを残せる日記アプリ",
-    tags: ["Next.js", "MySQL", "Tailwind CSS"],
-    url: "https://github.com/TkymHrt?tab=repositories",
-  },
-] as const;
-
-export const notes = [
-  {
-    title: "Next.jsでのApp Routerを使ってみた",
-    date: "2026-05-20",
-    displayDate: "2026.05.20",
-  },
-  {
-    title: "PrismaとtRPCで作るAPI設計",
-    date: "2026-05-10",
-    displayDate: "2026.05.10",
-  },
-  {
-    title: "おすすめVS Code拡張機能",
-    date: "2026-04-28",
-    displayDate: "2026.04.28",
-  },
-] as const;
-
 export const socialLinks = [
   {
     id: "x",
     label: "X",
-    shortLabel: "X",
     href: "https://x.com/ForHobbiesBY",
   },
   {
     id: "instagram",
     label: "Instagram",
-    shortLabel: "IG",
     href: "https://www.instagram.com/tkymhrt",
   },
   {
     id: "github",
     label: "GitHub",
-    shortLabel: "GH",
     href: "https://github.com/TkymHrt",
+  },
+  {
+    id: "zenn",
+    label: "Zenn",
+    href: "https://zenn.dev/",
+  },
+  {
+    id: "email",
+    label: "メール",
+    href: "mailto:contact@example.com",
   },
 ] as const;

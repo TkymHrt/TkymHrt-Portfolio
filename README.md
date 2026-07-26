@@ -1,13 +1,14 @@
 # TkymHrt Portfolio
 
-TkymHrt のスキル、制作実績、技術ノート、連絡先をまとめた1ページのポートフォリオサイトです。Astro の静的出力と Tailwind CSS v4 を使い、クライアント JavaScript はテーマ切替だけに限定しています。
+TkymHrt のプロフィール、スキル、制作実績、技術ノート、ブログ、連絡先をまとめたポートフォリオサイトです。トップページを入口に、プロフィールを詳しく紹介する About ページ、作品一覧、技術ノート・日々の記録を統合した Blog 一覧から各コンテンツへ移動できます。Astro の静的出力と Tailwind CSS v4 を使い、クライアント JavaScript はテーマ切替だけに限定しています。
 
 ## 技術スタック
 
 - Astro 6 / TypeScript
+- Astro Content Collections（Markdown / MDX）
 - Tailwind CSS 4（CSS-first configuration）
 - LINE Seed JP（Astro Fonts によるセルフホスト）
-- Lucide Astro
+- Tabler Icons / Simple Icons（Iconify JSON）
 - Playwright / axe-core
 - Lighthouse 13
 - Bun 1.3.14 / Node.js 22.12 以上
@@ -38,7 +39,22 @@ Lighthouse は Performance、Accessibility、Best Practices、SEO のすべて�
 
 ## コンテンツの編集
 
-プロフィール、スキル、作品、ノート、SNSリンクは [`src/data/portfolio.ts`](src/data/portfolio.ts) に集約しています。各セクションは `src/components/` 配下で独立した Astro コンポーネントとして管理しています。
+プロフィール、経歴、スキル、SNSリンクは [`src/data/portfolio.ts`](src/data/portfolio.ts) に集約し、トップページと About ページで共有しています。経歴は `careerTimeline` の期間・見出し・説明を編集すると、About ページのタイムラインへ反映されます。作品・技術記事・ブログは Astro Content Collections で管理し、Markdown を追加すると一覧と詳細ページが静的生成されます。技術記事と日々の記録は Blog にまとめ、タグを添えて公開日順で表示します。
+
+| 種類     | Markdown                         | 公開URL             |
+| -------- | -------------------------------- | ------------------- |
+| 作品     | `src/content/works/<slug>.md`    | `/works/<slug>/`    |
+| 技術記事 | `src/content/articles/<slug>.md` | `/articles/<slug>/` |
+| ブログ   | `src/content/blog/<slug>.md`     | `/blog/<slug>/`     |
+
+### 新しいページを追加する
+
+1. 各ディレクトリの `_template.md` を、先頭が `_` ではない名前へコピーします。
+2. frontmatter と本文を編集します。ファイル名がURLの `<slug>` になります。
+3. 執筆中は `draft: true`、公開時は `draft: false` にします。下書きは開発環境で確認でき、本番ビルドからは除外されます。
+4. `bun run check` で必須項目、日付、URL、画像パスを検証します。
+
+作品の `summary` はトップ用、`description` は一覧・検索結果用の説明です。`repositoryUrl`、`liveUrl`、ローカル画像の `cover` は任意で指定できます。`cover` を省略した場合は、`visual`（`plant` / `task` / `photo` / `code`）に応じた軽量なビジュアルを表示します。画像は Markdown からの相対パスで `src/content/works/` 配下へ置くと、Astro が最適化します。
 
 デザイン判断とトークンは [`PRODUCT.md`](PRODUCT.md) と [`DESIGN.md`](DESIGN.md) に記録しています。
 
@@ -55,6 +71,8 @@ LINE Seed JP © LY Corporation は SIL Open Font License 1.1 のもとで利用�
 1. このリポジトリを Vercel にImportします。
 2. Framework Preset は `Astro`、Build Command は `bun run build`、Output Directory は `dist` を指定します。
 3. デプロイを実行します。
+
+本番URLが決まったら、環境変数 `SITE_URL`（例: `https://example.com`）を設定してください。canonical URL と `og:url` が生成されます。
 
 ### Cloudflare Workers / Pages
 

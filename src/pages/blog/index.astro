@@ -1,0 +1,31 @@
+---
+import WritingIndex from "../../components/WritingIndex.astro";
+import { getWritingEntries } from "../../lib/content";
+import Layout from "../../layouts/Layout.astro";
+
+const entries = await getWritingEntries();
+---
+
+<Layout
+  title="Blog | TkymHrt"
+  description="技術の深掘りと日々の記録を、タグとともにひとつの時系列でまとめています。"
+  structuredData={null}
+>
+  <header class="subpage-hero subpage-hero--blog">
+    <div class="content-wrap">
+      <p class="subpage-context">つくったことも、考えたことも</p>
+      <h1>Blog</h1>
+      <p class="subpage-lead">
+        実装や設計の深掘りから、制作途中の迷いや小さな発見まで、そのときの言葉で残します。
+      </p>
+      <p class="subpage-count">{entries.length} posts</p>
+    </div>
+  </header>
+
+  <section class="listing-shell" aria-labelledby="blog-list-title">
+    <div class="content-wrap max-w-[58rem]">
+      <h2 id="blog-list-title" class="visually-hidden">Blog一覧</h2>
+      <WritingIndex {entries} />
+    </div>
+  </section>
+</Layout>

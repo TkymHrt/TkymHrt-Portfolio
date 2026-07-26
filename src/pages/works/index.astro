@@ -1,0 +1,41 @@
+---
+import WorkCard from "../../components/WorkCard.astro";
+import { getWorks } from "../../lib/content";
+import Layout from "../../layouts/Layout.astro";
+
+const works = await getWorks();
+---
+
+<Layout
+  title="Works | TkymHrt"
+  description="TkymHrtの制作実績を、背景・設計・実装上の工夫とあわせて紹介します。"
+  structuredData={null}
+>
+  <header class="subpage-hero">
+    <div class="content-wrap">
+      <p class="subpage-context">つくったものと、その理由</p>
+      <h1>Works</h1>
+      <p class="subpage-lead">
+        完成した画面だけでなく、何を解決し、どこを担当し、どう考えて実装したかまで紹介します。
+      </p>
+      <p class="subpage-count">{works.length} projects</p>
+    </div>
+  </header>
+
+  <section class="listing-shell" aria-labelledby="works-list-title">
+    <div class="content-wrap">
+      <h2 id="works-list-title" class="visually-hidden">作品一覧</h2>
+      {
+        works.length > 0 ? (
+          <div class="grid gap-5 sm:gap-6">
+            {works.map((work, index) => (
+              <WorkCard work={work} variant="row" eager={index === 0} />
+            ))}
+          </div>
+        ) : (
+          <p class="empty-message">公開中の作品はまだありません。</p>
+        )
+      }
+    </div>
+  </section>
+</Layout>
