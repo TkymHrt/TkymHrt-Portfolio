@@ -249,8 +249,77 @@ test("テーマ切替が永続化される", async ({ page }) => {
 
 test("動きを減らす設定を尊重する", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
+  const atmosphere = page.locator("[data-hero-atmosphere]");
+  const stillLeaves = atmosphere.locator(".still-leaves");
+
+  await expect(atmosphere).toHaveAttribute("data-motion-state", "reduced");
+  await expect(stillLeaves).toBeVisible();
+  await expect(page.locator("[data-hero-motion-toggle]")).toBeHidden();
+
+  const [washAnimationName, svgAnimationsPaused] = await Promise.all([
+    atmosphere
+      .locator(".sun-wash--left")
+      .evaluate((element) => getComputedStyle(element).animationName),
+    atmosphere.locator("[data-wind-field]").evaluate((element) => {
+      return (element as SVGSVGElement).animationsPaused();
+    }),
+  ]);
+
+  expect(washAnimationName).toBe("none");
+  expect(svgAnimationsPaused).toBe(true);
+
   const behavior = await page.evaluate(
     () => getComputedStyle(document.documentElement).scrollBehavior,
   );
   expect(behavior).toBe("auto");
+});
+
+test("ヒーロー背景の動きを停止して再開できる", async ({ page }) => {
+  const atmosphere = page.locator("[data-hero-atmosphere]");
+  const motionToggle = page.getByRole("button", {
+    name: "背景の動きを停止",
+  });
+
+  await expect(atmosphere).toHaveAttribute("data-motion-state", "running");
+  await expect(motionToggle).toHaveAttribute("aria-pressed", "false");
+  await motionToggle.click();
+
+  const playToggle = page.getByRole("button", {
+    name: "背景の動きを再生",
+  });
+  await expect(atmosphere).toHaveAttribute("data-motion-state", "paused");
+  await expect(playToggle).toHaveAttribute("aria-pressed", "true");
+  await expect
+    .poll(() => page.evaluate(() => localStorage.getItem("hero-motion")))
+    .toBe("paused");
+
+  const svgAnimationsPaused = await atmosphere
+    .locator("[data-wind-field]")
+    .evaluate((element) => (element as SVGSVGElement).animationsPaused());
+  expect(svgAnimationsPaused).toBe(true);
+
+  await page.reload();
+  await expect(atmosphere).toHaveAttribute("data-motion-state", "paused");
+  await page.getByRole("button", { name: "背景の動きを再生" }).click();
+  await expect(atmosphere).toHaveAttribute("data-motion-state", "running");
+});
+
+test("ヒーロー背景の動きは表示中だけ再生される", async ({ page }) => {
+  const hero = page.locator("#about");
+  const atmosphere = page.locator("[data-hero-atmosphere]");
+
+  await expect(hero).toBeInViewport();
+  await expect(atmosphere).toHaveAttribute("data-motion-state", "running");
+
+  await page.evaluate(() => {
+    document.documentElement.style.scrollBehavior = "auto";
+    window.scrollTo(0, document.documentElement.scrollHeight);
+  });
+
+  await expect(hero).not.toBeInViewport();
+  await expect(atmosphere).toHaveAttribute("data-motion-state", "paused");
+
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await expect(hero).toBeInViewport();
+  await expect(atmosphere).toHaveAttribute("data-motion-state", "running");
 });

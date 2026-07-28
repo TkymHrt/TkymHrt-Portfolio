@@ -1,0 +1,810 @@
+---
+import Icon from "./Icon.astro";
+
+const leaves = [
+  {
+    tone: "yellow",
+    path: "M -90 145 C 180 22 360 168 610 74 S 1010 132 1290 18",
+    duration: "29s",
+    begin: "-8s",
+    scale: 0.82,
+    flutterDuration: "3.7s",
+    flutterDelay: "-1.1s",
+  },
+  {
+    tone: "green",
+    path: "M 1290 205 C 1125 118 1050 246 930 218 S 755 92 635 132",
+    duration: "23s",
+    begin: "-17s",
+    scale: 0.68,
+    flutterDuration: "4.3s",
+    flutterDelay: "-2.4s",
+  },
+  {
+    tone: "orange",
+    path: "M 1285 412 C 1160 342 1112 452 1138 545 S 1075 672 945 731",
+    duration: "31s",
+    begin: "-11s",
+    scale: 0.76,
+    flutterDuration: "3.3s",
+    flutterDelay: "-0.7s",
+  },
+  {
+    tone: "green",
+    path: "M 335 735 C 250 630 110 685 28 565 S 58 344 -84 286",
+    duration: "37s",
+    begin: "-29s",
+    scale: 0.94,
+    flutterDuration: "4.9s",
+    flutterDelay: "-3.2s",
+  },
+  {
+    tone: "yellow",
+    path: "M -85 535 C 105 454 235 570 398 531 S 594 624 735 720",
+    duration: "27s",
+    begin: "-21s",
+    scale: 0.64,
+    flutterDuration: "3.9s",
+    flutterDelay: "-1.8s",
+  },
+  {
+    tone: "orange",
+    path: "M 810 735 C 884 641 790 574 838 493 S 1010 397 1058 310",
+    duration: "33s",
+    begin: "-5s",
+    scale: 0.58,
+    flutterDuration: "4.5s",
+    flutterDelay: "-2.7s",
+  },
+  {
+    tone: "green",
+    path: "M -80 250 C 68 206 112 104 236 82 S 402 96 510 -42",
+    duration: "25s",
+    begin: "-14s",
+    scale: 0.7,
+    flutterDuration: "3.5s",
+    flutterDelay: "-1.4s",
+  },
+] as const;
+---
+
+<div
+  class="hero-atmosphere"
+  aria-hidden="true"
+  data-hero-atmosphere
+  data-motion-state="running"
+>
+  <span class="sun-wash sun-wash--left"></span>
+  <span class="sun-wash sun-wash--disc"></span>
+  <span class="sun-wash sun-wash--right"></span>
+  <span class="sun-wash sun-wash--bottom"></span>
+
+  <svg
+    class="wind-field"
+    viewBox="0 0 1200 700"
+    preserveAspectRatio="none"
+    focusable="false"
+    data-wind-field
+  >
+    <g class="wind-line-group wind-line-group--left">
+      <path
+        class="wind-line"
+        d="M -60 116 C 82 228 160 228 218 117 C 275 9 343 42 400 -46"
+        pathLength="1"></path>
+      <path
+        class="wind-current"
+        d="M -60 116 C 82 228 160 228 218 117 C 275 9 343 42 400 -46"
+        pathLength="1"></path>
+    </g>
+
+    <g class="wind-line-group wind-line-group--right">
+      <path
+        class="wind-line"
+        d="M 1260 66 C 1094 148 1153 245 1089 317 C 1037 375 1176 421 1102 512 C 1043 584 928 607 1015 756"
+        pathLength="1"></path>
+      <path
+        class="wind-current wind-current--slow"
+        d="M 1260 66 C 1094 148 1153 245 1089 317 C 1037 375 1176 421 1102 512 C 1043 584 928 607 1015 756"
+        pathLength="1"></path>
+    </g>
+
+    <g class="wind-line-group wind-line-group--bottom">
+      <path
+        class="wind-line"
+        d="M 765 746 C 730 634 817 588 920 566 C 1042 539 1035 456 1122 407 C 1191 368 1237 381 1283 337"
+        pathLength="1"></path>
+      <path
+        class="wind-current wind-current--reverse"
+        d="M 765 746 C 730 634 817 588 920 566 C 1042 539 1035 456 1122 407 C 1191 368 1237 381 1283 337"
+        pathLength="1"></path>
+    </g>
+
+    <g class="leaf-stream">
+      {
+        leaves.map((leaf) => (
+          <g
+            class:list={["leaf-particle", `leaf-particle--${leaf.tone}`]}
+            style={`--leaf-scale: ${leaf.scale}; --flutter-duration: ${leaf.flutterDuration}; --flutter-delay: ${leaf.flutterDelay};`}
+          >
+            <g class="leaf-body">
+              <path
+                class="leaf-shape"
+                d="M -13 0 C -7 -9 5 -11 13 -3 C 7 6 -5 9 -13 0 Z"
+              />
+              <path class="leaf-vein" d="M -8 1 C -2 0 4 -2 9 -4" />
+            </g>
+            <animateMotion
+              path={leaf.path}
+              dur={leaf.duration}
+              begin={leaf.begin}
+              repeatCount="indefinite"
+              rotate="auto"
+              calcMode="paced"
+            />
+          </g>
+        ))
+      }
+    </g>
+
+    <g class="still-leaves">
+      <g
+        class="still-leaf still-leaf--yellow"
+        transform="translate(294 112) rotate(-22)"
+      >
+        <path d="M -13 0 C -7 -9 5 -11 13 -3 C 7 6 -5 9 -13 0 Z"></path>
+      </g>
+      <g
+        class="still-leaf still-leaf--green"
+        transform="translate(837 142) rotate(18)"
+      >
+        <path d="M -13 0 C -7 -9 5 -11 13 -3 C 7 6 -5 9 -13 0 Z"></path>
+      </g>
+      <g
+        class="still-leaf still-leaf--orange"
+        transform="translate(949 433) rotate(44)"
+      >
+        <path d="M -13 0 C -7 -9 5 -11 13 -3 C 7 6 -5 9 -13 0 Z"></path>
+      </g>
+      <g
+        class="still-leaf still-leaf--green"
+        transform="translate(353 613) rotate(31)"
+      >
+        <path d="M -13 0 C -7 -9 5 -11 13 -3 C 7 6 -5 9 -13 0 Z"></path>
+      </g>
+    </g>
+  </svg>
+
+  <span class="wind-ring wind-ring--left"></span>
+  <span class="wind-ring wind-ring--right"></span>
+  <span class="light-mote light-mote--one"></span>
+  <span class="light-mote light-mote--two"></span>
+  <span class="light-mote light-mote--three"></span>
+</div>
+
+<button
+  class="motion-toggle"
+  type="button"
+  aria-pressed="false"
+  title="背景の動きを停止"
+  data-hero-motion-toggle
+>
+  <Icon
+    name="tabler:player-pause"
+    data-motion-pause
+    size={17}
+    strokeWidth={1.9}
+    aria-hidden="true"
+  />
+  <Icon
+    name="tabler:player-play"
+    data-motion-play
+    size={17}
+    strokeWidth={1.9}
+    aria-hidden="true"
+  />
+  <span class="visually-hidden" data-motion-label>背景の動きを停止</span>
+</button>
+
+<style>
+  .hero-atmosphere {
+    --atmosphere-line: color-mix(
+      in oklch,
+      var(--color-primary) 43%,
+      transparent
+    );
+    --atmosphere-current: color-mix(
+      in oklch,
+      var(--color-accent) 76%,
+      var(--color-primary)
+    );
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    overflow: hidden;
+    contain: paint;
+    pointer-events: none;
+  }
+
+  .sun-wash,
+  .wind-ring,
+  .light-mote {
+    position: absolute;
+    display: block;
+  }
+
+  .sun-wash {
+    transform-origin: center;
+  }
+
+  .sun-wash--left {
+    top: 12%;
+    left: -10.5rem;
+    width: clamp(16rem, 27vw, 23rem);
+    aspect-ratio: 0.78;
+    border-radius: 42% 58% 54% 46% / 34% 42% 58% 66%;
+    background: color-mix(
+      in oklch,
+      var(--color-primary) 13%,
+      var(--color-surface-soft)
+    );
+    opacity: 0.92;
+    animation: wash-drift-left 31s ease-in-out -12s infinite alternate;
+  }
+
+  .sun-wash--disc {
+    top: 7%;
+    left: 27%;
+    width: clamp(4.5rem, 8vw, 6.8rem);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: color-mix(
+      in oklch,
+      var(--color-accent) 25%,
+      var(--color-surface-soft)
+    );
+    opacity: 0.72;
+    animation: wash-drift-disc 23s ease-in-out -6s infinite alternate;
+  }
+
+  .sun-wash--right {
+    right: -13rem;
+    bottom: -9rem;
+    width: clamp(24rem, 45vw, 38rem);
+    aspect-ratio: 1.03;
+    border-radius: 52% 48% 39% 61% / 40% 35% 65% 60%;
+    background: radial-gradient(
+      circle at 32% 28%,
+      color-mix(in oklch, var(--color-accent) 34%, var(--color-surface-soft)),
+      color-mix(in oklch, var(--color-primary) 8%, var(--color-surface-soft))
+        72%
+    );
+    opacity: 0.88;
+    animation: wash-drift-right 37s ease-in-out -18s infinite alternate;
+  }
+
+  .sun-wash--bottom {
+    bottom: -11rem;
+    left: -5rem;
+    width: clamp(16rem, 30vw, 26rem);
+    aspect-ratio: 1.2;
+    border-radius: 57% 43% 50% 50% / 48% 61% 39% 52%;
+    background: color-mix(
+      in oklch,
+      var(--color-primary) 8%,
+      var(--color-surface-soft)
+    );
+    opacity: 0.8;
+    animation: wash-drift-bottom 29s ease-in-out -9s infinite alternate;
+  }
+
+  .wind-field {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .wind-line-group {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .wind-line-group--left {
+    animation: line-drift-left 26s ease-in-out -8s infinite alternate;
+  }
+
+  .wind-line-group--right {
+    animation: line-drift-right 33s ease-in-out -19s infinite alternate;
+  }
+
+  .wind-line-group--bottom {
+    animation: line-drift-bottom 29s ease-in-out -13s infinite alternate;
+  }
+
+  .wind-line,
+  .wind-current {
+    fill: none;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .wind-line {
+    stroke: var(--atmosphere-line);
+    stroke-width: 1;
+    stroke-linecap: round;
+  }
+
+  .wind-current {
+    stroke: var(--atmosphere-current);
+    stroke-width: 1.25;
+    stroke-linecap: round;
+    stroke-dasharray: 0.075 0.925;
+    animation: current-flow 13s linear -4s infinite;
+  }
+
+  .wind-current--slow {
+    animation-duration: 17s;
+    animation-delay: -12s;
+  }
+
+  .wind-current--reverse {
+    animation-direction: reverse;
+    animation-duration: 15s;
+    animation-delay: -7s;
+  }
+
+  .leaf-body {
+    transform: scale(var(--leaf-scale)) rotate(-4deg);
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: leaf-flutter var(--flutter-duration) ease-in-out
+      var(--flutter-delay) infinite alternate;
+  }
+
+  .leaf-shape {
+    stroke: color-mix(in oklch, currentColor 34%, transparent);
+    stroke-width: 0.7;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .leaf-vein {
+    fill: none;
+    stroke: color-mix(in oklch, currentColor 50%, transparent);
+    stroke-width: 0.65;
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .leaf-particle--yellow,
+  .still-leaf--yellow {
+    color: color-mix(in oklch, var(--color-accent) 82%, var(--color-primary));
+    fill: currentColor;
+  }
+
+  .leaf-particle--green,
+  .still-leaf--green {
+    color: color-mix(in oklch, var(--color-primary) 17%, var(--color-leaf));
+    fill: currentColor;
+  }
+
+  .leaf-particle--orange,
+  .still-leaf--orange {
+    color: color-mix(in oklch, var(--color-primary) 76%, var(--color-accent));
+    fill: currentColor;
+  }
+
+  .still-leaves {
+    display: none;
+  }
+
+  .wind-ring {
+    z-index: 2;
+    border: 1px solid var(--atmosphere-line);
+    border-radius: 50%;
+  }
+
+  .wind-ring--left {
+    top: 47%;
+    left: 4%;
+    width: clamp(3.75rem, 6.5vw, 5.25rem);
+    aspect-ratio: 1;
+    animation: ring-drift-left 19s ease-in-out -7s infinite alternate;
+  }
+
+  .wind-ring--right {
+    right: 5%;
+    bottom: 10%;
+    width: clamp(3.25rem, 5.5vw, 4.5rem);
+    aspect-ratio: 1;
+    animation: ring-drift-right 23s ease-in-out -15s infinite alternate;
+  }
+
+  .light-mote {
+    z-index: 2;
+    width: 0.34rem;
+    height: 0.34rem;
+    border-radius: 50%;
+    background: color-mix(
+      in oklch,
+      var(--color-primary) 42%,
+      var(--color-surface)
+    );
+    opacity: 0.56;
+  }
+
+  .light-mote::after {
+    position: absolute;
+    width: 42%;
+    height: 42%;
+    border-radius: inherit;
+    background: var(--color-surface);
+    content: "";
+    translate: 0.68rem 0.48rem;
+  }
+
+  .light-mote--one {
+    top: 12%;
+    left: 47%;
+    animation: mote-drift 9s ease-in-out -3s infinite alternate;
+  }
+
+  .light-mote--two {
+    right: 14%;
+    bottom: 30%;
+    animation: mote-drift 13s ease-in-out -9s infinite alternate-reverse;
+  }
+
+  .light-mote--three {
+    bottom: 8%;
+    left: 54%;
+    animation: mote-drift 11s ease-in-out -6s infinite alternate;
+  }
+
+  .hero-atmosphere[data-motion-state="paused"]
+    :is(
+      .sun-wash,
+      .wind-line-group,
+      .wind-current,
+      .leaf-body,
+      .wind-ring,
+      .light-mote
+    ) {
+    animation-play-state: paused;
+  }
+
+  .motion-toggle {
+    position: absolute;
+    z-index: 3;
+    right: clamp(1rem, 2.5vw, 1.75rem);
+    bottom: 1.5rem;
+    display: grid;
+    width: 2.75rem;
+    height: 2.75rem;
+    cursor: pointer;
+    place-items: center;
+    border: 1px solid
+      color-mix(in oklch, var(--color-primary) 30%, var(--color-line));
+    border-radius: 50%;
+    background: color-mix(
+      in oklch,
+      var(--color-surface) 86%,
+      var(--color-surface-soft)
+    );
+    color: var(--color-primary-strong);
+    transition:
+      transform 260ms var(--ease-out-expo),
+      border-color 160ms ease-out,
+      background-color 160ms ease-out;
+  }
+
+  .motion-toggle:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-primary);
+    background: color-mix(
+      in oklch,
+      var(--color-accent) 24%,
+      var(--color-surface)
+    );
+  }
+
+  [data-motion-play] {
+    display: none;
+  }
+
+  .motion-toggle[aria-pressed="true"] [data-motion-pause] {
+    display: none;
+  }
+
+  .motion-toggle[aria-pressed="true"] [data-motion-play] {
+    display: block;
+  }
+
+  @keyframes wash-drift-left {
+    from {
+      transform: translate3d(-1.5%, -1%, 0) rotate(-7deg) scale(0.98);
+    }
+
+    to {
+      transform: translate3d(3%, 2%, 0) rotate(-2deg) scale(1.04);
+    }
+  }
+
+  @keyframes wash-drift-disc {
+    from {
+      transform: translate3d(-0.35rem, 0.2rem, 0) scale(0.96);
+    }
+
+    to {
+      transform: translate3d(0.55rem, -0.35rem, 0) scale(1.05);
+    }
+  }
+
+  @keyframes wash-drift-right {
+    from {
+      transform: translate3d(1%, 2%, 0) rotate(8deg) scale(0.98);
+    }
+
+    to {
+      transform: translate3d(-3%, -1.5%, 0) rotate(13deg) scale(1.035);
+    }
+  }
+
+  @keyframes wash-drift-bottom {
+    from {
+      transform: translate3d(-2%, 2%, 0) rotate(-12deg) scale(0.98);
+    }
+
+    to {
+      transform: translate3d(3%, -2%, 0) rotate(-7deg) scale(1.04);
+    }
+  }
+
+  @keyframes line-drift-left {
+    from {
+      transform: translate3d(-0.45rem, 0.15rem, 0) rotate(-0.45deg);
+    }
+
+    to {
+      transform: translate3d(0.55rem, -0.35rem, 0) rotate(0.45deg);
+    }
+  }
+
+  @keyframes line-drift-right {
+    from {
+      transform: translate3d(0.4rem, -0.35rem, 0) rotate(0.35deg);
+    }
+
+    to {
+      transform: translate3d(-0.6rem, 0.45rem, 0) rotate(-0.5deg);
+    }
+  }
+
+  @keyframes line-drift-bottom {
+    from {
+      transform: translate3d(-0.25rem, 0.4rem, 0) rotate(-0.3deg);
+    }
+
+    to {
+      transform: translate3d(0.5rem, -0.4rem, 0) rotate(0.4deg);
+    }
+  }
+
+  @keyframes current-flow {
+    from {
+      stroke-dashoffset: 1;
+    }
+
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes leaf-flutter {
+    from {
+      transform: scale(var(--leaf-scale)) rotate(-7deg) skewX(-2deg);
+    }
+
+    to {
+      transform: scale(var(--leaf-scale)) rotate(7deg) skewX(2deg);
+    }
+  }
+
+  @keyframes ring-drift-left {
+    from {
+      transform: translate3d(-0.25rem, -0.15rem, 0) rotate(-3deg) scale(0.96);
+    }
+
+    to {
+      transform: translate3d(0.45rem, 0.35rem, 0) rotate(4deg) scale(1.04);
+    }
+  }
+
+  @keyframes ring-drift-right {
+    from {
+      transform: translate3d(0.3rem, -0.25rem, 0) scale(1.03);
+    }
+
+    to {
+      transform: translate3d(-0.4rem, 0.4rem, 0) scale(0.95);
+    }
+  }
+
+  @keyframes mote-drift {
+    from {
+      opacity: 0.28;
+      transform: translate3d(-0.1rem, -0.25rem, 0) scale(0.82);
+    }
+
+    to {
+      opacity: 0.66;
+      transform: translate3d(0.3rem, 0.2rem, 0) scale(1);
+    }
+  }
+
+  @media (max-width: 47.999rem) {
+    .sun-wash--left {
+      top: 20%;
+      left: -11rem;
+      width: 18rem;
+    }
+
+    .sun-wash--disc {
+      top: 5%;
+      left: 71%;
+      width: 4.4rem;
+    }
+
+    .sun-wash--right {
+      right: -16rem;
+      bottom: -5rem;
+      width: 28rem;
+    }
+
+    .sun-wash--bottom,
+    .wind-line-group--bottom,
+    .wind-ring--right,
+    .light-mote--three,
+    .leaf-particle:nth-child(2),
+    .leaf-particle:nth-child(4),
+    .leaf-particle:nth-child(6) {
+      display: none;
+    }
+
+    .wind-ring--left {
+      top: 42%;
+      left: -2.25rem;
+    }
+
+    .light-mote--one {
+      top: 11%;
+      left: 48%;
+    }
+
+    .light-mote--two {
+      right: 7%;
+      bottom: 24%;
+    }
+
+    .motion-toggle {
+      right: 1rem;
+      bottom: 1.25rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-atmosphere
+      :is(
+        .sun-wash,
+        .wind-line-group,
+        .wind-current,
+        .leaf-body,
+        .wind-ring,
+        .light-mote
+      ) {
+      animation: none;
+    }
+
+    .leaf-stream {
+      display: none;
+    }
+
+    .still-leaves {
+      display: block;
+    }
+
+    .motion-toggle {
+      display: none;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .hero-atmosphere,
+    .motion-toggle {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const atmosphere = document.querySelector<HTMLElement>(
+    "[data-hero-atmosphere]",
+  );
+  const motionToggle = document.querySelector<HTMLButtonElement>(
+    "[data-hero-motion-toggle]",
+  );
+
+  if (atmosphere && motionToggle) {
+    const hero = atmosphere.closest<HTMLElement>(".hero-section");
+    const windField =
+      atmosphere.querySelector<SVGSVGElement>("[data-wind-field]");
+    const motionLabel = motionToggle.querySelector<HTMLElement>(
+      "[data-motion-label]",
+    );
+    const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
+    const storageKey = "hero-motion";
+    let isVisible = true;
+    let isUserPaused = false;
+
+    try {
+      isUserPaused = localStorage.getItem(storageKey) === "paused";
+    } catch {
+      /* Motion control still works when storage is unavailable. */
+    }
+
+    const updateToggle = () => {
+      const label = isUserPaused ? "背景の動きを再生" : "背景の動きを停止";
+      motionToggle.setAttribute("aria-pressed", String(isUserPaused));
+      motionToggle.title = label;
+      if (motionLabel) motionLabel.textContent = label;
+    };
+
+    const syncMotionState = () => {
+      const shouldRun =
+        !reduceMotion.matches && !isUserPaused && !document.hidden && isVisible;
+
+      atmosphere.dataset.motionState = reduceMotion.matches
+        ? "reduced"
+        : shouldRun
+          ? "running"
+          : "paused";
+
+      if (shouldRun) {
+        windField?.unpauseAnimations();
+      } else {
+        windField?.pauseAnimations();
+      }
+    };
+
+    const observer = hero
+      ? new IntersectionObserver(
+          ([entry]) => {
+            isVisible = entry?.isIntersecting ?? true;
+            syncMotionState();
+          },
+          { rootMargin: "72px 0px" },
+        )
+      : undefined;
+
+    if (hero) observer?.observe(hero);
+
+    motionToggle.addEventListener("click", () => {
+      isUserPaused = !isUserPaused;
+      try {
+        localStorage.setItem(storageKey, isUserPaused ? "paused" : "running");
+      } catch {
+        /* Motion control still works when storage is unavailable. */
+      }
+      updateToggle();
+      syncMotionState();
+    });
+
+    reduceMotion.addEventListener("change", syncMotionState);
+    document.addEventListener("visibilitychange", syncMotionState, {
+      passive: true,
+    });
+
+    updateToggle();
+    syncMotionState();
+  }
+</script>

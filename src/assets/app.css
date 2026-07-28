@@ -7,6 +7,7 @@
   --color-primary: oklch(0.68 0.205 43);
   --color-primary-strong: oklch(0.52 0.18 38);
   --color-accent: oklch(0.86 0.15 86);
+  --color-leaf: oklch(0.67 0.12 128);
   --color-canvas: oklch(0.985 0.008 75);
   --color-surface: oklch(1 0 0);
   --color-surface-soft: oklch(0.965 0.025 78);
@@ -37,6 +38,7 @@
   --color-primary: oklch(0.76 0.17 58);
   --color-primary-strong: oklch(0.84 0.13 70);
   --color-accent: oklch(0.84 0.13 86);
+  --color-leaf: oklch(0.74 0.11 125);
   --color-canvas: oklch(0.17 0.018 55);
   --color-surface: oklch(0.21 0.018 55);
   --color-surface-soft: oklch(0.26 0.025 60);

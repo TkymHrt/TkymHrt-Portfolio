@@ -5,6 +5,7 @@ colors:
   primary: "oklch(0.68 0.205 43)"
   primary-strong: "oklch(0.52 0.18 38)"
   accent: "oklch(0.86 0.15 86)"
+  leaf: "oklch(0.67 0.12 128)"
   canvas: "oklch(0.985 0.008 75)"
   surface: "oklch(1 0 0)"
   surface-soft: "oklch(0.965 0.025 78)"
@@ -110,6 +111,7 @@ components:
 ### Secondary
 
 - **Sunlit Yellow** (`accent`): 星、アイコンの背景、イラストの焦点に使い、操作の主役にはしない。
+- **Desk Plant** (`leaf`): 植物や葉の小さな装飾だけに使い、温色中心の画面へ自然な呼吸を加える。
 
 ### Neutral
 
