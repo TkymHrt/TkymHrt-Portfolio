@@ -249,8 +249,45 @@ test("テーマ切替が永続化される", async ({ page }) => {
 
 test("動きを減らす設定を尊重する", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
+  const atmosphere = page.locator("[data-hero-atmosphere]");
+  const leaf = atmosphere.locator(".paper-leaf--one");
+  const windLine = atmosphere.locator(".wind-line--left");
+
+  await expect(atmosphere).toHaveAttribute("data-motion-state", "reduced");
+  await expect(leaf).toBeVisible();
+  await expect(windLine).toBeVisible();
+
+  const [leafAnimationName, windLineAnimationName] = await Promise.all([
+    leaf.evaluate((element) => getComputedStyle(element).animationName),
+    windLine.evaluate((element) => getComputedStyle(element).animationName),
+  ]);
+
+  expect(leafAnimationName).toBe("none");
+  expect(windLineAnimationName).toBe("none");
+
   const behavior = await page.evaluate(
     () => getComputedStyle(document.documentElement).scrollBehavior,
   );
   expect(behavior).toBe("auto");
+});
+
+test("ヒーロー背景の動きは表示中だけ再生される", async ({ page }) => {
+  const hero = page.locator("#about");
+  const atmosphere = page.locator("[data-hero-atmosphere]");
+
+  await expect(hero).toBeInViewport();
+  await expect(atmosphere).toHaveAttribute("data-motion-state", "running");
+
+  await page.evaluate(() => {
+    document.documentElement.style.scrollBehavior = "auto";
+    window.scrollTo(0, document.documentElement.scrollHeight);
+  });
+
+  await expect(hero).not.toBeInViewport();
+  await expect(atmosphere).toHaveAttribute("data-motion-state", "paused");
+
+  await page.evaluate(() => window.scrollTo(0, 0));
+
+  await expect(hero).toBeInViewport();
+  await expect(atmosphere).toHaveAttribute("data-motion-state", "running");
 });

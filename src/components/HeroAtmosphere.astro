@@ -1,0 +1,646 @@
+<div
+  class="hero-atmosphere"
+  aria-hidden="true"
+  data-hero-atmosphere
+  data-motion-state="static"
+>
+  <span class="sun-wash sun-wash--left"></span>
+  <span class="sun-wash sun-wash--disc"></span>
+  <span class="sun-wash sun-wash--right"></span>
+  <span class="sun-wash sun-wash--bottom"></span>
+
+  <svg
+    class="wind-lines"
+    viewBox="0 0 1200 700"
+    preserveAspectRatio="none"
+    focusable="false"
+  >
+    <path
+      class="wind-line wind-line--left"
+      d="M 288 -30 C 238 67 170 78 127 157 C 91 222 59 282 -42 244"
+      pathLength="1"
+      vector-effect="non-scaling-stroke"></path>
+    <path
+      class="wind-line wind-line--right"
+      d="M 1245 66 C 1129 139 1145 230 1098 299 C 1064 350 1163 397 1108 477 C 1056 553 990 586 1037 730"
+      pathLength="1"
+      vector-effect="non-scaling-stroke"></path>
+  </svg>
+
+  <span class="wind-ring wind-ring--left"></span>
+  <span class="wind-ring wind-ring--right"></span>
+
+  <span class="paper-leaf paper-leaf--one"></span>
+  <span class="paper-leaf paper-leaf--two"></span>
+  <span class="paper-leaf paper-leaf--three"></span>
+  <span class="paper-leaf paper-leaf--four"></span>
+  <span class="paper-leaf paper-leaf--five"></span>
+  <span class="paper-leaf paper-leaf--six"></span>
+  <span class="paper-leaf paper-leaf--seven"></span>
+  <span class="paper-leaf paper-leaf--eight"></span>
+
+  <span class="light-mote light-mote--one"></span>
+  <span class="light-mote light-mote--two"></span>
+  <span class="light-mote light-mote--three"></span>
+</div>
+
+<style>
+  .hero-atmosphere {
+    --atmosphere-line: color-mix(
+      in oklch,
+      var(--color-primary) 42%,
+      transparent
+    );
+    position: absolute;
+    z-index: 0;
+    top: -4.5rem;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    contain: paint;
+    pointer-events: none;
+  }
+
+  .sun-wash,
+  .sun-wash::before,
+  .wind-ring,
+  .paper-leaf,
+  .light-mote {
+    position: absolute;
+    display: block;
+  }
+
+  .sun-wash {
+    --wash-rotation: 0deg;
+    opacity: var(--wash-opacity);
+    transform: rotate(var(--wash-rotation));
+    transform-origin: center;
+    animation: sun-wash-arrive 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .sun-wash::before {
+    inset: 0;
+    border-radius: inherit;
+    background: var(--wash-color);
+    content: "";
+    transform-origin: center;
+    animation: sun-wash-breathe var(--wash-duration) ease-in-out
+      var(--wash-delay) infinite alternate;
+  }
+
+  .sun-wash--left {
+    --wash-color: color-mix(
+      in oklch,
+      var(--color-primary) 14%,
+      var(--color-surface-soft)
+    );
+    --wash-opacity: 0.92;
+    --wash-duration: 24s;
+    --wash-delay: -8s;
+    top: 17%;
+    left: -8.5rem;
+    width: clamp(15rem, 24vw, 21rem);
+    aspect-ratio: 0.78;
+    border-radius: 42% 58% 56% 44% / 35% 42% 58% 65%;
+    --wash-rotation: -7deg;
+  }
+
+  .sun-wash--disc {
+    --wash-color: color-mix(
+      in oklch,
+      var(--color-accent) 24%,
+      var(--color-surface-soft)
+    );
+    --wash-opacity: 0.72;
+    --wash-duration: 20s;
+    --wash-delay: -4s;
+    top: 11%;
+    left: 22%;
+    width: clamp(4.5rem, 7vw, 6.5rem);
+    aspect-ratio: 1;
+    border-radius: 50%;
+  }
+
+  .sun-wash--right {
+    --wash-color: radial-gradient(
+      circle at 34% 28%,
+      color-mix(in oklch, var(--color-accent) 31%, var(--color-surface-soft)),
+      color-mix(in oklch, var(--color-primary) 8%, var(--color-surface-soft))
+        68%
+    );
+    --wash-opacity: 0.9;
+    --wash-duration: 28s;
+    --wash-delay: -13s;
+    right: -10rem;
+    bottom: -7rem;
+    width: clamp(22rem, 39vw, 36rem);
+    aspect-ratio: 1.02;
+    border-radius: 52% 48% 39% 61% / 40% 35% 65% 60%;
+    --wash-rotation: 10deg;
+  }
+
+  .sun-wash--bottom {
+    --wash-color: color-mix(
+      in oklch,
+      var(--color-primary) 8%,
+      var(--color-surface-soft)
+    );
+    --wash-opacity: 0.78;
+    --wash-duration: 26s;
+    --wash-delay: -17s;
+    bottom: -11rem;
+    left: -4rem;
+    width: clamp(15rem, 28vw, 25rem);
+    aspect-ratio: 1.2;
+    border-radius: 57% 43% 50% 50% / 48% 61% 39% 52%;
+    --wash-rotation: -12deg;
+  }
+
+  .wind-lines {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .wind-line {
+    fill: none;
+    stroke: var(--atmosphere-line);
+    stroke-width: 1;
+    stroke-linecap: round;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 0;
+    animation: wind-line-arrive 820ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .wind-line--right {
+    animation-delay: 90ms;
+  }
+
+  .wind-ring {
+    border: 1px solid var(--atmosphere-line);
+    border-radius: 50%;
+    animation: wind-ring-drift 17s ease-in-out infinite alternate;
+  }
+
+  .wind-ring--left {
+    top: 50%;
+    left: 3.25%;
+    width: clamp(3.5rem, 6vw, 5rem);
+    aspect-ratio: 1;
+    animation-delay: -5s;
+  }
+
+  .wind-ring--right {
+    right: 5.5%;
+    bottom: 8%;
+    width: clamp(3rem, 5vw, 4.25rem);
+    aspect-ratio: 1;
+    animation-delay: -11s;
+  }
+
+  .paper-leaf {
+    --leaf-color: var(--color-accent);
+    --leaf-rotation: 0deg;
+    --leaf-entry-x: -0.85rem;
+    --leaf-entry-y: 0.55rem;
+    --leaf-entry-rotation: -7deg;
+    --leaf-drift-x: 0.45rem;
+    --leaf-drift-y: -0.35rem;
+    --leaf-drift-rotation: 5deg;
+    --leaf-duration: 14s;
+    --leaf-delay: 0ms;
+    width: clamp(0.72rem, 1.35vw, 1rem);
+    aspect-ratio: 1.75;
+    border-radius: 100% 0 100% 0;
+    background: var(--leaf-color);
+    opacity: 0.78;
+    transform: rotate(var(--leaf-rotation));
+    transform-origin: 78% 78%;
+    animation:
+      paper-leaf-arrive 760ms cubic-bezier(0.16, 1, 0.3, 1) var(--leaf-delay)
+        both,
+      paper-leaf-drift var(--leaf-duration) ease-in-out
+        calc(820ms + var(--leaf-delay)) infinite alternate;
+  }
+
+  .paper-leaf--one {
+    --leaf-color: color-mix(
+      in oklch,
+      var(--color-accent) 86%,
+      var(--color-primary)
+    );
+    --leaf-rotation: -25deg;
+    --leaf-delay: 40ms;
+    top: 8%;
+    left: 32%;
+  }
+
+  .paper-leaf--two {
+    --leaf-color: color-mix(
+      in oklch,
+      var(--color-primary) 20%,
+      oklch(0.68 0.12 125)
+    );
+    --leaf-rotation: 18deg;
+    --leaf-entry-x: 0.9rem;
+    --leaf-entry-y: -0.25rem;
+    --leaf-entry-rotation: 7deg;
+    --leaf-drift-x: -0.35rem;
+    --leaf-drift-y: 0.5rem;
+    --leaf-drift-rotation: -4deg;
+    --leaf-duration: 17s;
+    --leaf-delay: 100ms;
+    top: 31%;
+    left: 11%;
+  }
+
+  .paper-leaf--three {
+    --leaf-color: color-mix(
+      in oklch,
+      var(--color-primary) 20%,
+      oklch(0.68 0.12 125)
+    );
+    --leaf-rotation: -12deg;
+    --leaf-entry-x: -0.65rem;
+    --leaf-entry-y: -0.5rem;
+    --leaf-drift-x: 0.45rem;
+    --leaf-drift-y: 0.4rem;
+    --leaf-drift-rotation: 6deg;
+    --leaf-duration: 15s;
+    --leaf-delay: 160ms;
+    top: 23%;
+    right: 18%;
+  }
+
+  .paper-leaf--four {
+    --leaf-rotation: 35deg;
+    --leaf-entry-x: 0.7rem;
+    --leaf-entry-y: 0.5rem;
+    --leaf-drift-x: -0.5rem;
+    --leaf-drift-y: -0.35rem;
+    --leaf-drift-rotation: -6deg;
+    --leaf-duration: 18s;
+    --leaf-delay: 80ms;
+    top: 12%;
+    right: 10%;
+  }
+
+  .paper-leaf--five {
+    --leaf-color: color-mix(
+      in oklch,
+      var(--color-primary) 74%,
+      var(--color-accent)
+    );
+    --leaf-rotation: 52deg;
+    --leaf-entry-x: -0.75rem;
+    --leaf-entry-y: 0.35rem;
+    --leaf-drift-x: 0.5rem;
+    --leaf-drift-y: 0.45rem;
+    --leaf-drift-rotation: 5deg;
+    --leaf-duration: 13s;
+    --leaf-delay: 190ms;
+    top: 49%;
+    right: 23%;
+  }
+
+  .paper-leaf--six {
+    --leaf-rotation: -38deg;
+    --leaf-entry-x: 0.8rem;
+    --leaf-entry-y: -0.45rem;
+    --leaf-drift-x: -0.45rem;
+    --leaf-drift-y: 0.35rem;
+    --leaf-drift-rotation: -5deg;
+    --leaf-duration: 16s;
+    --leaf-delay: 130ms;
+    top: 62%;
+    left: 13%;
+  }
+
+  .paper-leaf--seven {
+    --leaf-color: color-mix(
+      in oklch,
+      var(--color-primary) 18%,
+      oklch(0.66 0.11 128)
+    );
+    --leaf-rotation: 31deg;
+    --leaf-entry-x: -0.55rem;
+    --leaf-entry-y: -0.65rem;
+    --leaf-drift-x: 0.35rem;
+    --leaf-drift-y: 0.5rem;
+    --leaf-drift-rotation: 4deg;
+    --leaf-duration: 19s;
+    --leaf-delay: 220ms;
+    bottom: 10%;
+    left: 24%;
+  }
+
+  .paper-leaf--eight {
+    --leaf-color: color-mix(
+      in oklch,
+      var(--color-primary) 72%,
+      var(--color-accent)
+    );
+    --leaf-rotation: 42deg;
+    --leaf-entry-x: 0.6rem;
+    --leaf-entry-y: 0.55rem;
+    --leaf-drift-x: -0.4rem;
+    --leaf-drift-y: -0.45rem;
+    --leaf-drift-rotation: -5deg;
+    --leaf-duration: 14s;
+    --leaf-delay: 170ms;
+    right: 34%;
+    bottom: 7%;
+  }
+
+  .light-mote {
+    --mote-size: 0.3rem;
+    width: var(--mote-size);
+    height: var(--mote-size);
+    border-radius: 50%;
+    background: color-mix(
+      in oklch,
+      var(--color-primary) 42%,
+      var(--color-surface)
+    );
+    opacity: 0.58;
+    animation: light-mote-breathe 7s ease-in-out infinite alternate;
+  }
+
+  .light-mote::after {
+    position: absolute;
+    width: 42%;
+    height: 42%;
+    border-radius: inherit;
+    background: var(--color-surface);
+    content: "";
+    translate: 0.6rem 0.45rem;
+  }
+
+  .light-mote--one {
+    top: 15%;
+    left: 45%;
+    animation-delay: -2s;
+  }
+
+  .light-mote--two {
+    right: 13%;
+    bottom: 29%;
+    animation-delay: -5s;
+  }
+
+  .light-mote--three {
+    bottom: 8%;
+    left: 52%;
+    animation-delay: -3.5s;
+  }
+
+  .hero-atmosphere[data-motion-state="paused"]
+    :is(
+      .sun-wash,
+      .sun-wash::before,
+      .wind-line,
+      .wind-ring,
+      .paper-leaf,
+      .light-mote
+    ) {
+    animation-play-state: paused;
+  }
+
+  .hero-atmosphere[data-motion-state="static"]
+    :is(
+      .sun-wash,
+      .sun-wash::before,
+      .wind-line,
+      .wind-ring,
+      .paper-leaf,
+      .light-mote
+    ) {
+    animation: none;
+  }
+
+  @keyframes sun-wash-arrive {
+    from {
+      opacity: 0.35;
+      transform: rotate(var(--wash-rotation)) scale(0.985);
+    }
+
+    to {
+      opacity: var(--wash-opacity);
+      transform: rotate(var(--wash-rotation)) scale(1);
+    }
+  }
+
+  @keyframes sun-wash-breathe {
+    from {
+      transform: translate3d(-1.5%, -1%, 0) rotate(-1deg) scale(0.985);
+    }
+
+    to {
+      transform: translate3d(2%, 1.5%, 0) rotate(2.5deg) scale(1.035);
+    }
+  }
+
+  @keyframes wind-line-arrive {
+    from {
+      opacity: 0.25;
+      stroke-dashoffset: 1;
+    }
+
+    to {
+      opacity: 1;
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes wind-ring-drift {
+    from {
+      transform: translate3d(-0.2rem, -0.15rem, 0) rotate(-3deg);
+    }
+
+    to {
+      transform: translate3d(0.3rem, 0.25rem, 0) rotate(4deg);
+    }
+  }
+
+  @keyframes paper-leaf-arrive {
+    from {
+      opacity: 0;
+      transform: translate3d(var(--leaf-entry-x), var(--leaf-entry-y), 0)
+        rotate(calc(var(--leaf-rotation) + var(--leaf-entry-rotation)));
+    }
+
+    to {
+      opacity: 0.78;
+      transform: translate3d(0, 0, 0) rotate(var(--leaf-rotation));
+    }
+  }
+
+  @keyframes paper-leaf-drift {
+    from {
+      transform: translate3d(0, 0, 0) rotate(var(--leaf-rotation));
+    }
+
+    to {
+      transform: translate3d(var(--leaf-drift-x), var(--leaf-drift-y), 0)
+        rotate(calc(var(--leaf-rotation) + var(--leaf-drift-rotation)));
+    }
+  }
+
+  @keyframes light-mote-breathe {
+    from {
+      opacity: 0.28;
+      transform: translate3d(0, -0.2rem, 0) scale(0.85);
+    }
+
+    to {
+      opacity: 0.68;
+      transform: translate3d(0.2rem, 0.15rem, 0) scale(1);
+    }
+  }
+
+  @media (max-width: 47.999rem) {
+    .hero-atmosphere {
+      top: -7rem;
+    }
+
+    .sun-wash--left {
+      top: 23%;
+      left: -10rem;
+    }
+
+    .sun-wash--disc {
+      top: 7%;
+      left: 72%;
+      width: 4.25rem;
+    }
+
+    .sun-wash--right {
+      right: -15rem;
+      bottom: -5rem;
+      width: 25rem;
+    }
+
+    .sun-wash--bottom,
+    .wind-line--right,
+    .wind-ring--right,
+    .paper-leaf--three,
+    .paper-leaf--five,
+    .paper-leaf--six,
+    .paper-leaf--seven,
+    .light-mote--three {
+      display: none;
+    }
+
+    .paper-leaf--one {
+      top: 7%;
+      left: 66%;
+    }
+
+    .paper-leaf--two {
+      top: 28%;
+      left: 4%;
+    }
+
+    .paper-leaf--four {
+      top: 18%;
+      right: 5%;
+    }
+
+    .paper-leaf--eight {
+      right: 7%;
+      bottom: 9%;
+    }
+
+    .wind-ring--left {
+      top: 42%;
+      left: -2.5rem;
+    }
+
+    .light-mote--one {
+      top: 13%;
+      left: 48%;
+    }
+
+    .light-mote--two {
+      right: 5%;
+      bottom: 24%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-atmosphere
+      :is(
+        .sun-wash,
+        .sun-wash::before,
+        .wind-line,
+        .wind-ring,
+        .paper-leaf,
+        .light-mote
+      ) {
+      animation: none;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .hero-atmosphere {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const atmosphere = document.querySelector<HTMLElement>(
+    "[data-hero-atmosphere]",
+  );
+
+  if (atmosphere) {
+    const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
+    const hero = atmosphere.closest<HTMLElement>(".hero-section");
+    let isVisible = true;
+    let observer: IntersectionObserver | undefined;
+
+    const syncMotionState = () => {
+      atmosphere.dataset.motionState = reduceMotion.matches
+        ? "reduced"
+        : document.hidden || !isVisible
+          ? "paused"
+          : "running";
+    };
+
+    const startObserving = () => {
+      if (!hero || observer) return;
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          isVisible = entry?.isIntersecting ?? true;
+          syncMotionState();
+        },
+        { rootMargin: "96px 0px" },
+      );
+      observer.observe(hero);
+    };
+
+    const stopObserving = () => {
+      observer?.disconnect();
+      observer = undefined;
+      isVisible = true;
+    };
+
+    const syncMotionPreference = () => {
+      if (reduceMotion.matches) {
+        stopObserving();
+      } else {
+        startObserving();
+      }
+      syncMotionState();
+    };
+
+    reduceMotion.addEventListener("change", syncMotionPreference);
+    document.addEventListener("visibilitychange", syncMotionState, {
+      passive: true,
+    });
+    syncMotionPreference();
+  }
+</script>
