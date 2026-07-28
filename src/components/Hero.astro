@@ -2,7 +2,6 @@
 import { Image } from "astro:assets";
 import profileAvatar from "../assets/profile-illustration.png";
 import { profile } from "../data/portfolio";
-import HeroAtmosphere from "./HeroAtmosphere.astro";
 import Icon from "./Icon.astro";
 import SocialLinks from "./SocialLinks.astro";
 ---
@@ -12,8 +11,6 @@ import SocialLinks from "./SocialLinks.astro";
   class="hero-section scroll-mt-20"
   aria-labelledby="hero-title"
 >
-  <HeroAtmosphere />
-
   <div class="hero-content content-wrap">
     <div class="avatar" aria-hidden="true">
       <Image
@@ -66,11 +63,36 @@ import SocialLinks from "./SocialLinks.astro";
     display: flex;
     min-height: clamp(32rem, 60svh, 38rem);
     align-items: stretch;
-    isolation: isolate;
-    overflow: visible;
+    overflow: hidden;
     padding: clamp(2.75rem, 6vw, 4.75rem) clamp(1.25rem, 4vw, 3rem)
       clamp(4.5rem, 7vw, 5.25rem);
     background: var(--color-surface-soft);
+  }
+
+  .hero-section::before,
+  .hero-section::after {
+    position: absolute;
+    display: block;
+    border: 1px solid
+      color-mix(in oklch, var(--color-primary) 24%, var(--color-line));
+    border-radius: 9999px;
+    content: "";
+    pointer-events: none;
+  }
+
+  .hero-section::before {
+    top: 16%;
+    left: -4.5rem;
+    width: 8.5rem;
+    height: 8.5rem;
+  }
+
+  .hero-section::after {
+    right: -2rem;
+    bottom: 18%;
+    width: 5rem;
+    height: 5rem;
+    background: color-mix(in oklch, var(--color-accent) 18%, transparent);
   }
 
   .hero-content {
@@ -199,7 +221,6 @@ import SocialLinks from "./SocialLinks.astro";
 
   .scroll-cue {
     position: absolute;
-    z-index: 1;
     bottom: 1.5rem;
     left: 50%;
     display: grid;
@@ -239,6 +260,16 @@ import SocialLinks from "./SocialLinks.astro";
       min-height: calc(100svh - 7rem);
       padding-top: clamp(2.5rem, 8svh, 4rem);
       padding-bottom: 4.75rem;
+    }
+
+    .hero-section::before {
+      top: 14%;
+      left: -6.5rem;
+    }
+
+    .hero-section::after {
+      right: -3.5rem;
+      bottom: 14%;
     }
 
     .hero-actions {

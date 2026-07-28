@@ -22,7 +22,7 @@
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "knip": "knip",
-    "audit:dependencies": "bun audit --ignore=GHSA-mh99-v99m-4gvg",
+    "audit:dependencies": "bun audit",
     "ci": "bun run lint && bun run format:check && bun run knip && bun run audit:dependencies && bun run build",
     "test:e2e": "bun run build && playwright test",
     "audit:lighthouse": "bun run build && node scripts/lighthouse.mjs",
