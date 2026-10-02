@@ -1,0 +1,11 @@
+{
+	"$schema": "./node_modules/oxfmt/configuration_schema.json",
+	"useTabs": true,
+	"tabWidth": 2,
+	"printWidth": 120,
+	"ignorePatterns": ["bun.lock", ".next/**", "next-env.d.ts", ".agents/skills/impeccable/**"],
+	"sortImports": true,
+	"sortTailwindcss": {
+		"stylesheet": "./app/globals.css"
+	}
+}

@@ -1,21 +1,24 @@
-'use client';
+"use client";
 
-import { motion, useScroll, useSpring } from "framer-motion";
+import { useScroll, useSpring } from "motion/react";
+import * as m from "motion/react-m";
 
-const ScrollProgressIndicator = () => {
+import useReducedMotionPreference from "../useReducedMotionPreference";
+
+export default function ScrollProgressIndicator() {
+	const reducedMotion = useReducedMotionPreference();
 	const { scrollYProgress } = useScroll();
-	const scaleX = useSpring(scrollYProgress, {
+	const springProgress = useSpring(scrollYProgress, {
 		stiffness: 100,
 		damping: 30,
 		restDelta: 0.001,
 	});
 
 	return (
-		<motion.div
-			className="fixed bottom-0 left-0 right-0 h-2 bg-slate-300 origin-top-left z-50"
-			style={{ scaleX }}
+		<m.div
+			aria-hidden="true"
+			className="pointer-events-none fixed right-0 bottom-0 left-0 z-50 h-1 origin-top-left bg-plum"
+			style={{ scaleX: reducedMotion ? scrollYProgress : springProgress }}
 		/>
 	);
-};
-
-export default ScrollProgressIndicator;
+}

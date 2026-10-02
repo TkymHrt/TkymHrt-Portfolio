@@ -1,31 +1,56 @@
 name: Lighthouse CI
-on: [push]
+
+on:
+  push:
+    branches: [main, develop]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lighthouse-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  CI: "true"
+  LEFTHOOK: "0"
+  NEXT_TELEMETRY_DISABLED: "1"
+
 jobs:
-  lhci:
-    name: Lighthouse CI
-    runs-on: ubuntu-latest
+  lighthouse:
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      LHCI_TOKEN: ${{ secrets.LHCI_TOKEN }}
+
     steps:
-      - uses: actions/checkout@v6
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
+          persist-credentials: false
 
-      - name: Node.js 24 のセットアップ
-        uses: actions/setup-node@v6
+      - name: Set up pinned tools
+        uses: jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492 # v5.0.1
         with:
-          node-version: 24
+          version: 2026.10.0
 
-      - name: 依存関係のインストール
-        run: npm i -g bun && bun ci
+      - name: Cache Bun downloads
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-${{ runner.arch }}-bun-${{ hashFiles('mise.toml', 'bun.lock') }}
 
-      - name: プロジェクトのビルド
-        run: bun run build
+      - name: Install locked dependencies
+        if: env.LHCI_TOKEN != ''
+        run: mise run install
 
-      - name: Lighthouse CI の実行
-        run: |
-          bun x @lhci/cli autorun
-        env:
-          # セルフホストLHCIサーバーのプロジェクト用トークン
-          LHCI_TOKEN: ${{ secrets.LHCI_TOKEN }}
-          # lighthouserc.jsでserverBaseUrlを設定している場合は不要ですが、
-          # ここで環境変数として上書きすることも可能です。
-          # LHCI_SERVER_BASE_URL: ${{ secrets.LHCI_SERVER_BASE_URL }}
+      - name: Build, collect and upload Lighthouse reports
+        if: env.LHCI_TOKEN != ''
+        run: mise run lhci
+
+      - name: Explain missing upload configuration
+        if: env.LHCI_TOKEN == ''
+        run: echo "Lighthouse CI skipped because the LHCI_TOKEN repository secret is not configured."

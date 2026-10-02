@@ -1,112 +1,117 @@
-import { motion } from "framer-motion";
-import { Element } from "react-scroll";
+import Image from "next/image";
 
-const motionDivClasses =
-	"h-auto md:w-[80vw] w-[85vw] flex flex-col items-start bg-white backdrop-filter backdrop-blur-3xl bg-opacity-10 rounded-xl shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)] p-8 md:p-10";
+import ArrowIcon from "@/components/common/ArrowIcon";
+import PortfolioSection from "@/components/common/PortfolioSection";
 
 const products = [
 	{
-		id: "1",
+		id: "communication-ai",
 		title: "Communication AI",
 		image: "/products/communication_ai.webp",
-		description:
-			"生成AIと音声で会話できるWebアプリケーション。ユニバーサルなデザインにも配慮しており、誰でも使いやすい設計で作成しました。(Next.js, Tailwind CSS)",
+		description: "生成AIと音声で会話できるWebアプリ。誰でも使いやすい、ユニバーサルなデザインを目指しました。",
+		technology: "Next.js / Tailwind CSS",
 		deployUrl: "",
 		githubUrl: "https://github.com/takumi0616/communication-ai",
 	},
 	{
-		id: "2",
+		id: "prompt-lab",
 		title: "Prompt Lab",
 		image: "/products/prompt_lab.webp",
-		description:
-			"生成AIの出力に自身がない人に向けた、プロンプト作成のための指標を提供するWebアプリです。パラメータを設定し、結果を確認しながらプロンプトのクオリティ向上のための体験ができます。(Next.js)",
+		description: "パラメータを変えながら生成AIの出力を確認し、プロンプトの質を高めるための指標を提供するWebアプリ。",
+		technology: "Next.js",
 		deployUrl: "https://ai-prompt-lab.vercel.app/",
 		githubUrl: "https://github.com/takumi0616/prompt-lab",
 	},
 	{
-		id: "3",
+		id: "nutfes-bingo",
 		title: "nutfes-bingo",
 		image: "/products/nutfes_bingo.webp",
-		description: "技大祭のフィナーレを飾るビンゴ大会専用のアプリです。(Next.js, hasura)",
+		description: "技大祭のフィナーレを飾る、ビンゴ大会専用のアプリ。",
+		technology: "Next.js / Hasura",
 		deployUrl: "",
 		githubUrl: "https://github.com/NUTFes/nutfes-Bingo",
 	},
 	{
-		id: "4",
+		id: "giving-campaign-autofill",
 		title: "Giving Campaign Autofill App",
 		image: "/products/giving_campaign_autofill_app.webp",
-		description: "Giving Campaignの投票フォームを自動入力できるアプリです。(Flutter)",
+		description: "Giving Campaignの投票フォームへの入力を自動化するアプリ。",
+		technology: "Flutter",
 		deployUrl: "",
 		githubUrl: "https://github.com/TkymHrt/giving_campaign_autofill_app",
 	},
 	{
-		id: "5",
-        title: "Let's Pics",
-        image: "/products/let's_pics.webp",
-        description: "現実×英語学習×Tech。ランダムな時間にアプリから通知が来て、お題に沿った写真を撮り、高いスコアを目指すゲーム型英語学習アプリです。",
-        deployUrl: "https://jphacks.nosse.net/",
-        githubUrl: "https://github.com/jphacks/kz_2404",
+		id: "lets-pics",
+		title: "Let's Pics",
+		image: "/products/let's_pics.webp",
+		description:
+			"届いたお題に沿って写真を撮り、高いスコアを目指すゲーム型英語学習アプリ。現実の体験と英語学習をつなぎます。",
+		technology: "",
+		deployUrl: "https://jphacks.nosse.net/",
+		githubUrl: "https://github.com/jphacks/kz_2404",
 	},
 	{
-		id: "6",
+		id: "wake-on-lan",
 		title: "Wake on LAN App",
 		image: "/products/wake_on_lan_app.webp",
-		description:
-			"Webブラウザから Wake on LAN (WOL) を実行し、ネットワーク内のデバイスをリモートで起動できるアプリケーションです。(Next.js, Go)",
+		description: "ブラウザからWake on LANを実行し、ネットワーク内のデバイスをリモートで起動するアプリ。",
+		technology: "Next.js / Go",
 		deployUrl: "",
-		githubUrl: "https://github.com/TkymHrt/wake-on-lan-app"
-	}
+		githubUrl: "https://github.com/TkymHrt/wake-on-lan-app",
+	},
 ];
 
-const Products = () => (
-	<Element name="Products">
-		<motion.div
-			className={motionDivClasses}
-			whileHover={{ scale: 1.025 }}
-			transition={{ duration: 0.3 }}
-			style={{ willChange: "transform", transform: "translateZ(0)" }}
-		>
-			<h2 className="md:text-7xl text-6xl font-black text-slate-300 mb-5">Products</h2>
-			<div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+export default function Products() {
+	return (
+		<PortfolioSection id="Products">
+			<div className="mb-10 flex flex-col gap-4 sm:mb-12 sm:flex-row sm:items-end sm:justify-between">
+				<h2 id="Products-heading" className="section-heading">
+					Projects
+				</h2>
+				<p className="section-intro">Webとモバイルでつくったもの。</p>
+			</div>
+			<div className="grid gap-x-8 gap-y-14 md:grid-cols-2 lg:gap-x-12 lg:gap-y-20">
 				{products.map((product) => (
-					<div
-						key={product.id}
-						className="flex flex-col items-stretch p-6 bg-purple-200/70 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 relative"
-					>
-						<div className="flex-grow mb-2">
-							<h3 className="text-2xl font-bold text-stone-950 mb-2">{product.title}</h3>
-							<p className="text-sm text-stone-950">{product.description}</p>
+					<article key={product.id} className="flex min-w-0 flex-col items-start">
+						<div className="relative mb-6 aspect-[16/10] w-full overflow-hidden rounded-xl bg-lavender">
+							<Image
+								src={product.image}
+								alt={`${product.title}の画面`}
+								fill
+								sizes="(min-width: 1280px) 568px, (min-width: 768px) 46vw, 100vw"
+								className="object-contain p-5 sm:p-8"
+							/>
 						</div>
-						<div className="w-full h-48 flex items-center justify-center overflow-hidden rounded-lg mb-4">
-							<img src={product.image} alt={product.title} className="max-w-full max-h-full object-cover" />
-						</div>
-						<div className="flex gap-3 mb-2">
+						<h3 className="text-2xl leading-snug font-semibold text-ink">{product.title}</h3>
+						<p className="mt-3 max-w-[65ch] text-base leading-7 text-muted">{product.description}</p>
+						{product.technology && <p className="mt-3 text-sm leading-6 text-muted">{product.technology}</p>}
+						<div className="mt-auto flex flex-wrap gap-3 pt-6">
 							{product.deployUrl && (
 								<a
 									href={product.deployUrl}
-									className="text-[#663556] hover:text-[#855070]"
+									aria-label={`アプリを見る：${product.title}（新しいタブ）`}
+									className="inline-flex min-h-11 items-center gap-2 rounded-full bg-plum px-5 py-2.5 text-sm font-medium text-surface transition-colors hover:bg-ink"
 									target="_blank"
 									rel="noopener noreferrer"
 								>
-									View App
+									アプリを見る
+									<ArrowIcon className="h-4 w-4" />
 								</a>
 							)}
-							{product.githubUrl && (
-								<a
-									href={product.githubUrl}
-									className="text-[#663556] hover:text-[#855070]"
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									GitHub
-								</a>
-							)}
+							<a
+								href={product.githubUrl}
+								aria-label={`GitHub：${product.title}（新しいタブ）`}
+								className="inline-flex min-h-11 items-center gap-2 rounded-full border border-line px-5 py-2.5 text-sm font-medium text-ink transition-colors hover:border-plum hover:bg-lavender"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								GitHub
+								<ArrowIcon className="h-4 w-4" />
+							</a>
 						</div>
-					</div>
+					</article>
 				))}
 			</div>
-		</motion.div>
-	</Element>
-);
-
-export default Products;
+		</PortfolioSection>
+	);
+}

@@ -1,71 +1,36 @@
-import { motion } from "framer-motion";
-import { type SetStateAction, useState } from "react";
-import { Link } from "react-scroll";
+const menuItems = [
+	{ id: "About", label: "About" },
+	{ id: "Products", label: "Projects" },
+	{ id: "Works", label: "Research" },
+	{ id: "Contact", label: "Contact" },
+];
 
-const Header = () => {
-	const [selected, setSelected] = useState("");
-	const [hovered, setHovered] = useState("");
-
-	const menuItems = [
-		{ name: "Home", to: "Home" },
-		{ name: "About", to: "About" },
-		{ name: "Works", to: "Works" },
-		{ name: "Products", to: "Products" },
-		{ name: "Contact", to: "Contact" },
-	];
-
-	const handleButtonClick = (itemName: SetStateAction<string>) => {
-		setSelected(itemName);
-		setTimeout(() => setSelected(""), 500);
-	};
-
-	const handleMouseEnter = (itemName: SetStateAction<string>) => {
-		setHovered(itemName);
-	};
-
-	const handleMouseLeave = () => {
-		setTimeout(() => setHovered(""), 500);
-	};
-
+export default function Header() {
 	return (
-		<div className="fixed top-0 right-0 left-0 py-4 mx-6 z-10 overflow-x-auto">
-			<header className="flex justify-start">
-				<div className="space-x-4 sm:space-x-6 whitespace-nowrap">
-					{menuItems.map((item) => (
-						<Link
-							key={item.name}
-							to={item.to}
-							smooth={true}
-							offset={-70}
-							duration={500}
-							spy={true}
-							onClick={() => handleButtonClick(item.name)}
-							onMouseEnter={() => handleMouseEnter(item.name)}
-							onMouseLeave={handleMouseLeave}
-						>
-							<motion.button
-								className="text-slate-100 text-xl sm:text-2xl font-bold"
-								whileHover={{ scale: 1.2 }}
-								whileTap={{ scale: 0.9 }}
-								transition={{ type: "spring", stiffness: 400, damping: 17 }}
-							>
-								<p>{item.name}</p>
-								{(selected === item.name || hovered === item.name) && (
-									<motion.div
-										className="h-1 bg-slate-100"
-										layoutId="underline"
-										initial={{ opacity: 0 }}
-										animate={{ opacity: 1 }}
-										transition={{ duration: 0.3 }}
-									/>
-								)}
-							</motion.button>
-						</Link>
-					))}
-				</div>
-			</header>
-		</div>
+		<header className="top-0 z-40 border-b border-line bg-surface sm:sticky">
+			<div className="shell flex flex-col gap-2 py-3 sm:flex-row sm:items-center sm:justify-between sm:py-4">
+				<a
+					href="#Home"
+					aria-label="TkymHrt ホーム"
+					className="flex min-h-11 items-center font-display text-2xl font-semibold tracking-tight"
+				>
+					TkymHrt<span className="text-plum">.</span>
+				</a>
+				<nav aria-label="メインナビゲーション">
+					<ul className="flex flex-wrap items-center gap-x-5 gap-y-1 sm:gap-x-8">
+						{menuItems.map((item) => (
+							<li key={item.id}>
+								<a
+									href={`#${item.id}`}
+									className="flex min-h-11 items-center text-sm font-medium text-muted underline-offset-8 hover:text-plum hover:underline sm:text-base"
+								>
+									{item.label}
+								</a>
+							</li>
+						))}
+					</ul>
+				</nav>
+			</div>
+		</header>
 	);
-};
-
-export default Header;
+}

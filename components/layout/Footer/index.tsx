@@ -1,9 +1,15 @@
-const Footer = () => {
+import ArrowIcon from "@/components/common/ArrowIcon";
+
+export default function Footer() {
 	return (
-		<footer className="w-screen h-[15vh] flex justify-center items-center bg-[#484672]">
-			<p className="font-Noto text-slate-200">&copy; Takayama Haruto 2024</p>
+		<footer className="border-t border-line">
+			<div className="shell flex flex-wrap items-center justify-between gap-5 py-7 text-sm text-muted">
+				<p>&copy; 2026 Takayama Haruto</p>
+				<a href="#Home" className="action-link">
+					ページの先頭へ
+					<ArrowIcon />
+				</a>
+			</div>
 		</footer>
 	);
-};
-
-export default Footer;
+}

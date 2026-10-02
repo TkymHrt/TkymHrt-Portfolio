@@ -1,35 +1,54 @@
 {
-  "name": "tkymhrt-portfolio",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@tsparticles/engine": "^3.9.1",
-    "@tsparticles/slim": "^3.9.1",
-    "@vercel/analytics": "^1.3.2",
-    "framer-motion": "^11.5.4",
-    "next": "14.2.8",
-    "react": "^18",
-    "react-dom": "^18",
-    "react-scroll": "^1.9.0"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "1.8.3",
-    "@cloudflare/next-on-pages": "1.13.2",
-    "@tsparticles/react": "^3.0.0",
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "@types/react-scroll": "1.8.10",
-    "@vercel/next": "^4.3.8",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5",
-    "vercel": "^37.4.0"
-  }
+	"name": "tkymhrt-portfolio",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "oxlint --max-warnings=0 .",
+		"lint:fix": "oxlint --fix .",
+		"format": "oxfmt --write .",
+		"format:check": "oxfmt --check .",
+		"typecheck": "next typegen && tsc --noEmit",
+		"knip": "knip",
+		"doctor": "react-doctor . --yes --no-telemetry --no-supply-chain --blocking warning",
+		"lhci": "lhci autorun",
+		"prepare": "lefthook install",
+		"audit": "bun audit"
+	},
+	"dependencies": {
+		"@vercel/analytics": "2.0.1",
+		"motion": "14.0.0",
+		"next": "16.3.8",
+		"react": "19.3.0",
+		"react-dom": "19.3.0"
+	},
+	"devDependencies": {
+		"@lhci/cli": "0.15.1",
+		"@tailwindcss/postcss": "4.3.3",
+		"@types/node": "24.19.1",
+		"@types/react": "19.3.0",
+		"@types/react-dom": "19.3.0",
+		"knip": "6.39.0",
+		"lefthook": "2.1.16",
+		"oxfmt": "0.71.0",
+		"oxlint": "1.86.0",
+		"postcss": "8.5.28",
+		"react-doctor": "0.9.14",
+		"tailwindcss": "4.3.3",
+		"typescript": "7.0.2"
+	},
+	"overrides": {
+		"@puppeteer/browsers": "3.2.3",
+		"basic-ftp": "6.2.1",
+		"chrome-launcher": "1.2.2",
+		"tmp": "0.2.7",
+		"uuid": "11.1.1"
+	},
+	"engines": {
+		"bun": "1.4.2",
+		"node": "24.x"
+	},
+	"packageManager": "bun@1.4.2"
 }
