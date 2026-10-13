@@ -1,0 +1,69 @@
+min_version = "2026.10.0"
+
+[tools]
+node = "24.21.0"
+bun = "1.4.2"
+
+[tasks.install]
+description = "Install dependencies from the committed lockfile"
+run = "bun install --frozen-lockfile"
+
+[tasks.dev]
+description = "Start the development server"
+run = "bun run dev"
+
+[tasks.build]
+description = "Build the production application"
+run = "bun run build"
+
+[tasks.start]
+description = "Start the production server"
+run = "bun run start"
+
+[tasks.lint]
+description = "Check source code with Oxlint"
+run = "bun run lint"
+
+[tasks."lint:fix"]
+description = "Apply safe Oxlint fixes"
+run = "bun run lint:fix"
+
+[tasks.format]
+description = "Format files with Oxfmt"
+run = "bun run format"
+
+[tasks."format:check"]
+description = "Check formatting with Oxfmt"
+run = "bun run format:check"
+
+[tasks.typecheck]
+description = "Generate Next.js types and check TypeScript"
+run = "bun run typecheck"
+
+[tasks.knip]
+description = "Check unused dependencies and exports"
+run = "bun run knip"
+
+[tasks.doctor]
+description = "Check React implementation with React Doctor"
+run = "bun run doctor"
+
+[tasks.audit]
+description = "Check dependency vulnerabilities"
+run = "bun run audit"
+
+[tasks.hooks]
+description = "Install Lefthook Git hooks"
+run = "bun run lefthook install"
+
+[tasks.check]
+description = "Run all quality checks in order"
+run = ["bun run lint", "bun run format:check", "bun run typecheck", "bun run knip", "bun run doctor"]
+
+[tasks.ci]
+description = "Run the same checks and production build as CI"
+run = ["mise run check", "mise run build"]
+
+[tasks.lhci]
+description = "Build and run Lighthouse CI against the production server"
+run = ["bun run build", "bun run lhci"]

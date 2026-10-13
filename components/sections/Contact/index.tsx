@@ -1,56 +1,58 @@
-import { motion } from "framer-motion";
 import Image from "next/image";
-import { Element } from "react-scroll";
 
-const motionDivClasses =
-	"h-auto md:w-[80vw] w-[85vw] flex flex-col items-start bg-white backdrop-filter backdrop-blur-3xl bg-opacity-10 rounded-xl shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)] p-8 md:p-10";
+import ArrowIcon from "@/components/common/ArrowIcon";
+import PortfolioSection from "@/components/common/PortfolioSection";
 
-const Contact = () => (
-	<Element name="Contact">
-		<motion.div
-			className={motionDivClasses}
-			whileHover={{ scale: 1.025 }}
-			transition={{ duration: 0.3 }}
-		>
-			<h2 className="md:text-7xl text-6xl font-black text-slate-300 mb-5">
-				Contact
-			</h2>
-			<div className="flex flex-row gap-4 w-full mb-5">
-				{[
-					{
-						id: "instagram",
-						href: "https://www.instagram.com/mikan_taka.h/",
-						src: "icons/Instagram_icon.svg",
-						alt: "Instagram Link",
-						text: "Instagram",
-					},
-					{
-						id: "twitter",
-						href: "https://twitter.com/ForHobbiesBY",
-						src: "icons/X_icon.svg",
-						alt: "X Link",
-						text: "X",
-					},
-					{
-						id: "github",
-						href: "https://github.com/TkymHrt",
-						src: "icons/GitHub_icon.svg",
-						alt: "GitHub Link",
-						text: "GitHub",
-					},
-				].map((link) => (
-					<a
-						key={link.id}
-						className="flex flex-col items-center gap-1"
-						href={link.href}
-					>
-						<Image width={50} height={50} src={link.src} alt={link.alt} />
-						<p className="font-Noto md:text-base text-xs">{link.text}</p>
-					</a>
-				))}
+const links = [
+	{
+		id: "github",
+		href: "https://github.com/TkymHrt",
+		src: "/icons/GitHub_icon.svg",
+		text: "GitHub",
+	},
+	{
+		id: "twitter",
+		href: "https://twitter.com/ForHobbiesBY",
+		src: "/icons/X_icon.svg",
+		text: "X",
+	},
+	{
+		id: "instagram",
+		href: "https://www.instagram.com/mikan_taka.h/",
+		src: "/icons/Instagram_icon.svg",
+		text: "Instagram",
+	},
+];
+
+export default function Contact() {
+	return (
+		<PortfolioSection id="Contact">
+			<div className="grid gap-10 border-t border-line pt-10 lg:grid-cols-[1fr_1fr] lg:gap-20 lg:pt-14">
+				<div>
+					<h2 id="Contact-heading" className="section-heading">
+						Contact
+					</h2>
+					<p className="mt-5 max-w-[35ch] text-base leading-8 text-muted">
+						制作物のコードや活動は、こちらからご覧いただけます。
+					</p>
+				</div>
+				<ul>
+					{links.map((link) => (
+						<li key={link.id} className="border-b border-line">
+							<a
+								href={link.href}
+								className="flex min-h-18 items-center justify-between gap-4 py-5 text-ink transition-colors hover:text-plum"
+							>
+								<span className="flex items-center gap-4">
+									<Image width={28} height={28} src={link.src} alt="" />
+									<span className="text-lg font-medium">{link.text}</span>
+								</span>
+								<ArrowIcon />
+							</a>
+						</li>
+					))}
+				</ul>
 			</div>
-		</motion.div>
-	</Element>
-);
-
-export default Contact;
+		</PortfolioSection>
+	);
+}

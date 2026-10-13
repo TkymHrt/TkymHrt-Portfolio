@@ -1,16 +1,16 @@
+import type { ReactNode } from "react";
+
+import { ScrollProgressIndicator } from "@/components/common";
 import { Footer, Header, HeroHeader } from "@/components/layout";
 
-interface UserLayoutProps {
-	children: React.ReactNode;
-}
-
-export default function UserLayout({ children }: UserLayoutProps) {
+export default function UserLayout({ children }: { children: ReactNode }) {
 	return (
 		<>
 			<Header />
 			<HeroHeader />
 			{children}
 			<Footer />
+			<ScrollProgressIndicator />
 		</>
 	);
 }
