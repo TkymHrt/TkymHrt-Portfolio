@@ -1,15 +1,8 @@
-import Image from "next/image";
-
 import ArrowIcon from "@/components/common/ArrowIcon";
-import letsPics from "@/public/products/let's_pics.webp";
 
 export default function HeroHeader() {
 	return (
-		<section
-			id="Home"
-			aria-labelledby="Home-heading"
-			className="shell grid gap-10 py-10 sm:py-16 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-16 lg:py-20"
-		>
+		<section id="Home" aria-labelledby="Home-heading" className="shell py-10 sm:py-16 lg:py-20">
 			<div>
 				<h1
 					id="Home-heading"
@@ -43,28 +36,6 @@ export default function HeroHeader() {
 					</a>
 				</div>
 			</div>
-			<a
-				href="#Products"
-				className="group block rounded-2xl bg-lavender p-5 sm:p-7"
-				aria-label="Let's Pics などの制作物を見る"
-			>
-				<div className="overflow-hidden rounded-xl">
-					<Image
-						src={letsPics}
-						alt="Let's Picsのサインイン画面と英語のお題に沿って写真を撮る画面"
-						sizes="(min-width: 1280px) 520px, (min-width: 1024px) 42vw, 90vw"
-						preload
-						className="h-auto w-full motion-safe:transition-transform motion-safe:duration-500 motion-safe:group-hover:scale-[1.025]"
-					/>
-				</div>
-				<div className="mt-5 flex items-center justify-between gap-4">
-					<div>
-						<p className="font-display text-xl font-medium">Let&apos;s Pics</p>
-						<p className="mt-1 text-sm text-muted">写真を撮って、英語を学ぶ。</p>
-					</div>
-					<ArrowIcon />
-				</div>
-			</a>
 		</section>
 	);
 }

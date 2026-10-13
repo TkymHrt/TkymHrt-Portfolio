@@ -23,12 +23,22 @@ const products = [
 		githubUrl: "https://github.com/takumi0616/prompt-lab",
 	},
 	{
+		id: "finansu",
+		title: "FinanSu",
+		image: "/products/finansu.jpg",
+		imageAlt: "FinanSuのログイン画面",
+		description: "技大祭の財務情報を管理する、NUTFes / NUTMEGのWebアプリ。",
+		technology: "Next.js / Go (Echo) / MySQL",
+		deployUrl: "https://finansu.nutfes.net/",
+		githubUrl: "https://github.com/NUTFes/FinanSu",
+	},
+	{
 		id: "nutfes-bingo",
 		title: "nutfes-bingo",
-		image: "/products/nutfes_bingo.webp",
+		image: "/products/nutfes_bingo.jpg",
 		description: "技大祭のフィナーレを飾る、ビンゴ大会専用のアプリ。",
-		technology: "Next.js / Hasura",
-		deployUrl: "",
+		technology: "React / Vite / Cloudflare Workers / Durable Objects / R2",
+		deployUrl: "https://bingo.nutfes.net/",
 		githubUrl: "https://github.com/NUTFes/nutfes-Bingo",
 	},
 	{
@@ -76,7 +86,7 @@ export default function Products() {
 						<div className="relative mb-6 aspect-[16/10] w-full overflow-hidden rounded-xl bg-lavender">
 							<Image
 								src={product.image}
-								alt={`${product.title}の画面`}
+								alt={product.imageAlt ?? `${product.title}の画面`}
 								fill
 								sizes="(min-width: 1280px) 568px, (min-width: 768px) 46vw, 100vw"
 								className="object-contain p-5 sm:p-8"
