@@ -1,3 +1,4 @@
+import ArrowIcon from "@/components/common/ArrowIcon";
 import PortfolioSection from "@/components/common/PortfolioSection";
 
 export default function About() {
@@ -19,6 +20,16 @@ export default function About() {
 						<br />
 						フロントエンドエンジニア
 					</p>
+					<a
+						href="https://mcweb.nagaokaut.ac.jp/~weidong/"
+						aria-label="韋研究室のウェブサイト（新しいタブ）"
+						className="action-link mt-5 text-sm text-plum"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						韋研究室のウェブサイト
+						<ArrowIcon className="h-4 w-4" />
+					</a>
 				</div>
 				<div className="max-w-[65ch] text-base leading-8 text-muted sm:text-lg sm:leading-9">
 					<p className="text-ink">Web・モバイルアプリの開発と、画像処理の研究に取り組んでいます。</p>
