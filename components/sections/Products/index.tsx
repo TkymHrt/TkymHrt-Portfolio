@@ -1,14 +1,16 @@
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 
 import ArrowIcon from "@/components/common/ArrowIcon";
 import PortfolioSection from "@/components/common/PortfolioSection";
+import finansuScreenshot from "@/public/products/finansu.jpg";
+import bingoScreenshot from "@/public/products/nutfes_bingo.jpg";
 
 type Preview = "desktop" | "mobile";
 
 type Product = {
 	id: string;
 	title: string;
-	image: string;
+	image: string | StaticImageData;
 	imageAlt?: string;
 	preview?: Preview;
 	description: string;
@@ -21,7 +23,7 @@ const products: Product[] = [
 	{
 		id: "nutfes-bingo",
 		title: "nutfes-bingo",
-		image: "/products/nutfes_bingo.jpg",
+		image: bingoScreenshot,
 		preview: "mobile",
 		description: "技大祭のフィナーレを飾る、ビンゴ大会専用のアプリ。",
 		technology: "React / Vite / Cloudflare Workers / Durable Objects / R2",
@@ -31,7 +33,7 @@ const products: Product[] = [
 	{
 		id: "finansu",
 		title: "FinanSu",
-		image: "/products/finansu.jpg",
+		image: finansuScreenshot,
 		preview: "desktop",
 		imageAlt: "FinanSuのログイン画面",
 		description: "技大祭の財務情報を管理する、NUTFes / NUTMEGのWebアプリ。",
@@ -109,16 +111,15 @@ function ProductPreview({ product }: { product: Product }) {
 			<div
 				className={
 					product.preview === "mobile"
-						? "relative aspect-[402/874] w-full max-w-35 overflow-hidden rounded-xl border border-line bg-white sm:max-w-36"
-						: "relative aspect-video w-full overflow-hidden rounded-xl border border-line bg-white"
+						? "w-full max-w-35 overflow-hidden rounded-xl border border-line sm:max-w-36"
+						: "w-full overflow-hidden rounded-xl border border-line"
 				}
 			>
 				<Image
 					src={product.image}
 					alt={alt}
-					fill
 					sizes={product.preview === "mobile" ? "144px" : "(min-width: 1280px) 504px, (min-width: 768px) 42vw, 90vw"}
-					className="object-contain"
+					className="h-auto w-full"
 				/>
 			</div>
 		</div>
