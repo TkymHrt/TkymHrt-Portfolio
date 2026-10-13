@@ -52,7 +52,11 @@ GitHub Actions は `main` / `develop` への push と pull request で `mise run
 
 Lighthouse CI の間接依存 `@puppeteer/browsers`、`basic-ftp`、`chrome-launcher`、`tmp`、`uuid` は、脆弱性のある依存を除去するため `overrides` で固定しています。固定した Node.js での Lighthouse 実行と互換性を確認済みです。上流の更新で不要になったら削除してください。
 
-2026-10-02 時点で `mise run audit` の指摘は 0 件です。Lighthouse はインストール済みの Chrome を使用します。
+PostCSS / Tailwind CSS / React Doctor の間接依存 `source-map-js` は、[ソースマップの処理によるサービス拒否の脆弱性](https://github.com/advisories/GHSA-68fv-2mgg-jv7q)を修正した `1.2.2` に `overrides` で固定しています。
+
+2026-10-13 時点で `mise run audit` の指摘は中程度の 1 件です。Lighthouse CI → `js-yaml` → `argparse` の間接依存 `sprintf-js` に[書式文字列の精度指定によるサービス拒否の脆弱性](https://github.com/advisories/GHSA-hp3w-g68c-fv3c)が報告されていますが、修正版は未公開です。監査結果を抑制せず、上流の修正を待っています。
+
+Lighthouse はインストール済みの Chrome を使用します。
 
 ## Impeccable
 
